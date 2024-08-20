@@ -1,0 +1,27 @@
+{
+    "Best Sellers": {
+        "Amazon Devices & Accessories": {
+            "list_of_items": [
+                {
+                    "order": 1,
+                    "product_name": "Amazon Fire TV Stick 4K Max streaming device, supports Wi-Fi 6E, free & live TV without cable or satellite",
+                    "price": "39.99",
+                    "availability": "In Stock",
+                    "stars": 4.6,
+                    "ratings": 29797
+                }
+            ],
+            "Amazon Device Accessories": {
+                "Adapters & Connectors": [
+                    {},
+                    {}
+                ],
+                "Audio": {},
+                "Bases & Stands": {}
+            },
+            "Amazon Device Subscriptions": {},
+            "Amazon Devices": {}
+        }
+    },
+    "New Releases": {}
+}
