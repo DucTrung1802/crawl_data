@@ -1,117 +1,80 @@
-from bs4 import BeautifulSoup
-import requests
-import re
+from selenium import webdriver
+from selenium.webdriver.remote.webdriver import (
+    WebDriver,
+)
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.common.exceptions import StaleElementReferenceException
+import time
 
 
-def set_zip_code(session, zip_code):
-    # Amazon's endpoint to update the zip code might look something like this.
-    # The actual endpoint and required data can be different and should be identified using browser developer tools.
-    zip_code_url = "https://www.amazon.com/gp/delivery/ajax/address-change.html"
+def extract_amazon_product_data_from_url(url: str, driver: WebDriver, zipcode: int):
+    wait = WebDriverWait(driver, 10)
 
-    # Payload for setting the zip code
-    payload = {
-        "locationType": "LOCATION_INPUT",
-        "zipCode": zip_code,
-        "storeContext": "generic",
-        "deviceType": "web",
-        "pageType": "Detail",
-        "actionSource": "glow",
-    }
+    driver.get(url)
 
-    # Send POST request to set the zip code
-    response = session.post(zip_code_url, data=payload)
-
-    if response.status_code == 200:
-        print(f"Zip code {zip_code} set successfully.")
-    else:
-        print("Failed to set zip code.")
-
-
-def extract_amazon_product_from_url(session, url):
-    try:
-        webpage = session.get(url)
-        soup = BeautifulSoup(webpage.content, "html.parser")
-
-        print(f"URL: {url}")
-
-        # TITLE
-        title = soup.find("span", {"id": "productTitle"}).text.strip()
-
-        # AVAILIBILITY
-        avai = soup.find(
-            "span", {"class": "a-size-medium a-color-success"}
-        ).text.strip()
-
-        # PRICE
-        price_whole = soup.find("span", {"class": "a-price-whole"}).text.strip()
-        if price_whole:
-            price_whole = int(re.match(r"\d+", price_whole).group())
-
-        price_fraction = soup.find("span", {"class": "a-price-fraction"}).text.strip()
-
-        price_unit = soup.find("span", {"class": "a-price-symbol"}).text.strip()
-
-        # DESCRIPTION
-        ul_element = soup.find(
-            "ul", class_="a-unordered-list a-vertical a-spacing-mini"
+    # Choose location according to zipcode
+    wait.until(
+        EC.element_to_be_clickable((By.ID, "nav-global-location-popover-link"))
+    ).click()
+    wait.until(
+        EC.element_to_be_clickable(
+            (By.CSS_SELECTOR, "[data-action='GLUXPostalInputAction']")
         )
+    ).send_keys(zipcode)
+    wait.until(
+        EC.element_to_be_clickable(
+            (By.CSS_SELECTOR, "[aria-labelledby='GLUXZipUpdate-announce']")
+        )
+    ).click()
+    wait.until(
+        EC.element_to_be_clickable(
+            (By.CSS_SELECTOR, ".a-popover-footer #GLUXConfirmClose")
+        )
+    ).click()
 
-        # Find all <li> elements within the <ul>
-        li_elements = ul_element.find_all("li", class_="a-spacing-mini")
+    # PRODUCT TITLE
+    product_title = wait.until(
+        EC.presence_of_element_located((By.ID, "productTitle"))
+    ).text
 
-        # Extract and print the descriptions from each <li> element
-        descriptions = [li.span.text.strip() for li in li_elements]
+    # PRODUCT RATING
+    product_rating = driver.find_element(By.CSS_SELECTOR, ".a-icon-alt").text
 
-        # RATING
-        rating = soup.find(
-            "span",
-            {"data-hook": "rating-out-of-text"},
-        ).text.strip()
-        if rating:
-            rating = float(re.search(r"\d+(\.\d+)?", rating).group())
+    # NUMBER OF REVIEWS
+    num_reviews = driver.find_element(By.ID, "acrCustomerReviewText").text
 
-        # REVIEWS
-        reviews = soup.find("span", {"id": "acrCustomerReviewText"}).text.strip()
-        if reviews:
-            reviews = int(re.match(r"\d+", reviews).group())
+    # PRODUCT DESCRIPTIONS
+    product_description = wait.until(
+        EC.visibility_of_element_located((By.ID, "feature-bullets"))
+    ).text
+    if product_description.endswith("\n› See more product details"):
+        # Remove the specified text
+        product_description = product_description[
+            : -len("\n› See more product details")
+        ]
 
-        if title:
-            print(f"Title: {title}")
-        else:
-            raise ValueError("Cannot crawl title")
-
-        if avai:
-            print(f"Availability: {avai}")
-        else:
-            raise ValueError("Cannot crawl availability")
-
-        print(f"Price: {price_whole}.{price_fraction}")
-        print(f"Price unit: {price_unit}")
-        print(f"Descriptions: {descriptions}")
-        print(f"Rating: {rating}")
-        print(f"Reviews: {reviews}")
-
-    except Exception as e:
-        print(f"Logging: Error - {str(e)}")
+    # LAST MONTH SOLD
+    last_month_sold = wait.until(
+        EC.presence_of_element_located(
+            (By.ID, "social-proofing-faceout-title-tk_bought")
+        )
+    ).text
 
 
 def main():
-    PRODUCT_URL = "https://www.amazon.com/eero-Ethernet-Supports-gigabit-Midnight/dp/B0CGWSQJ29/ref=zg_bsnr_g_17942903011_d_sccl_3/141-3078590-5074935?psc=1"
+    URL = "https://www.amazon.com/Amelity-Headrest-Storage-Leather-Black-2/dp/B0CX18TFQD/ref=zg_bsnr_c_automotive_d_sccl_1/136-3737609-7879062?pd_rd_w=OPVDM&content-id=amzn1.sym.7379aab7-0dd8-4729-b0b5-2074f1cb413d&pf_rd_p=7379aab7-0dd8-4729-b0b5-2074f1cb413d&pf_rd_r=YP1XSS0HMXZM3T7NZVJ1&pd_rd_wg=OgJkA&pd_rd_r=f6e34945-87f9-42f6-846e-12de137e8f40&pd_rd_i=B0CX18TFQD&th=1"
 
-    HEADERS = {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36",
-        "Accept-Language": "en-US",
-    }
+    OPTIONS = Options()
 
-    # New York zip code
-    ZIP_CODE = 10001
+    DRIVER = webdriver.Chrome(options=OPTIONS)
 
-    session = requests.Session()
-    session.headers.update(HEADERS)
+    ZIPCODE = 92104
 
-    set_zip_code(session, str(ZIP_CODE))
-
-    extract_amazon_product_from_url(session, PRODUCT_URL)
+    extract_amazon_product_data_from_url(URL, DRIVER, ZIPCODE)
 
 
 if __name__ == "__main__":
