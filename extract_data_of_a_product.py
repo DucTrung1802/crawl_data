@@ -66,7 +66,7 @@ def extract_amazon_product_data_from_url(url: str, driver: WebDriver, zipcode: i
 
 
 def main():
-    URL = "https://www.amazon.com/Amelity-Headrest-Storage-Leather-Black-2/dp/B0CX18TFQD/ref=zg_bsnr_c_automotive_d_sccl_1/136-3737609-7879062?pd_rd_w=OPVDM&content-id=amzn1.sym.7379aab7-0dd8-4729-b0b5-2074f1cb413d&pf_rd_p=7379aab7-0dd8-4729-b0b5-2074f1cb413d&pf_rd_r=YP1XSS0HMXZM3T7NZVJ1&pd_rd_wg=OgJkA&pd_rd_r=f6e34945-87f9-42f6-846e-12de137e8f40&pd_rd_i=B0CX18TFQD&th=1"
+    URL = "https://www.amazon.com/COSIBONO-Pumpkin-Decorative-Harvest-Farmhouse/dp/B0D5YM77ML/ref=zg_bsnr_c_home-garden_d_sccl_4/141-3078590-5074935?pd_rd_w=D5QLJ&content-id=amzn1.sym.7379aab7-0dd8-4729-b0b5-2074f1cb413d&pf_rd_p=7379aab7-0dd8-4729-b0b5-2074f1cb413d&pf_rd_r=SFW6WCTP49M4KPEMC58E&pd_rd_wg=TrGpP&pd_rd_r=f059d5b7-30fb-485a-8a07-65c36aaaa1c3&pd_rd_i=B0D5YM77ML&th=1"
 
     OPTIONS = Options()
 
