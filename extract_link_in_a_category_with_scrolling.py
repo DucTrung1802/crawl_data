@@ -1,7 +1,7 @@
 from playwright.sync_api import sync_playwright
 import time
 
-url = "https://www.amazon.com/Best-Sellers-Amazon-Devices-Accessories/zgbs/amazon-devices/ref=zg_bs_nav_amazon-devices_0"
+url = "https://www.amazon.com/gp/new-releases/amazon-devices/ref=zg_bsnr_nav_amazon-devices_0"
 
 start_time = time.time()
 
