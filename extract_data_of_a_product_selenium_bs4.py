@@ -18,7 +18,6 @@ import random
 class Item:
     def __init__(
         self,
-        id: str,
         category_asin: int,
         category_name: str,
         product_asin: str,
@@ -32,7 +31,6 @@ class Item:
         status: str = None,
         created_date: datetime.datetime = datetime.datetime.now(),
     ):
-        self.id = id
         self.category_asin = category_asin
         self.category_name = category_name
         self.product_asin = product_asin
@@ -145,22 +143,26 @@ class Extactor:
 
             self.soup = BeautifulSoup(self.driver.page_source, "html.parser")
 
-            # ID
-            id = self.soup_try_to_find("input", {"id": "ASIN"})
-
             # CATEGORY_ASIN (get from parameter)
 
             # CATEGORY_NAME (get from parameter)
 
             # PRODUCT_ASIN
-            
+            product_asin = self.soup_try_to_find("input", {"id": "ASIN"}, "value")
+
+            # TITLE
+            title = self.soup_try_to_find("span", {"id": "productTitle"})
+
+            # REVIEWS
+            reviews = self.soup.find(
+                "span", {"id": "acrCustomerReviewText"}
+            ).text.strip()
+            if reviews:
+                reviews = int(re.match(r"\d+", reviews).group())
 
             print(f"ID: {id}")
             print(f"CATEGORY_ASIN: {category_asin}")
             print(f"CATEGORY_NAME: {category_name}")
-
-            # # TITLE
-            # title = self.soup_try_to_find("span", {"id": "productTitle"})
 
             # # AVAILIBILITY
             # avai = self.soup_try_to_find(
@@ -193,13 +195,6 @@ class Extactor:
             # ).text.strip()
             # if rating:
             #     rating = float(re.search(r"\d+(\.\d+)?", rating).group())
-
-            # # REVIEWS
-            # reviews = self.soup.find(
-            #     "span", {"id": "acrCustomerReviewText"}
-            # ).text.strip()
-            # if reviews:
-            #     reviews = int(re.match(r"\d+", reviews).group())
 
 
 def extract_amazon_product_data_from_url(url: str, driver: WebDriver, zipcode: int):
