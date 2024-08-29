@@ -9,6 +9,8 @@ from selenium.webdriver.support import expected_conditions as EC
 
 from bs4 import BeautifulSoup
 
+from amazoncaptcha import AmazonCaptcha
+
 import re
 import time
 import datetime
@@ -44,19 +46,21 @@ class Item:
         self.last_month_sold: int = last_month_sold
         self.created_date: datetime.datetime = created_date
 
-    def __string__(self):
-        print(f"CATEGORY_ASIN: {self.category_asin}")
-        print(f"CATEGORY_NAME: {self.category_name}")
-        print(f"PRODUCT_ASIN: {self.product_asin}")
-        print(f"TITLE: {self.title}")
-        print(f"REVIEW_NUM: {self.review_num}")
-        print(f"RATING: {self.rating}")
-        print(f"DESCRIPTION: {self.description}")
-        print(f"COLOR: {self.color}")
-        print(f"PRICE: {self.price}")
-        print(f"STATUS: {self.status}")
-        print(f"LAST_MONTH_SOLD: {self.last_month_sold}")
-        print(f"CREATED_DATE: {self.created_date}")
+    def __str__(self):
+        return (
+            f"CATEGORY_ASIN: {self.category_asin}\n"
+            f"CATEGORY_NAME: {self.category_name}\n"
+            f"PRODUCT_ASIN: {self.product_asin}\n"
+            f"TITLE: {self.title}\n"
+            f"REVIEW_NUM: {self.review_num}\n"
+            f"RATING: {self.rating}\n"
+            f"DESCRIPTION: {self.description}\n"
+            f"COLOR: {self.color}\n"
+            f"PRICE: {self.price}\n"
+            f"STATUS: {self.status}\n"
+            f"LAST_MONTH_SOLD: {self.last_month_sold}\n"
+            f"CREATED_DATE: {self.created_date}"
+        )
 
 
 class Category:
@@ -74,37 +78,34 @@ class Extactor:
     def __init__(self, zipcode=92104):
         self.driver_options = Options()
 
-        self.user_agents = [
-            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36",
-            "Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko",
-            "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.1 Safari/605.1.15",
-            "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101 Firefox/102.0",
-            "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36",
-            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Edge/92.0.902.84 Safari/537.36",
-            "Mozilla/5.0 (iPad; CPU OS 14_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.0 Mobile/15A5341f Safari/604.1",
-            "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:91.0) Gecko/20100101 Firefox/91.0",
-        ]
-
         self.driver = webdriver.Chrome(options=self.driver_options)
-        self.get_random_header()
 
         self.wait = WebDriverWait(self.driver, 10)
-        self.soup = None
         self.zipcode = zipcode
 
-    def get_random_header(self):
-        random.seed()
+        self.driver.get("https://www.amazon.com/")
+        self.soup = BeautifulSoup(self.driver.page_source, "html.parser")
 
-        self.driver.execute_cdp_cmd(
-            "Network.setUserAgentOverride",
-            {
-                "userAgent": self.user_agents[
-                    random.randint(0, len(self.user_agents) - 1)
-                ]
-            },
-        )
+        self.sleep_interval = 2
 
-        self.driver.execute_script("return navigator.userAgent;")
+        # INITIALIZE
+        time.sleep(self.sleep_interval)
+
+        self.check_and_bypass_amazon_captcha()
+        self.choose_location_to_delivery_to(zipcode)
+
+    def check_and_bypass_amazon_captcha(self):
+        time.sleep(self.sleep_interval)
+
+        text = self.soup_try_to_find("h4")
+        if text:
+            captcha_image_link = self.soup_try_to_find("img", {}, "src")
+            captcha = AmazonCaptcha.fromlink(captcha_image_link)
+            solution = captcha.solve()
+            self.driver.find_element(By.ID, "captchacharacters").send_keys(solution)
+            self.driver.find_element(By.CLASS_NAME, "a-button-text").click()
+
+        time.sleep(self.sleep_interval)
 
     def choose_location_to_delivery_to(self, zipcode: int = 92104):
         if self.wait:
@@ -127,12 +128,14 @@ class Extactor:
                 )
             ).click()
 
+        time.sleep(self.sleep_interval)
+
     def soup_try_to_find(
-        self, name: str, attribute: dict, get_value_from_attribute: str = None
+        self, name: str, attribute: dict = {}, get_value_from_attribute: str = None
     ):
         try:
             if get_value_from_attribute:
-                return self.soup.find(name, attribute).get("value")
+                return self.soup.find(name, attribute).get(get_value_from_attribute)
             else:
                 return self.soup.find(name, attribute).text.strip()
         except:
@@ -159,8 +162,6 @@ class Extactor:
             return None
 
         self.driver.get(product_url)
-
-        self.driver.refresh()
 
         self.wait.until(EC.presence_of_element_located((By.ID, "productTitle")))
 
