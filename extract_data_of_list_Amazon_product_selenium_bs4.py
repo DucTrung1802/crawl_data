@@ -31,18 +31,43 @@ class Item:
         status: str = None,
         created_date: datetime.datetime = datetime.datetime.now(),
     ):
-        self.category_asin = category_asin
-        self.category_name = category_name
-        self.product_asin = product_asin
-        self.title = title
-        self.review_num = review_num
-        self.rating = rating
-        self.description = description
-        self.color = color
-        self.price = price
-        self.status = status
-        self.last_month_sold = last_month_sold
-        self.created_date = created_date
+        self.category_asin: int = category_asin
+        self.category_name: str = category_name
+        self.product_asin: str = product_asin
+        self.title: str = title
+        self.review_num: int = review_num
+        self.rating: float = rating
+        self.description: str = description
+        self.color: str = color
+        self.price: float = price
+        self.status: str = status
+        self.last_month_sold: int = last_month_sold
+        self.created_date: datetime.datetime = created_date
+
+    def __string__(self):
+        print(f"CATEGORY_ASIN: {self.category_asin}")
+        print(f"CATEGORY_NAME: {self.category_name}")
+        print(f"PRODUCT_ASIN: {self.product_asin}")
+        print(f"TITLE: {self.title}")
+        print(f"REVIEW_NUM: {self.review_num}")
+        print(f"RATING: {self.rating}")
+        print(f"DESCRIPTION: {self.description}")
+        print(f"COLOR: {self.color}")
+        print(f"PRICE: {self.price}")
+        print(f"STATUS: {self.status}")
+        print(f"LAST_MONTH_SOLD: {self.last_month_sold}")
+        print(f"CREATED_DATE: {self.created_date}")
+
+
+class Category:
+    def __init__(self, url: str, category_asin: str, category_name: str):
+        self.url: str = url
+        self.category_asin: int = category_asin
+        self.category_name: str = category_name
+        self.product_list_asins: list[tuple[str, bool]] = []
+        self.product_list: list[Item] = []
+        self.sub_category_urls: list[tuple[str, bool]] = []
+        self.sub_category_list: list[Category] = []
 
 
 class Extactor:
@@ -113,134 +138,125 @@ class Extactor:
         except:
             return None
 
-    def extract_amazon_product_data_from_url(
+    def extract_amazon_product_from_url(
         self,
-        url_list: list[str],
+        product_url: str,
         zipcode: int = 92104,
         category_asin: int = None,
         category_name: str = None,
     ):
         """
-        Extract Amazon products from URL list. Each URL is corresponding to with a product.
+        Extract Amazon products from URL.
 
         Args:
-            url_list (list[str]): Product urls
+            product_url (str): Product url
 
         Returns:
-            list[Item]: List of Item objects
+            Item | None: Item objects if successful
         """
 
-        if not url_list or len(url_list) == 0:
-            return []
+        if not product_url or len(product_url) == 0:
+            return None
 
-        for index in range(len(url_list)):
+        self.driver.get(product_url)
 
-            self.driver.get(url_list[index])
+        self.driver.refresh()
 
-            # Choose location according zipcode
-            if index == 0:
-                self.choose_location_to_delivery_to()
+        self.wait.until(EC.presence_of_element_located((By.ID, "productTitle")))
 
-            self.driver.refresh()
+        self.soup = BeautifulSoup(self.driver.page_source, "html.parser")
 
-            self.soup = BeautifulSoup(self.driver.page_source, "html.parser")
+        # CATEGORY_ASIN (get from parameter)
 
-            print(f"\nPRODUCT #{index + 1} " + "=" * 10)
+        # CATEGORY_NAME (get from parameter)
 
-            # CATEGORY_ASIN (get from parameter)
+        # PRODUCT_ASIN
+        product_asin = self.soup_try_to_find("input", {"id": "ASIN"}, "value")
 
-            # CATEGORY_NAME (get from parameter)
+        # TITLE
+        title = self.soup_try_to_find("span", {"id": "productTitle"})
 
-            # PRODUCT_ASIN
-            product_asin = self.soup_try_to_find("input", {"id": "ASIN"}, "value")
+        # REVIEWS
+        review_num = self.soup_try_to_find("span", {"id": "acrCustomerReviewText"})
+        if review_num:
+            review_num = int(re.match(r"\d+", review_num).group())
 
-            # TITLE
-            title = self.soup_try_to_find("span", {"id": "productTitle"})
+        # RATING
+        rating = self.soup_try_to_find(
+            "span",
+            {"data-hook": "rating-out-of-text"},
+        )
+        if rating:
+            rating = float(re.search(r"\d+(\.\d+)?", rating).group())
 
-            # REVIEWS
-            review_num = self.soup_try_to_find("span", {"id": "acrCustomerReviewText"})
-            if review_num:
-                review_num = int(re.match(r"\d+", review_num).group())
+        # DESCRIPTION
+        ul_element = self.soup.find(
+            "ul", class_="a-unordered-list a-vertical a-spacing-mini"
+        )
 
-            # RATING
-            rating = self.soup_try_to_find(
-                "span",
-                {"data-hook": "rating-out-of-text"},
-            )
-            if rating:
-                rating = float(re.search(r"\d+(\.\d+)?", rating).group())
+        # Find all <li> elements within the <ul>
+        li_elements = ul_element.find_all("li", class_="a-spacing-mini")
+        description = []
+        for li in li_elements:
+            description.append(li.text.strip())
 
-            # DESCRIPTION
-            ul_element = self.soup.find(
-                "ul", class_="a-unordered-list a-vertical a-spacing-mini"
-            )
+        # COLOR
+        color = self.soup_try_to_find("span", {"class": "selection"})
 
-            # Find all <li> elements within the <ul>
-            li_elements = ul_element.find_all("li", class_="a-spacing-mini")
-            description = []
-            for li in li_elements:
-                description.append(li.text.strip())
+        # PRICE
+        price = float(
+            re.findall(
+                r"\d+\.\d+|\d+",
+                self.soup_try_to_find("span", {"class": "aok-offscreen"}),
+            )[0]
+        )
 
-            # COLOR
-            color = self.soup_try_to_find("span", {"class": "selection"})
+        # STATUS
+        status = self.soup_try_to_find(
+            "span", {"class": "a-size-medium a-color-success"}
+        )
 
-            # PRICE
-            price = float(
-                re.findall(
-                    r"\d+\.\d+|\d+",
-                    self.soup_try_to_find("span", {"class": "aok-offscreen"}),
-                )[0]
-            )
+        # LAST MONTH SOLD
+        last_month_sold = self.soup_try_to_find(
+            "span", {"id": "social-proofing-faceout-title-tk_bought"}
+        )
+        match = re.search(r"\d+(?:[KkMm])?", last_month_sold)
+        if match:
+            last_month_sold = match.group()
+            if "K" in match.group().upper():
+                last_month_sold = int(last_month_sold[:-1])
+                last_month_sold *= 1000
+            elif "M" in match.group().upper():
+                last_month_sold = int(last_month_sold[:-1])
+                last_month_sold *= 1000000
+            else:
+                last_month_sold = int(last_month_sold)
 
-            # STATUS
-            status = self.soup_try_to_find(
-                "span", {"class": "a-size-medium a-color-success"}
-            )
+        # CREATED_DATE
+        created_date = datetime.datetime.now()
 
-            # LAST MONTH SOLD
-            last_month_sold = self.soup_try_to_find(
-                "span", {"id": "social-proofing-faceout-title-tk_bought"}
-            )
-            match = re.search(r"\d+(?:[KkMm])?", last_month_sold)
-            if match:
-                last_month_sold = match.group()
-                if "K" in match.group().upper():
-                    last_month_sold = int(last_month_sold[:-1])
-                    last_month_sold *= 1000
-                elif "M" in match.group().upper():
-                    last_month_sold = int(last_month_sold[:-1])
-                    last_month_sold *= 1000000
-                else:
-                    last_month_sold = int(last_month_sold)
-
-            # CREATED_DATE
-            created_date = datetime.datetime.now()
-
-            print(f"CATEGORY_ASIN: {category_asin}")
-            print(f"CATEGORY_NAME: {category_name}")
-            print(f"PRODUCT_ASIN: {product_asin}")
-            print(f"TITLE: {title}")
-            print(f"REVIEW_NUM: {review_num}")
-            print(f"RATING: {rating}")
-            print(f"DESCRIPTION: {description}")
-            print(f"COLOR: {color}")
-            print(f"PRICE: {price}")
-            print(f"STATUS: {status}")
-            print(f"LAST_MONTH_SOLD: {last_month_sold}")
-            print(f"CREATED_DATE: {created_date}")
-
-            print("=" * 20, end="\n\n")
+        return Item(
+            category_asin=category_asin,
+            category_name=category_name,
+            product_asin=product_asin,
+            title=title,
+            review_num=review_num,
+            rating=rating,
+            description=description,
+            color=color,
+            price=price,
+            status=status,
+            last_month_sold=last_month_sold,
+            created_date=created_date,
+        )
 
 
 def main():
-    URLs = [
-        "https://www.amazon.com/Amelity-Headrest-Storage-Leather-Black-2/dp/B0CX18TFQD/ref=zg_bsnr_c_automotive_d_sccl_1/141-3078590-5074935?pd_rd_w=MABN3&content-id=amzn1.sym.7379aab7-0dd8-4729-b0b5-2074f1cb413d&pf_rd_p=7379aab7-0dd8-4729-b0b5-2074f1cb413d&pf_rd_r=0Y582SYJA52XPQ46D08Z&pd_rd_wg=WBZ2b&pd_rd_r=d16f64de-fd58-48a9-b10c-27becea887e2&pd_rd_i=B0CX18TFQD&th=1",
-        "https://www.amazon.com/BAIBOSHI-Pack-Handle-Assist-Elderly/dp/B0D9GYK52D/ref=zg_bsnr_c_automotive_d_sccl_2/141-3078590-5074935?pd_rd_w=MABN3&content-id=amzn1.sym.7379aab7-0dd8-4729-b0b5-2074f1cb413d&pf_rd_p=7379aab7-0dd8-4729-b0b5-2074f1cb413d&pf_rd_r=0Y582SYJA52XPQ46D08Z&pd_rd_wg=WBZ2b&pd_rd_r=d16f64de-fd58-48a9-b10c-27becea887e2&pd_rd_i=B0D9GYK52D&th=1",
-        "https://www.amazon.com/ZGZUXO-Inflator-Compressor-Rechargeable-Motorcycle/dp/B0D1C77YTL/ref=zg_bsnr_c_automotive_d_sccl_3/141-3078590-5074935?pd_rd_w=MABN3&content-id=amzn1.sym.7379aab7-0dd8-4729-b0b5-2074f1cb413d&pf_rd_p=7379aab7-0dd8-4729-b0b5-2074f1cb413d&pf_rd_r=0Y582SYJA52XPQ46D08Z&pd_rd_wg=WBZ2b&pd_rd_r=d16f64de-fd58-48a9-b10c-27becea887e2&pd_rd_i=B0D1C77YTL&th=1",
-    ]
+    URL = "https://www.amazon.com/Amelity-Headrest-Storage-Leather-Black-2/dp/B0CX18TFQD/ref=zg_bsnr_c_automotive_d_sccl_1/141-3078590-5074935?pd_rd_w=MABN3&content-id=amzn1.sym.7379aab7-0dd8-4729-b0b5-2074f1cb413d&pf_rd_p=7379aab7-0dd8-4729-b0b5-2074f1cb413d&pf_rd_r=0Y582SYJA52XPQ46D08Z&pd_rd_wg=WBZ2b&pd_rd_r=d16f64de-fd58-48a9-b10c-27becea887e2&pd_rd_i=B0CX18TFQD&th=1"
 
     extractor = Extactor()
-    extractor.extract_amazon_product_data_from_url(URLs)
+    new_product = extractor.extract_amazon_product_from_url(URL)
+    print(new_product)
 
 
 if __name__ == "__main__":
