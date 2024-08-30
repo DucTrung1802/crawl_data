@@ -14,7 +14,13 @@ from amazoncaptcha import AmazonCaptcha
 import re
 import time
 import datetime
-import random
+from enum import Enum
+
+
+class LogType(Enum):
+    INFO = "INFO"
+    WARN = "WARN"
+    ERROR = "ERROR"
 
 
 class Item:
@@ -31,7 +37,7 @@ class Item:
         price: float,
         last_month_sold: int,
         status: str = None,
-        created_date: datetime.datetime = datetime.datetime.now(),
+        created_date: datetime.datetime = datetime.datetime.now().isoformat(),
     ):
         self.category_asin: int = category_asin
         self.category_name: str = category_name
@@ -68,9 +74,7 @@ class Category:
         self.url: str = url
         self.category_asin: int = category_asin
         self.category_name: str = category_name
-        self.product_list_asins: list[tuple[str, bool]] = []
         self.product_list: list[Item] = []
-        self.sub_category_urls: list[tuple[str, bool]] = []
         self.sub_category_list: list[Category] = []
 
 
@@ -90,11 +94,17 @@ class Extactor:
 
         self.sleep_interval = 1
 
+        self.log_index = 1
+
         # INITIALIZE
         time.sleep(self.sleep_interval)
 
         self.check_and_bypass_amazon_captcha()
         self.choose_location_to_delivery_to(zipcode)
+
+    def log(self, log_type: LogType, message: str):
+        print(f"[{self.log_index:05}] {log_type.value} {message}")
+        self.log_index += 1
 
     def apply_header(self):
         self.user_agents = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36"
@@ -294,7 +304,7 @@ class Extactor:
                 last_month_sold = int(last_month_sold)
 
         # CREATED_DATE
-        created_date = datetime.datetime.now()
+        created_date = datetime.datetime.now().isoformat()
 
         return Item(
             category_asin=category_asin,
@@ -311,7 +321,23 @@ class Extactor:
             created_date=created_date,
         )
 
-    def get_product_urls_from_current_category(self, category_url: str):
+    def handle_request_was_throttled(self):
+        # Handle: Request was throttled. Please wait a moment and refresh the page
+        time.sleep(2)
+
+        self.soup = BeautifulSoup(self.driver.page_source, "html.parser")
+
+        wait = WebDriverWait(self.driver, 5)
+        try:
+            wait.until(EC.presence_of_element_located((By.TAG_NAME, "pre")))
+            text = self.soup_try_to_find("pre")
+            if text:
+                time.sleep(3)
+                self.driver.refresh()
+        except:
+            pass
+
+    def get_product_urls_from_category_url(self, category_url: str):
         """
         Extract all product urls from a category url.
 
@@ -324,20 +350,7 @@ class Extactor:
 
         self.driver.get(category_url)
 
-        time.sleep(2)
-
-        self.soup = BeautifulSoup(self.driver.page_source, "html.parser")
-
-        # Handle: Request was throttled. Please wait a moment and refresh the page
-        wait = WebDriverWait(self.driver, 5)
-        try:
-            wait.until(EC.presence_of_element_located((By.TAG_NAME, "pre")))
-            text = self.soup_try_to_find("pre")
-            if text:
-                time.sleep(3)
-                self.driver.refresh()
-        except:
-            pass
+        self.handle_request_was_throttled()
 
         self.scroll_to_the_end_of_page_slowly()
 
@@ -353,7 +366,9 @@ class Extactor:
         while is_next_button_clickable:
             self.wait.until(is_next_button_clickable).click()
 
-            time.sleep(3)
+            self.handle_request_was_throttled()
+
+            time.sleep(2)
 
             self.scroll_to_the_end_of_page_slowly()
 
@@ -370,6 +385,41 @@ class Extactor:
 
         return product_urls
 
+    def extract_all_products_from_current_category(self, category_url: list[str]):
+        if not category_url or len(category_url) == 0:
+            return []
+
+        product_url_list = self.get_product_urls_from_category_url(category_url)
+        product_list: list[Item] = []
+        pattern = r"/dp/([A-Z0-9]+)"
+
+        for product_url in product_url_list:
+            try:
+                match = re.search(pattern, product_url)
+                if match:
+                    product_code = match.group(1)
+                    self.log(
+                        LogType.INFO, f"Extracting product with ASIN: {product_code}"
+                    )
+                    complete_url = "https://www.amazon.com/" + product_url
+                    product_url_list.append(
+                        self.extract_amazon_product_from_url(complete_url)
+                    )
+            except Exception as e:
+                self.log(LogType.ERROR, e)
+
+        self.log(
+            LogType.INFO,
+            f"Extracted {len(product_url_list)}/{len(product_list)} products of this category!",
+        )
+        if len(product_url_list) > 0 and len(product_list) < len(product_url_list):
+            self.log(
+                LogType.WARN,
+                f"Cannot extract products of this category with url: {category_url}",
+            )
+
+        return product_list
+
 
 def main():
     URL = "https://www.amazon.com/Amelity-Headrest-Storage-Leather-Black-2/dp/B0CX18TFQD/ref=zg_bsnr_c_automotive_d_sccl_1/141-3078590-5074935?pd_rd_w=MABN3&content-id=amzn1.sym.7379aab7-0dd8-4729-b0b5-2074f1cb413d&pf_rd_p=7379aab7-0dd8-4729-b0b5-2074f1cb413d&pf_rd_r=0Y582SYJA52XPQ46D08Z&pd_rd_wg=WBZ2b&pd_rd_r=d16f64de-fd58-48a9-b10c-27becea887e2&pd_rd_i=B0CX18TFQD&th=1"
@@ -381,9 +431,15 @@ def main():
     # new_product = extractor.extract_amazon_product_from_url(URL)
     # print(new_product)
 
-    product_urls_list = extractor.get_product_urls_from_current_category(CATEGORY_URL)
-    print(product_urls_list)
-    print(len(product_urls_list))
+    product_list = extractor.extract_all_products_from_current_category(CATEGORY_URL)
+    print(len(product_list))
+    index = 1
+    for product in product_list:
+        print()
+        print(f"PRODUCT #{index}: {product.title}")
+        print(f"Price: ${product.price}")
+        print()
+        index += 1
 
 
 if __name__ == "__main__":
