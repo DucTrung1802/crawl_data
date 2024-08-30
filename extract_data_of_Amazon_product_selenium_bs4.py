@@ -86,7 +86,7 @@ class Extactor:
         self.driver.get("https://www.amazon.com/")
         self.soup = BeautifulSoup(self.driver.page_source, "html.parser")
 
-        self.sleep_interval = 2
+        self.sleep_interval = 1
 
         # INITIALIZE
         time.sleep(self.sleep_interval)
@@ -128,7 +128,9 @@ class Extactor:
                 )
             ).click()
 
-        time.sleep(self.sleep_interval)
+        time.sleep(3)
+
+        self.driver.execute_script("window.stop();")
 
     def soup_try_to_find(
         self, name: str, attribute: dict = {}, get_value_from_attribute: str = None
@@ -140,6 +142,45 @@ class Extactor:
                 return self.soup.find(name, attribute).text.strip()
         except:
             return None
+
+    def soup_try_to_find_all(
+        self, name: str, attribute: dict = {}, get_value_from_attribute: str = None
+    ):
+        try:
+            if get_value_from_attribute:
+                item_list = self.soup.find_all(name, attribute)
+                return [item.get(get_value_from_attribute) for item in item_list]
+            else:
+                item_list = self.soup.find_all(name, attribute)
+                return [item.text.strip() for item in item_list]
+        except:
+            return None
+
+    def scroll_to_the_end_of_page_slowly(self):
+        if not self.driver:
+            return
+
+        scroll_increment = 1600  # Number of pixels to scroll each time
+        scroll_pause_time = 0.5  # Pause time between scrolls (in seconds)
+
+        # Get the total height of the page
+        total_height = self.driver.execute_script("return document.body.scrollHeight")
+
+        current_position = 0
+        while current_position < total_height:
+            # Scroll down by 'scroll_increment' pixels
+            self.driver.execute_script(f"window.scrollBy(0, {scroll_increment});")
+
+            # Update the current position
+            current_position += scroll_increment
+
+            # Wait for a short time before scrolling again
+            time.sleep(scroll_pause_time)
+
+            # Update total height in case the content loads dynamically (infinite scrolling)
+            total_height = self.driver.execute_script(
+                "return document.body.scrollHeight"
+            )
 
     def extract_amazon_product_from_url(
         self,
@@ -251,13 +292,57 @@ class Extactor:
             created_date=created_date,
         )
 
+    def get_product_urls_from_current_category(self, category_url: str):
+        """
+        Extract all product urls from a category url.
+
+        Args:
+            category_url (str): Category url
+        """
+
+        if not category_url or len(category_url) == 0:
+            return []
+
+        self.driver.get(category_url)
+
+        time.sleep(2)
+
+        self.soup = BeautifulSoup(self.driver.page_source, "html.parser")
+
+        # Handle: Request was throttled. Please wait a moment and refresh the page
+        wait = WebDriverWait(self.driver, 5)
+        try:
+            wait.until(EC.presence_of_element_located((By.TAG_NAME, "pre")))
+            text = self.soup_try_to_find("pre")
+            if text:
+                time.sleep(3)
+                self.driver.refresh()
+        except:
+            pass
+
+        self.scroll_to_the_end_of_page_slowly()
+
+        self.soup = BeautifulSoup(self.driver.page_source, "html.parser")
+
+        product_urls = self.soup_try_to_find_all(
+            "a", {"class": "a-link-normal aok-block"}, "href"
+        )
+
+        return product_urls
+
 
 def main():
     URL = "https://www.amazon.com/Amelity-Headrest-Storage-Leather-Black-2/dp/B0CX18TFQD/ref=zg_bsnr_c_automotive_d_sccl_1/141-3078590-5074935?pd_rd_w=MABN3&content-id=amzn1.sym.7379aab7-0dd8-4729-b0b5-2074f1cb413d&pf_rd_p=7379aab7-0dd8-4729-b0b5-2074f1cb413d&pf_rd_r=0Y582SYJA52XPQ46D08Z&pd_rd_wg=WBZ2b&pd_rd_r=d16f64de-fd58-48a9-b10c-27becea887e2&pd_rd_i=B0CX18TFQD&th=1"
 
+    CATEGORY_URL = "https://www.amazon.com/Best-Sellers-Amazon-Devices-Accessories-Amazon-Device-Adapters-Connectors/zgbs/amazon-devices/17942903011/ref=zg_bs_nav_amazon-devices_2_370783011"
+
     extractor = Extactor()
-    new_product = extractor.extract_amazon_product_from_url(URL)
-    print(new_product)
+
+    # new_product = extractor.extract_amazon_product_from_url(URL)
+    # print(new_product)
+
+    product_urls_list = extractor.get_product_urls_from_current_category(CATEGORY_URL)
+    print(product_urls_list)
 
 
 if __name__ == "__main__":
