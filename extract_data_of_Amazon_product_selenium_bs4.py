@@ -483,6 +483,14 @@ class Extactor:
 
         return product_list
 
+    def get_sub_categories_links_of_current_category(self, category_url: str):
+        pass
+
+    def get_all_nested_products_of_category(
+        self, category_url: str, category_asin: str, category_name: str
+    ):
+        pass
+
     def output_to_json(self, category: Category, file_name: str):
         if not file_name or len(file_name) == 0:
             self.log(LogType.ERROR, "No file name specified!")
