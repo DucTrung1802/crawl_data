@@ -84,6 +84,8 @@ class Extactor:
         self.zipcode = zipcode
 
         self.driver.get("https://www.amazon.com/")
+        self.apply_header()
+
         self.soup = BeautifulSoup(self.driver.page_source, "html.parser")
 
         self.sleep_interval = 1
@@ -93,6 +95,16 @@ class Extactor:
 
         self.check_and_bypass_amazon_captcha()
         self.choose_location_to_delivery_to(zipcode)
+
+    def apply_header(self):
+        self.user_agents = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36"
+
+        self.driver.execute_cdp_cmd(
+            "Network.setUserAgentOverride",
+            {"userAgent": self.user_agents},
+        )
+
+        self.driver.execute_script("return navigator.userAgent;")
 
     def check_and_bypass_amazon_captcha(self):
         time.sleep(self.sleep_interval)
@@ -128,18 +140,25 @@ class Extactor:
                 )
             ).click()
 
-        time.sleep(3)
+        time.sleep(1)
 
         self.driver.execute_script("window.stop();")
 
     def soup_try_to_find(
-        self, name: str, attribute: dict = {}, get_value_from_attribute: str = None
+        self,
+        name: str,
+        attribute: dict = {},
+        get_value_from_attribute: str = None,
+        raw: bool = False,
     ):
         try:
-            if get_value_from_attribute:
-                return self.soup.find(name, attribute).get(get_value_from_attribute)
+            if raw:
+                return self.soup.find(name, attribute)
             else:
-                return self.soup.find(name, attribute).text.strip()
+                if get_value_from_attribute:
+                    return self.soup.find(name, attribute).get(get_value_from_attribute)
+                else:
+                    return self.soup.find(name, attribute).text.strip()
         except:
             return None
 
@@ -160,7 +179,7 @@ class Extactor:
         if not self.driver:
             return
 
-        scroll_increment = 1600  # Number of pixels to scroll each time
+        scroll_increment = 400  # Number of pixels to scroll each time
         scroll_pause_time = 0.5  # Pause time between scrolls (in seconds)
 
         # Get the total height of the page
@@ -324,9 +343,30 @@ class Extactor:
 
         self.soup = BeautifulSoup(self.driver.page_source, "html.parser")
 
-        product_urls = self.soup_try_to_find_all(
-            "a", {"class": "a-link-normal aok-block"}, "href"
+        product_urls = []
+        product_urls.extend(
+            self.soup_try_to_find_all("a", {"class": "a-link-normal aok-block"}, "href")
         )
+
+        is_next_button_clickable = EC.element_to_be_clickable((By.CLASS_NAME, "a-last"))
+
+        while is_next_button_clickable:
+            self.wait.until(is_next_button_clickable).click()
+
+            time.sleep(3)
+
+            self.scroll_to_the_end_of_page_slowly()
+
+            self.soup = BeautifulSoup(self.driver.page_source, "html.parser")
+
+            product_urls.extend(
+                self.soup_try_to_find_all(
+                    "a", {"class": "a-link-normal aok-block"}, "href"
+                )
+            )
+
+            if EC.presence_of_element_located((By.CLASS_NAME, "a-disabled a-last")):
+                break
 
         return product_urls
 
@@ -334,7 +374,7 @@ class Extactor:
 def main():
     URL = "https://www.amazon.com/Amelity-Headrest-Storage-Leather-Black-2/dp/B0CX18TFQD/ref=zg_bsnr_c_automotive_d_sccl_1/141-3078590-5074935?pd_rd_w=MABN3&content-id=amzn1.sym.7379aab7-0dd8-4729-b0b5-2074f1cb413d&pf_rd_p=7379aab7-0dd8-4729-b0b5-2074f1cb413d&pf_rd_r=0Y582SYJA52XPQ46D08Z&pd_rd_wg=WBZ2b&pd_rd_r=d16f64de-fd58-48a9-b10c-27becea887e2&pd_rd_i=B0CX18TFQD&th=1"
 
-    CATEGORY_URL = "https://www.amazon.com/Best-Sellers-Amazon-Devices-Accessories-Amazon-Device-Adapters-Connectors/zgbs/amazon-devices/17942903011/ref=zg_bs_nav_amazon-devices_2_370783011"
+    CATEGORY_URL = "https://www.amazon.com/Best-Sellers-Amazon-Devices-Accessories-Amazon-Device-Accessories/zgbs/amazon-devices/370783011/ref=zg_bs_unv_amazon-devices_2_1289283011_2"
 
     extractor = Extactor()
 
@@ -343,6 +383,7 @@ def main():
 
     product_urls_list = extractor.get_product_urls_from_current_category(CATEGORY_URL)
     print(product_urls_list)
+    print(len(product_urls_list))
 
 
 if __name__ == "__main__":
