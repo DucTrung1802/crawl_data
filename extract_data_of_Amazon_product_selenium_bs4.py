@@ -14,6 +14,7 @@ from amazoncaptcha import AmazonCaptcha
 import re
 import time
 import datetime
+import json
 from enum import Enum
 
 
@@ -33,7 +34,7 @@ class Item:
         review_num: int,
         rating: float,
         description: str,
-        color: str,
+        model: str,
         price: float,
         last_month_sold: int,
         status: str = None,
@@ -46,7 +47,7 @@ class Item:
         self.review_num: int = review_num
         self.rating: float = rating
         self.description: str = description
-        self.color: str = color
+        self.model: str = model
         self.price: float = price
         self.status: str = status
         self.last_month_sold: int = last_month_sold
@@ -61,12 +62,28 @@ class Item:
             f"REVIEW_NUM: {self.review_num}\n"
             f"RATING: {self.rating}\n"
             f"DESCRIPTION: {self.description}\n"
-            f"COLOR: {self.color}\n"
+            f"model: {self.model}\n"
             f"PRICE: {self.price}\n"
             f"STATUS: {self.status}\n"
             f"LAST_MONTH_SOLD: {self.last_month_sold}\n"
             f"CREATED_DATE: {self.created_date}"
         )
+
+    def to_dict(self):
+        return {
+            "category_asin": self.category_asin,
+            "category_name": self.category_name,
+            "product_asin": self.product_asin,
+            "title": self.title,
+            "review_num": self.review_num,
+            "rating": self.rating,
+            "description": self.description,
+            "model": self.model,
+            "price": self.price,
+            "status": self.status,
+            "last_month_sold": self.last_month_sold,
+            "created_date": self.created_date,
+        }
 
 
 class Category:
@@ -75,7 +92,9 @@ class Category:
         self.category_asin: int = category_asin
         self.category_name: str = category_name
         self.product_list: list[Item] = []
+        self.product_count: int = 0
         self.sub_category_list: list[Category] = []
+        self.sub_category_count: int = 0
 
 
 class Extactor:
@@ -90,7 +109,7 @@ class Extactor:
         self.driver.get("https://www.amazon.com/")
         self.apply_header()
 
-        self.soup = BeautifulSoup(self.driver.page_source, "html.parser")
+        self.create_soup()
 
         self.sleep_interval = 1
 
@@ -119,40 +138,74 @@ class Extactor:
     def check_and_bypass_amazon_captcha(self):
         time.sleep(self.sleep_interval)
 
+        self.create_soup()
         text = self.soup_try_to_find("h4")
-        if text:
+        while text:
             captcha_image_link = self.soup_try_to_find("img", {}, "src")
             captcha = AmazonCaptcha.fromlink(captcha_image_link)
             solution = captcha.solve()
             self.driver.find_element(By.ID, "captchacharacters").send_keys(solution)
             self.driver.find_element(By.CLASS_NAME, "a-button-text").click()
 
+            time.sleep(3)
+
+            self.create_soup()
+            text = self.soup_try_to_find("h4")
+
         time.sleep(self.sleep_interval)
 
     def choose_location_to_delivery_to(self, zipcode: int = 92104):
         if self.wait:
-            self.wait.until(
-                EC.element_to_be_clickable((By.ID, "nav-global-location-popover-link"))
-            ).click()
-            self.wait.until(
-                EC.element_to_be_clickable(
-                    (By.CSS_SELECTOR, "[data-action='GLUXPostalInputAction']")
+
+            self.create_soup()
+            location = self.soup_try_to_find(
+                "span", {"class": "nav-line-2 nav-progressive-content"}
+            )
+
+            while not location:
+                self.driver.refresh()
+                time.sleep(3)
+
+                self.create_soup()
+                location = self.soup_try_to_find(
+                    "span", {"class": "nav-line-2 nav-progressive-content"}
                 )
-            ).send_keys(zipcode)
-            self.wait.until(
-                EC.element_to_be_clickable(
-                    (By.CSS_SELECTOR, "[aria-labelledby='GLUXZipUpdate-announce']")
+
+            while not str(zipcode) in location:
+                self.wait.until(
+                    EC.element_to_be_clickable(
+                        (By.ID, "nav-global-location-popover-link")
+                    )
+                ).click()
+                self.wait.until(
+                    EC.element_to_be_clickable(
+                        (By.CSS_SELECTOR, "[data-action='GLUXPostalInputAction']")
+                    )
+                ).send_keys(zipcode)
+                self.wait.until(
+                    EC.element_to_be_clickable(
+                        (By.CSS_SELECTOR, "[aria-labelledby='GLUXZipUpdate-announce']")
+                    )
+                ).click()
+                self.wait.until(
+                    EC.element_to_be_clickable(
+                        (By.CSS_SELECTOR, ".a-popover-footer #GLUXConfirmClose")
+                    )
+                ).click()
+
+                time.sleep(3)
+
+                self.create_soup()
+                location = self.soup_try_to_find(
+                    "span", {"class": "nav-line-2 nav-progressive-content"}
                 )
-            ).click()
-            self.wait.until(
-                EC.element_to_be_clickable(
-                    (By.CSS_SELECTOR, ".a-popover-footer #GLUXConfirmClose")
-                )
-            ).click()
 
         time.sleep(1)
 
         self.driver.execute_script("window.stop();")
+
+    def create_soup(self):
+        self.soup = BeautifulSoup(self.driver.page_source, "html.parser")
 
     def soup_try_to_find(
         self,
@@ -235,7 +288,7 @@ class Extactor:
 
         self.wait.until(EC.presence_of_element_located((By.ID, "productTitle")))
 
-        self.soup = BeautifulSoup(self.driver.page_source, "html.parser")
+        self.create_soup()
 
         # CATEGORY_ASIN (get from parameter)
 
@@ -271,16 +324,18 @@ class Extactor:
         for li in li_elements:
             description.append(li.text.strip())
 
-        # COLOR
-        color = self.soup_try_to_find("span", {"class": "selection"})
+        # model
+        model = self.soup_try_to_find("span", {"class": "selection"})
 
         # PRICE
-        price = float(
-            re.findall(
-                r"\d+\.\d+|\d+",
-                self.soup_try_to_find("span", {"class": "aok-offscreen"}),
-            )[0]
-        )
+        price = self.soup_try_to_find("span", {"class": "aok-offscreen"})
+        if price:
+            price = float(
+                re.findall(
+                    r"\d+\.\d+|\d+",
+                    price,
+                )[0]
+            )
 
         # STATUS
         status = self.soup_try_to_find(
@@ -291,17 +346,18 @@ class Extactor:
         last_month_sold = self.soup_try_to_find(
             "span", {"id": "social-proofing-faceout-title-tk_bought"}
         )
-        match = re.search(r"\d+(?:[KkMm])?", last_month_sold)
-        if match:
-            last_month_sold = match.group()
-            if "K" in match.group().upper():
-                last_month_sold = int(last_month_sold[:-1])
-                last_month_sold *= 1000
-            elif "M" in match.group().upper():
-                last_month_sold = int(last_month_sold[:-1])
-                last_month_sold *= 1000000
-            else:
-                last_month_sold = int(last_month_sold)
+        if last_month_sold:
+            match = re.search(r"\d+(?:[KkMm])?", last_month_sold)
+            if match:
+                last_month_sold = match.group()
+                if "K" in match.group().upper():
+                    last_month_sold = int(last_month_sold[:-1])
+                    last_month_sold *= 1000
+                elif "M" in match.group().upper():
+                    last_month_sold = int(last_month_sold[:-1])
+                    last_month_sold *= 1000000
+                else:
+                    last_month_sold = int(last_month_sold)
 
         # CREATED_DATE
         created_date = datetime.datetime.now().isoformat()
@@ -314,7 +370,7 @@ class Extactor:
             review_num=review_num,
             rating=rating,
             description=description,
-            color=color,
+            model=model,
             price=price,
             status=status,
             last_month_sold=last_month_sold,
@@ -325,7 +381,7 @@ class Extactor:
         # Handle: Request was throttled. Please wait a moment and refresh the page
         time.sleep(2)
 
-        self.soup = BeautifulSoup(self.driver.page_source, "html.parser")
+        self.create_soup()
 
         wait = WebDriverWait(self.driver, 5)
         try:
@@ -354,7 +410,7 @@ class Extactor:
 
         self.scroll_to_the_end_of_page_slowly()
 
-        self.soup = BeautifulSoup(self.driver.page_source, "html.parser")
+        self.create_soup()
 
         product_urls = []
         product_urls.extend(
@@ -363,29 +419,34 @@ class Extactor:
 
         is_next_button_clickable = EC.element_to_be_clickable((By.CLASS_NAME, "a-last"))
 
-        while is_next_button_clickable:
-            self.wait.until(is_next_button_clickable).click()
+        try:
+            while is_next_button_clickable:
+                self.wait.until(is_next_button_clickable).click()
 
-            self.handle_request_was_throttled()
+                self.handle_request_was_throttled()
 
-            time.sleep(2)
+                time.sleep(2)
 
-            self.scroll_to_the_end_of_page_slowly()
+                self.scroll_to_the_end_of_page_slowly()
 
-            self.soup = BeautifulSoup(self.driver.page_source, "html.parser")
+                self.create_soup()
 
-            product_urls.extend(
-                self.soup_try_to_find_all(
-                    "a", {"class": "a-link-normal aok-block"}, "href"
+                product_urls.extend(
+                    self.soup_try_to_find_all(
+                        "a", {"class": "a-link-normal aok-block"}, "href"
+                    )
                 )
-            )
 
-            if EC.presence_of_element_located((By.CLASS_NAME, "a-disabled a-last")):
-                break
+                if EC.presence_of_element_located((By.CLASS_NAME, "a-disabled a-last")):
+                    break
+        except Exception as ex:
+            self.log(LogType.INFO, "No 'Next page' button to click")
 
         return product_urls
 
-    def extract_all_products_from_current_category(self, category_url: list[str]):
+    def extract_all_products_from_current_category(
+        self, category_url: str, category_asin: str, category_name: str
+    ):
         if not category_url or len(category_url) == 0:
             return []
 
@@ -401,16 +462,18 @@ class Extactor:
                     self.log(
                         LogType.INFO, f"Extracting product with ASIN: {product_code}"
                     )
-                    complete_url = "https://www.amazon.com/" + product_url
-                    product_url_list.append(
-                        self.extract_amazon_product_from_url(complete_url)
+                    complete_url = "https://www.amazon.com" + product_url
+                    product_list.append(
+                        self.extract_amazon_product_from_url(
+                            complete_url, category_asin, category_name
+                        )
                     )
             except Exception as e:
                 self.log(LogType.ERROR, e)
 
         self.log(
             LogType.INFO,
-            f"Extracted {len(product_url_list)}/{len(product_list)} products of this category!",
+            f"Extracted {len(product_list)}/{len(product_url_list)} products of this category!",
         )
         if len(product_url_list) > 0 and len(product_list) < len(product_url_list):
             self.log(
@@ -420,26 +483,47 @@ class Extactor:
 
         return product_list
 
+    def output_to_json(self, category: Category, file_name: str):
+        if not file_name or len(file_name) == 0:
+            self.log(LogType.ERROR, "No file name specified!")
+            raise Exception("No file name specified!")
+
+        file_name = file_name.lower().replace(" ", "_")
+
+        output_dictionary: dict = {}
+
+        output_dictionary["category_asin"] = category.category_asin
+        output_dictionary["category_name"] = category.category_name
+        output_dictionary["product_list"] = [
+            item.to_dict() for item in category.product_list
+        ]
+        output_dictionary["product_count"] = category.product_count
+        output_dictionary["sub_category_count"] = category.sub_category_count
+
+        with open(f"{file_name}.json", "w") as file:
+            json.dump(output_dictionary, file, indent=4)
+
 
 def main():
     URL = "https://www.amazon.com/Amelity-Headrest-Storage-Leather-Black-2/dp/B0CX18TFQD/ref=zg_bsnr_c_automotive_d_sccl_1/141-3078590-5074935?pd_rd_w=MABN3&content-id=amzn1.sym.7379aab7-0dd8-4729-b0b5-2074f1cb413d&pf_rd_p=7379aab7-0dd8-4729-b0b5-2074f1cb413d&pf_rd_r=0Y582SYJA52XPQ46D08Z&pd_rd_wg=WBZ2b&pd_rd_r=d16f64de-fd58-48a9-b10c-27becea887e2&pd_rd_i=B0CX18TFQD&th=1"
-
-    CATEGORY_URL = "https://www.amazon.com/Best-Sellers-Amazon-Devices-Accessories-Amazon-Device-Accessories/zgbs/amazon-devices/370783011/ref=zg_bs_unv_amazon-devices_2_1289283011_2"
 
     extractor = Extactor()
 
     # new_product = extractor.extract_amazon_product_from_url(URL)
     # print(new_product)
 
-    product_list = extractor.extract_all_products_from_current_category(CATEGORY_URL)
-    print(len(product_list))
-    index = 1
-    for product in product_list:
-        print()
-        print(f"PRODUCT #{index}: {product.title}")
-        print(f"Price: ${product.price}")
-        print()
-        index += 1
+    new_category = Category(
+        url="https://www.amazon.com/gp/new-releases/amazon-devices/17942903011/ref=zg_bsnr_nav_amazon-devices_2_1289283011",
+        category_asin=17942903011,
+        category_name="New Releases in Amazon Device Adapters & Connectors",
+    )
+
+    new_category.product_list = extractor.extract_all_products_from_current_category(
+        new_category.url, new_category.category_asin, new_category.category_name
+    )
+    new_category.product_count = len(new_category.product_list)
+
+    extractor.output_to_json(new_category, "New Releases in Amazon Device Accessories")
 
 
 if __name__ == "__main__":
