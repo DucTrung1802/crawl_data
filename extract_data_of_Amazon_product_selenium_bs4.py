@@ -401,6 +401,12 @@ class Extactor:
         except:
             pass
 
+    def get_asin_of_category(self):
+        pass
+
+    def get_name_of_category(self):
+        pass
+
     def get_product_urls_from_category_url(self, category_url: str):
         """
         Extract all product urls from a category url.
