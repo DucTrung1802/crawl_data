@@ -402,10 +402,17 @@ class Extactor:
             pass
 
     def get_asin_of_category(self):
-        pass
+        return None
 
     def get_name_of_category(self):
-        pass
+        text = self.soup_try_to_find(
+            "h1", {"class": "a-size-large a-spacing-medium a-text-bold"}
+        )
+        if text:
+            match = re.search(r"in (.*)", text)
+            return match.group(1)
+
+        return ""
 
     def get_product_urls_from_category_url(self, category_url: str):
         """
@@ -571,7 +578,10 @@ def main():
     # extractor.output_to_json(new_category, "New Releases in Amazon Device Accessories")
 
     CATEGORY_URL = "https://www.amazon.com/Best-Sellers-Amazon-Devices-Accessories-Amazon-Device-Audio-Accessories/zgbs/amazon-devices/1289283011/ref=zg_bs_nav_amazon-devices_2_17942903011"
-    links = extractor.get_sub_categories_link_list_of_current_category(CATEGORY_URL)
+    extractor.driver.get(CATEGORY_URL)
+    extractor.create_soup()
+    print(f"Category name: {extractor.get_name_of_category()}")
+    # links = extractor.get_sub_categories_link_list_of_current_category(CATEGORY_URL)
 
 
 if __name__ == "__main__":
