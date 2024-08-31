@@ -401,8 +401,14 @@ class Extactor:
         except:
             pass
 
-    def get_asin_of_category(self):
-        return None
+    def get_asin_of_category(self, category_url: str):
+        if not category_url or len(category_url) == 0:
+            return -1
+
+        match = re.search(r"/zgbs/.+?/(\d+)", category_url)
+        if match:
+            return match.group(1)
+        return -1
 
     def get_name_of_category(self):
         text = self.soup_try_to_find(
@@ -577,10 +583,10 @@ def main():
 
     # extractor.output_to_json(new_category, "New Releases in Amazon Device Accessories")
 
-    CATEGORY_URL = "https://www.amazon.com/Best-Sellers-Amazon-Devices-Accessories-Amazon-Device-Audio-Accessories/zgbs/amazon-devices/1289283011/ref=zg_bs_nav_amazon-devices_2_17942903011"
-    extractor.driver.get(CATEGORY_URL)
-    extractor.create_soup()
-    print(f"Category name: {extractor.get_name_of_category()}")
+    # CATEGORY_URL = "https://www.amazon.com/Best-Sellers-Amazon-Devices-Accessories-Amazon-Device-Audio-Accessories/zgbs/amazon-devices/1289283011/ref=zg_bs_nav_amazon-devices_2_17942903011"
+    # extractor.driver.get(CATEGORY_URL)
+    # extractor.create_soup()
+    # print(f"Category name: {extractor.get_name_of_category()}")
     # links = extractor.get_sub_categories_link_list_of_current_category(CATEGORY_URL)
 
 
