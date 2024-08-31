@@ -536,10 +536,9 @@ class Extactor:
         except:
             return []
 
-    def get_all_nested_products_of_category(
-        self, category_url: str, category_asin: str, category_name: str
-    ):
-        pass
+    def get_all_nested_products_of_category(self, category: Category):
+        if not category or not isinstance(category, Category):
+            return
 
     def output_to_json(self, category: Category, file_name: str):
         if not file_name or len(file_name) == 0:
@@ -567,27 +566,12 @@ def main():
 
     extractor = Extactor()
 
-    # new_product = extractor.extract_amazon_product_from_url(URL)
-    # print(new_product)
-
-    # new_category = Category(
-    #     url="https://www.amazon.com/gp/new-releases/amazon-devices/17942903011/ref=zg_bsnr_nav_amazon-devices_2_1289283011",
-    #     category_asin=17942903011,
-    #     category_name="New Releases in Amazon Device Adapters & Connectors",
-    # )
-
-    # new_category.product_list = extractor.extract_all_products_from_current_category(
-    #     new_category.url, new_category.category_asin, new_category.category_name
-    # )
-    # new_category.product_count = len(new_category.product_list)
-
-    # extractor.output_to_json(new_category, "New Releases in Amazon Device Accessories")
-
-    # CATEGORY_URL = "https://www.amazon.com/Best-Sellers-Amazon-Devices-Accessories-Amazon-Device-Audio-Accessories/zgbs/amazon-devices/1289283011/ref=zg_bs_nav_amazon-devices_2_17942903011"
-    # extractor.driver.get(CATEGORY_URL)
-    # extractor.create_soup()
-    # print(f"Category name: {extractor.get_name_of_category()}")
-    # links = extractor.get_sub_categories_link_list_of_current_category(CATEGORY_URL)
+    new_release_category = Category(
+        url="https://www.amazon.com/gp/new-releases/amazon-devices/17942903011/ref=zg_bsnr_nav_amazon-devices_2_1289283011",
+        category_asin=-1,
+        category_name="New Releases",
+    )
+    extractor.get_all_nested_products_of_category(new_release_category)
 
 
 if __name__ == "__main__":
