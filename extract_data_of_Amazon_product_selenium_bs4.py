@@ -106,7 +106,9 @@ class Extactor:
         self.wait = WebDriverWait(self.driver, 10)
         self.zipcode = zipcode
 
-        self.driver.get("https://www.amazon.com/")
+        self.amazon_base_url = "https://www.amazon.com"
+
+        self.driver.get(self.amazon_base_url)
         self.apply_header()
 
         self.create_soup()
@@ -226,15 +228,21 @@ class Extactor:
             return None
 
     def soup_try_to_find_all(
-        self, name: str, attribute: dict = {}, get_value_from_attribute: str = None
+        self,
+        name: str,
+        attribute: dict = {},
+        get_value_from_attribute: str = None,
+        raw: bool = False,
     ):
         try:
-            if get_value_from_attribute:
-                item_list = self.soup.find_all(name, attribute)
-                return [item.get(get_value_from_attribute) for item in item_list]
+            item_list = self.soup.find_all(name, attribute)
+            if raw:
+                return [item for item in item_list]
             else:
-                item_list = self.soup.find_all(name, attribute)
-                return [item.text.strip() for item in item_list]
+                if get_value_from_attribute:
+                    return [item.get(get_value_from_attribute) for item in item_list]
+                else:
+                    return [item.text.strip() for item in item_list]
         except:
             return None
 
@@ -462,7 +470,7 @@ class Extactor:
                     self.log(
                         LogType.INFO, f"Extracting product with ASIN: {product_code}"
                     )
-                    complete_url = "https://www.amazon.com" + product_url
+                    complete_url = self.amazon_base_url + product_url
                     product_list.append(
                         self.extract_amazon_product_from_url(
                             complete_url, category_asin, category_name
@@ -483,8 +491,31 @@ class Extactor:
 
         return product_list
 
-    def get_sub_categories_links_of_current_category(self, category_url: str):
-        pass
+    def get_sub_categories_link_list_of_current_category(self, category_url: str):
+        if not category_url and len(category_url) == 0:
+            return []
+
+        self.driver.get(category_url)
+
+        self.create_soup()
+
+        try:
+            group_divs = self.soup_try_to_find(
+                "div", {"role": "group"}, None, True
+            ).find_all("div")
+
+            href_links = []
+            for group_div in group_divs:
+                a_tag = group_div.find("a")
+                if not a_tag or not a_tag["href"]:
+                    return []
+
+                href_links.append(self.amazon_base_url + a_tag["href"])
+
+            return href_links
+
+        except:
+            return []
 
     def get_all_nested_products_of_category(
         self, category_url: str, category_asin: str, category_name: str
@@ -520,18 +551,21 @@ def main():
     # new_product = extractor.extract_amazon_product_from_url(URL)
     # print(new_product)
 
-    new_category = Category(
-        url="https://www.amazon.com/gp/new-releases/amazon-devices/17942903011/ref=zg_bsnr_nav_amazon-devices_2_1289283011",
-        category_asin=17942903011,
-        category_name="New Releases in Amazon Device Adapters & Connectors",
-    )
+    # new_category = Category(
+    #     url="https://www.amazon.com/gp/new-releases/amazon-devices/17942903011/ref=zg_bsnr_nav_amazon-devices_2_1289283011",
+    #     category_asin=17942903011,
+    #     category_name="New Releases in Amazon Device Adapters & Connectors",
+    # )
 
-    new_category.product_list = extractor.extract_all_products_from_current_category(
-        new_category.url, new_category.category_asin, new_category.category_name
-    )
-    new_category.product_count = len(new_category.product_list)
+    # new_category.product_list = extractor.extract_all_products_from_current_category(
+    #     new_category.url, new_category.category_asin, new_category.category_name
+    # )
+    # new_category.product_count = len(new_category.product_list)
 
-    extractor.output_to_json(new_category, "New Releases in Amazon Device Accessories")
+    # extractor.output_to_json(new_category, "New Releases in Amazon Device Accessories")
+
+    CATEGORY_URL = "https://www.amazon.com/Best-Sellers-Amazon-Devices-Accessories-Amazon-Device-Audio-Accessories/zgbs/amazon-devices/1289283011/ref=zg_bs_nav_amazon-devices_2_17942903011"
+    links = extractor.get_sub_categories_link_list_of_current_category(CATEGORY_URL)
 
 
 if __name__ == "__main__":
