@@ -422,7 +422,7 @@ class Extactor:
             possible_element_to_find_list=[
                 ElementToFind(
                     name="span",
-                    attributes={"id": "acrCustomerReview"},
+                    attributes={"id": "acrCustomerReviewText"},
                     selection_type=SelectionType.TEXT,
                 )
             ]
@@ -460,10 +460,31 @@ class Extactor:
                 description.append(li.text.strip())
 
         # MODEL
-        model = self.soup_try_to_find("span", {"class": "selection"})
+        model = self.soup_try_to_find(
+            possible_element_to_find_list=[
+                ElementToFind(
+                    name="span",
+                    attributes={"class": "selection"},
+                    selection_type=SelectionType.TEXT,
+                )
+            ]
+        )
 
         # PRICE
-        price = self.soup_try_to_find("span", {"class": "aok-offscreen"})
+        price = self.soup_try_to_find(
+            possible_element_to_find_list=[
+                ElementToFind(
+                    name="span",
+                    attributes={"class": "aok-offscreen"},
+                    selection_type=SelectionType.TEXT,
+                ),
+                ElementToFind(
+                    name="span",
+                    attributes={"class": "a-size-medium a-color-price a-text-normal"},
+                    selection_type=SelectionType.TEXT,
+                ),
+            ]
+        )
         if price:
             price = float(
                 re.findall(
@@ -474,12 +495,24 @@ class Extactor:
 
         # STATUS
         status = self.soup_try_to_find(
-            "span", {"class": "a-size-medium a-color-success"}
+            possible_element_to_find_list=[
+                ElementToFind(
+                    name="span",
+                    attributes={"class": "a-size-medium a-color-success"},
+                    selection_type=SelectionType.TEXT,
+                )
+            ]
         )
 
         # LAST MONTH SOLD
         last_month_sold = self.soup_try_to_find(
-            "span", {"id": "social-proofing-faceout-title-tk_bought"}
+            possible_element_to_find_list=[
+                ElementToFind(
+                    name="span",
+                    attributes={"id": "social-proofing-faceout-title-tk_bought"},
+                    selection_type=SelectionType.TEXT,
+                )
+            ]
         )
         if last_month_sold:
             match = re.search(r"\d+(?:[KkMm])?", last_month_sold)
@@ -521,7 +554,11 @@ class Extactor:
         wait = WebDriverWait(self.driver, 5)
         try:
             wait.until(EC.presence_of_element_located((By.TAG_NAME, "pre")))
-            text = self.soup_try_to_find("pre")
+            text = self.soup_try_to_find(
+                possible_element_to_find_list=[
+                    ElementToFind(name="pre", selection_type=SelectionType.TEXT)
+                ],
+            )
             if text:
                 time.sleep(3)
                 self.driver.refresh()
@@ -539,7 +576,13 @@ class Extactor:
 
     def get_name_of_category(self):
         text = self.soup_try_to_find(
-            "h1", {"class": "a-size-large a-spacing-medium a-text-bold"}
+            possible_element_to_find_list=[
+                ElementToFind(
+                    name="h1",
+                    attributes={"class": "a-size-large a-spacing-medium a-text-bold"},
+                    selection_type=SelectionType.TEXT,
+                )
+            ]
         )
         if text:
             match = re.search(r"in (.*)", text)
