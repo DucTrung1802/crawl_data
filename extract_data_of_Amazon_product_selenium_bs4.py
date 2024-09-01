@@ -87,7 +87,7 @@ class Item:
 
 
 class Category:
-    def __init__(self, url: str, category_asin: str, category_name: str):
+    def __init__(self, url: str, category_asin: int = -1, category_name: str = ""):
         self.url: str = url
         self.category_asin: int = category_asin
         self.category_name: str = category_name
@@ -108,14 +108,12 @@ class Extactor:
 
         self.amazon_base_url = "https://www.amazon.com"
 
-        self.driver.get(self.amazon_base_url)
+        self.get_url(self.amazon_base_url)
         self.apply_header()
 
         self.create_soup()
 
         self.sleep_interval = 1
-
-        self.log_index = 1
 
         # INITIALIZE
         time.sleep(self.sleep_interval)
@@ -124,8 +122,7 @@ class Extactor:
         self.choose_location_to_delivery_to(zipcode)
 
     def log(self, log_type: LogType, message: str):
-        print(f"[{self.log_index:05}] {log_type.value} {message}")
-        self.log_index += 1
+        print(f"{datetime.datetime.now()} {log_type.value} {message}")
 
     def apply_header(self):
         self.user_agents = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36"
@@ -136,6 +133,16 @@ class Extactor:
         )
 
         self.driver.execute_script("return navigator.userAgent;")
+
+    def get_url(self, url: str):
+        if not url or len(url) == 0:
+            return
+
+        self.driver.get(url)
+
+        time.sleep(3)
+
+        self.handle_request_was_throttled()
 
     def check_and_bypass_amazon_captcha(self):
         time.sleep(self.sleep_interval)
@@ -292,7 +299,7 @@ class Extactor:
         if not product_url or len(product_url) == 0:
             return None
 
-        self.driver.get(product_url)
+        self.get_url(product_url)
 
         self.wait.until(EC.presence_of_element_located((By.ID, "productTitle")))
 
@@ -407,7 +414,7 @@ class Extactor:
 
         match = re.search(r"/zgbs/.+?/(\d+)", category_url)
         if match:
-            return match.group(1)
+            return int(match.group(1))
         return -1
 
     def get_name_of_category(self):
@@ -431,9 +438,7 @@ class Extactor:
         if not category_url or len(category_url) == 0:
             return []
 
-        self.driver.get(category_url)
-
-        self.handle_request_was_throttled()
+        self.get_url(category_url)
 
         self.scroll_to_the_end_of_page_slowly()
 
@@ -471,13 +476,12 @@ class Extactor:
 
         return product_urls
 
-    def extract_all_products_from_current_category(
-        self, category_url: str, category_asin: str, category_name: str
+    def extract_all_products_from_product_url_list(
+        self,
+        product_url_list: list[str],
+        category_asin: int = -1,
+        category_name: str = "",
     ):
-        if not category_url or len(category_url) == 0:
-            return []
-
-        product_url_list = self.get_product_urls_from_category_url(category_url)
         product_list: list[Item] = []
         pattern = r"/dp/([A-Z0-9]+)"
 
@@ -492,20 +496,24 @@ class Extactor:
                     complete_url = self.amazon_base_url + product_url
                     product_list.append(
                         self.extract_amazon_product_from_url(
-                            complete_url, category_asin, category_name
+                            complete_url,
+                            category_asin=category_asin,
+                            category_name=category_name,
                         )
                     )
+
             except Exception as e:
                 self.log(LogType.ERROR, e)
 
         self.log(
             LogType.INFO,
-            f"Extracted {len(product_list)}/{len(product_url_list)} products of this category!",
+            f"Extracted {len(product_list)}/{len(product_url_list)} products of category {category_name}",
         )
+
         if len(product_url_list) > 0 and len(product_list) < len(product_url_list):
             self.log(
                 LogType.WARN,
-                f"Cannot extract products of this category with url: {category_url}",
+                f"Cannot extract all products of category {category_name}",
             )
 
         return product_list
@@ -514,7 +522,7 @@ class Extactor:
         if not category_url and len(category_url) == 0:
             return []
 
-        self.driver.get(category_url)
+        self.get_url(category_url)
 
         self.create_soup()
 
@@ -536,9 +544,47 @@ class Extactor:
         except:
             return []
 
-    def get_all_nested_products_of_category(self, category: Category):
-        if not category or not isinstance(category, Category):
+    def get_all_products_and_nested_sub_catgories_of_current_category(
+        self, category: Category
+    ):
+        if not category:
+            self.log(LogType.ERROR, "Input must be a Category object")
             return
+
+        if not category.url or len(category.url) == 0:
+            self.log(LogType.ERROR, "Url of category must not be empty string")
+
+        # Access to url of category
+        self.get_url(category.url)
+
+        self.create_soup()
+
+        category.category_asin = self.get_asin_of_category(category.url)
+
+        if not category.category_name or len(category.category_name) == 0:
+            category.category_name = self.get_name_of_category()
+
+        # Get all product urls
+        product_url_list = self.get_product_urls_from_category_url(category.url)
+
+        category.product_list = self.extract_all_products_from_product_url_list(
+            product_url_list, category.category_asin, category.category_name
+        )
+
+        sub_categories_link_list = (
+            self.get_sub_categories_link_list_of_current_category(category.url)
+        )
+
+        for sub_categories_link in sub_categories_link_list:
+            sub_category = Category(sub_categories_link)
+            sub_category = (
+                self.get_all_products_and_nested_sub_catgories_of_current_category(
+                    sub_category
+                )
+            )
+            category.sub_category_list.append(sub_category)
+
+        return category
 
     def output_to_json(self, category: Category, file_name: str):
         if not file_name or len(file_name) == 0:
@@ -562,16 +608,21 @@ class Extactor:
 
 
 def main():
-    URL = "https://www.amazon.com/Amelity-Headrest-Storage-Leather-Black-2/dp/B0CX18TFQD/ref=zg_bsnr_c_automotive_d_sccl_1/141-3078590-5074935?pd_rd_w=MABN3&content-id=amzn1.sym.7379aab7-0dd8-4729-b0b5-2074f1cb413d&pf_rd_p=7379aab7-0dd8-4729-b0b5-2074f1cb413d&pf_rd_r=0Y582SYJA52XPQ46D08Z&pd_rd_wg=WBZ2b&pd_rd_r=d16f64de-fd58-48a9-b10c-27becea887e2&pd_rd_i=B0CX18TFQD&th=1"
-
     extractor = Extactor()
 
-    new_release_category = Category(
-        url="https://www.amazon.com/gp/new-releases/amazon-devices/17942903011/ref=zg_bsnr_nav_amazon-devices_2_1289283011",
-        category_asin=-1,
-        category_name="New Releases",
+    _1_layer_category = Category(
+        url="https://www.amazon.com/Best-Sellers-Amazon-Devices-Accessories-Home-Security-Solar-Chargers/zgbs/amazon-devices/23581299011/ref=zg_bs_nav_amazon-devices_2_16958810011",
+        category_asin=23581299011,
+        category_name="Home Security Solar Chargers",
     )
-    extractor.get_all_nested_products_of_category(new_release_category)
+
+    _1_layer_category = (
+        extractor.get_all_products_and_nested_sub_catgories_of_current_category(
+            _1_layer_category
+        )
+    )
+
+    extractor.output_to_json(_1_layer_category, "Home Security Solar Chargers")
 
 
 if __name__ == "__main__":
