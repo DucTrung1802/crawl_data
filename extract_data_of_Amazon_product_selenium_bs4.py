@@ -24,6 +24,34 @@ class LogType(Enum):
     ERROR = "ERROR"
 
 
+class SelectionType(Enum):
+    RAW = 0
+    TEXT = 1
+    ATTRIBUTE = 2
+
+
+class ElementToFind:
+    def __init__(
+        self,
+        name: str,
+        attributes: dict = {},
+        selection_type: SelectionType = SelectionType.RAW,
+        get_value_from_attribute: str = "",
+    ):
+        self.name = name
+        self.attributes = attributes
+        self.selection_type = selection_type
+
+        if (
+            selection_type == SelectionType.ATTRIBUTE
+            and len(get_value_from_attribute) == 0
+        ):
+            raise ValueError(
+                f"get_value_from_attribute must not be empty string when selection_type is SelectionType.ATTRIBUTE"
+            )
+        self.get_value_from_attribute = get_value_from_attribute
+
+
 class Item:
     def __init__(
         self,
@@ -148,9 +176,21 @@ class Extactor:
         time.sleep(self.sleep_interval)
 
         self.create_soup()
-        text = self.soup_try_to_find("h4")
+        text = self.soup_try_to_find(
+            possible_element_to_find_list=[
+                ElementToFind(name="h4", selection_type=SelectionType.TEXT)
+            ],
+        )
         while text:
-            captcha_image_link = self.soup_try_to_find("img", {}, "src")
+            captcha_image_link = self.soup_try_to_find(
+                possible_element_to_find_list=[
+                    ElementToFind(
+                        name="img",
+                        selection_type=SelectionType.ATTRIBUTE,
+                        get_value_from_attribute="src",
+                    )
+                ]
+            )
             captcha = AmazonCaptcha.fromlink(captcha_image_link)
             solution = captcha.solve()
             self.driver.find_element(By.ID, "captchacharacters").send_keys(solution)
@@ -159,7 +199,14 @@ class Extactor:
             time.sleep(3)
 
             self.create_soup()
-            text = self.soup_try_to_find("h4")
+            text = self.soup_try_to_find(
+                possible_element_to_find_list=[
+                    ElementToFind(
+                        name="h4",
+                        selection_type=SelectionType.TEXT,
+                    )
+                ],
+            )
 
         time.sleep(self.sleep_interval)
 
@@ -167,8 +214,15 @@ class Extactor:
         if self.wait:
 
             self.create_soup()
+
             location = self.soup_try_to_find(
-                "span", {"class": "nav-line-2 nav-progressive-content"}
+                possible_element_to_find_list=[
+                    ElementToFind(
+                        name="span",
+                        attributes={"class": "nav-line-2 nav-progressive-content"},
+                        selection_type=SelectionType.TEXT,
+                    )
+                ],
             )
 
             while not location:
@@ -176,8 +230,15 @@ class Extactor:
                 time.sleep(3)
 
                 self.create_soup()
+
                 location = self.soup_try_to_find(
-                    "span", {"class": "nav-line-2 nav-progressive-content"}
+                    possible_element_to_find_list=[
+                        ElementToFind(
+                            name="span",
+                            attributes={"class": "nav-line-2 nav-progressive-content"},
+                            selection_type=SelectionType.TEXT,
+                        )
+                    ],
                 )
 
             while not str(zipcode) in location:
@@ -205,8 +266,15 @@ class Extactor:
                 time.sleep(3)
 
                 self.create_soup()
+
                 location = self.soup_try_to_find(
-                    "span", {"class": "nav-line-2 nav-progressive-content"}
+                    possible_element_to_find_list=[
+                        ElementToFind(
+                            name="span",
+                            attributes={"class": "nav-line-2 nav-progressive-content"},
+                            selection_type=SelectionType.TEXT,
+                        )
+                    ],
                 )
 
         time.sleep(1)
@@ -218,19 +286,27 @@ class Extactor:
 
     def soup_try_to_find(
         self,
-        name: str,
-        attribute: dict = {},
-        get_value_from_attribute: str = None,
-        raw: bool = False,
+        possible_element_to_find_list: list[ElementToFind],
     ):
         try:
-            if raw:
-                return self.soup.find(name, attribute)
-            else:
-                if get_value_from_attribute:
-                    return self.soup.find(name, attribute).get(get_value_from_attribute)
-                else:
-                    return self.soup.find(name, attribute).text.strip()
+            for element in possible_element_to_find_list:
+                match element.selection_type:
+                    case SelectionType.RAW:
+                        output = self.soup.find(element.name, element.attributes)
+
+                    case SelectionType.TEXT:
+                        output = self.soup.find(
+                            element.name, element.attributes
+                        ).text.strip()
+
+                    case SelectionType.ATTRIBUTE:
+                        output = self.soup.find(element.name, element.attributes).get(
+                            element.get_value_from_attribute
+                        )
+
+                if output:
+                    return output
+
         except:
             return None
 
@@ -301,8 +377,6 @@ class Extactor:
 
         self.get_url(product_url)
 
-        self.wait.until(EC.presence_of_element_located((By.ID, "productTitle")))
-
         self.create_soup()
 
         # CATEGORY_ASIN (get from parameter)
@@ -310,36 +384,82 @@ class Extactor:
         # CATEGORY_NAME (get from parameter)
 
         # PRODUCT_ASIN
-        product_asin = self.soup_try_to_find("input", {"id": "ASIN"}, "value")
+        product_asin = self.soup_try_to_find(
+            possible_element_to_find_list=[
+                ElementToFind(
+                    name="input",
+                    attributes={"id": "ASIN"},
+                    selection_type=SelectionType.ATTRIBUTE,
+                    get_value_from_attribute="value",
+                ),
+                ElementToFind(
+                    name="input",
+                    attributes={"id": "all-offers-display-params"},
+                    selection_type=SelectionType.ATTRIBUTE,
+                    get_value_from_attribute="data-asin",
+                ),
+            ],
+        )
 
         # TITLE
-        title = self.soup_try_to_find("span", {"id": "productTitle"})
+        title = self.soup_try_to_find(
+            possible_element_to_find_list=[
+                ElementToFind(
+                    name="span",
+                    attributes={"id": "productTitle"},
+                    selection_type=SelectionType.TEXT,
+                ),
+                ElementToFind(
+                    name="span",
+                    attributes={"id": "ebooksProductTitle"},
+                    selection_type=SelectionType.TEXT,
+                ),
+            ]
+        )
 
         # REVIEWS
-        review_num = self.soup_try_to_find("span", {"id": "acrCustomerReviewText"})
+        review_num = self.soup_try_to_find(
+            possible_element_to_find_list=[
+                ElementToFind(
+                    name="span",
+                    attributes={"id": "acrCustomerReview"},
+                    selection_type=SelectionType.TEXT,
+                )
+            ]
+        )
         if review_num:
-            review_num = int(re.match(r"\d+", review_num).group())
+            review_num = int(re.sub(r"[^\d]", "", review_num))
 
         # RATING
         rating = self.soup_try_to_find(
-            "span",
-            {"data-hook": "rating-out-of-text"},
+            possible_element_to_find_list=[
+                ElementToFind(
+                    name="span",
+                    attributes={"data-hook": "rating-out-of-text"},
+                    selection_type=SelectionType.TEXT,
+                )
+            ]
         )
         if rating:
             rating = float(re.search(r"\d+(\.\d+)?", rating).group())
 
         # DESCRIPTION
-        ul_element = self.soup.find(
-            "ul", class_="a-unordered-list a-vertical a-spacing-mini"
+        ul_element = self.soup_try_to_find(
+            possible_element_to_find_list=[
+                ElementToFind(
+                    name="ul",
+                    attributes={"class": "a-unordered-list a-vertical a-spacing-mini"},
+                    selection_type=SelectionType.RAW,
+                )
+            ]
         )
-
-        # Find all <li> elements within the <ul>
-        li_elements = ul_element.find_all("li", class_="a-spacing-mini")
         description = []
-        for li in li_elements:
-            description.append(li.text.strip())
+        if ul_element:
+            li_elements = ul_element.find_all("li", class_="a-spacing-mini")
+            for li in li_elements:
+                description.append(li.text.strip())
 
-        # model
+        # MODEL
         model = self.soup_try_to_find("span", {"class": "selection"})
 
         # PRICE
@@ -610,19 +730,35 @@ class Extactor:
 def main():
     extractor = Extactor()
 
-    _1_layer_category = Category(
-        url="https://www.amazon.com/Best-Sellers-Amazon-Devices-Accessories-Home-Security-Solar-Chargers/zgbs/amazon-devices/23581299011/ref=zg_bs_nav_amazon-devices_2_16958810011",
-        category_asin=23581299011,
-        category_name="Home Security Solar Chargers",
+    # _1_layer_category = Category(
+    #     url="https://www.amazon.com/Best-Sellers-Amazon-Devices-Accessories-Home-Security-Solar-Chargers/zgbs/amazon-devices/23581299011/ref=zg_bs_nav_amazon-devices_2_16958810011",
+    #     category_asin=23581299011,
+    #     category_name="Home Security Solar Chargers",
+    # )
+
+    # _1_layer_category = (
+    #     extractor.get_all_products_and_nested_sub_catgories_of_current_category(
+    #         _1_layer_category
+    #     )
+    # )
+
+    # extractor.output_to_json(_1_layer_category, "Home Security Solar Chargers")
+
+    _2_layer_category = Category(
+        url="https://www.amazon.com/Best-Sellers-Kindle-Store-Technology-eMagazines/zgbs/digital-text/2460165011/ref=zg_bs_nav_digital-text_3_241646011",
+        category_asin=2460165011,
+        category_name="Technology eMagazines",
     )
 
-    _1_layer_category = (
+    _2_layer_category = (
         extractor.get_all_products_and_nested_sub_catgories_of_current_category(
-            _1_layer_category
+            _2_layer_category
         )
     )
 
-    extractor.output_to_json(_1_layer_category, "Home Security Solar Chargers")
+    _2_layer_category = extractor.output_to_json(
+        _2_layer_category, "Technology eMagazines"
+    )
 
 
 if __name__ == "__main__":
