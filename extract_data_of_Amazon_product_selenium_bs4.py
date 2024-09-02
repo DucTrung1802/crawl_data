@@ -124,6 +124,19 @@ class Category:
         self.sub_category_list: list[Category] = []
         self.sub_category_count: int = 0
 
+    def to_dict(self):
+        return {
+            "url": self.url,
+            "category_asin": self.category_asin,
+            "category_name": self.category_name,
+            "product_list": [item.to_dict() for item in self.product_list],
+            "product_count": self.product_count,
+            "sub_category_list": [
+                sub_category.to_dict() for sub_category in self.sub_category_list
+            ],
+            "sub_category_count": self.sub_category_count,
+        }
+
 
 class Extactor:
     def __init__(self, zipcode=92104):
@@ -288,27 +301,28 @@ class Extactor:
         self,
         possible_element_to_find_list: list[ElementToFind],
     ):
-        try:
-            for element in possible_element_to_find_list:
-                match element.selection_type:
-                    case SelectionType.RAW:
+        for element in possible_element_to_find_list:
+            try:
+                match element.selection_type.value:
+                    case SelectionType.RAW.value:
                         output = self.soup.find(element.name, element.attributes)
 
-                    case SelectionType.TEXT:
+                    case SelectionType.TEXT.value:
                         output = self.soup.find(
                             element.name, element.attributes
                         ).text.strip()
 
-                    case SelectionType.ATTRIBUTE:
+                    case SelectionType.ATTRIBUTE.value:
                         output = self.soup.find(element.name, element.attributes).get(
                             element.get_value_from_attribute
                         )
+            except:
+                continue
 
-                if output:
-                    return output
+            if output:
+                return output
 
-        except:
-            return None
+        return None
 
     def soup_try_to_find_all(
         self,
@@ -691,8 +705,16 @@ class Extactor:
 
         try:
             group_divs = self.soup_try_to_find(
-                "div", {"role": "group"}, None, True
-            ).find_all("div")
+                possible_element_to_find_list=[
+                    ElementToFind(
+                        name="div",
+                        attributes={"role": "group"},
+                        selection_type=SelectionType.RAW,
+                    )
+                ]
+            )
+            if group_divs:
+                group_divs = group_divs.find_all("div")
 
             href_links = []
             for group_div in group_divs:
@@ -727,17 +749,28 @@ class Extactor:
         if not category.category_name or len(category.category_name) == 0:
             category.category_name = self.get_name_of_category()
 
-        # Get all product urls
-        product_url_list = self.get_product_urls_from_category_url(category.url)
-
-        category.product_list = self.extract_all_products_from_product_url_list(
-            product_url_list, category.category_asin, category.category_name
+        # Check if category has any products
+        text = self.soup_try_to_find(
+            possible_element_to_find_list=[
+                ElementToFind(name="h4", selection_type=SelectionType.TEXT)
+            ]
         )
+        product_url_list = []
+        if not text or "Sorry, there are no" not in text:
+            # Get all product urls
+            product_url_list = self.get_product_urls_from_category_url(category.url)
+
+        if len(product_url_list) > 0:
+            category.product_list = self.extract_all_products_from_product_url_list(
+                product_url_list, category.category_asin, category.category_name
+            )
+            
+        category.product_count = len(category.product_list)
 
         sub_categories_link_list = (
             self.get_sub_categories_link_list_of_current_category(category.url)
         )
-
+        
         for sub_categories_link in sub_categories_link_list:
             sub_category = Category(sub_categories_link)
             sub_category = (
@@ -747,6 +780,8 @@ class Extactor:
             )
             category.sub_category_list.append(sub_category)
 
+        category.sub_category_count = len(category.sub_category_list)
+        
         return category
 
     def output_to_json(self, category: Category, file_name: str):
@@ -755,19 +790,8 @@ class Extactor:
             raise Exception("No file name specified!")
 
         file_name = file_name.lower().replace(" ", "_")
-
-        output_dictionary: dict = {}
-
-        output_dictionary["category_asin"] = category.category_asin
-        output_dictionary["category_name"] = category.category_name
-        output_dictionary["product_list"] = [
-            item.to_dict() for item in category.product_list
-        ]
-        output_dictionary["product_count"] = category.product_count
-        output_dictionary["sub_category_count"] = category.sub_category_count
-
         with open(f"{file_name}.json", "w") as file:
-            json.dump(output_dictionary, file, indent=4)
+            json.dump(category.to_dict(), file, indent=4)
 
 
 def main():
