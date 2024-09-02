@@ -622,9 +622,19 @@ class Extactor:
         self.create_soup()
 
         product_urls = []
-        product_urls.extend(
-            self.soup_try_to_find_all("a", {"class": "a-link-normal aok-block"}, "href")
+        products_in_grid = self.soup_try_to_find(
+            possible_element_to_find_list=[
+                ElementToFind(
+                    name="div",
+                    attributes={"class": "p13n-gridRow _cDEzb_grid-row_3Cywl"},
+                    selection_type=SelectionType.RAW,
+                )
+            ]
         )
+        if products_in_grid:
+            a_tags = products_in_grid.find_all("a", class_="a-link-normal aok-block")
+        if a_tags and len(a_tags) > 0:
+            product_urls.extend([a["href"] for a in a_tags])
 
         is_next_button_clickable = EC.element_to_be_clickable((By.CLASS_NAME, "a-last"))
 
@@ -640,14 +650,24 @@ class Extactor:
 
                 self.create_soup()
 
-                product_urls.extend(
-                    self.soup_try_to_find_all(
-                        "a", {"class": "a-link-normal aok-block"}, "href"
-                    )
+                products_in_grid = self.soup_try_to_find(
+                    possible_element_to_find_list=[
+                        ElementToFind(
+                            name="div",
+                            attributes={"class": "p13n-gridRow _cDEzb_grid-row_3Cywl"},
+                            selection_type=SelectionType.RAW,
+                        )
+                    ]
                 )
+                a_tags = products_in_grid.find_all(
+                    "a", class_="a-link-normal aok-block"
+                )
+                if a_tags and len(a_tags) > 0:
+                    product_urls.extend([a["href"] for a in a_tags])
 
                 if EC.presence_of_element_located((By.CLASS_NAME, "a-disabled a-last")):
                     break
+
         except Exception as ex:
             self.log(LogType.INFO, "No 'Next page' button to click")
 
@@ -764,13 +784,13 @@ class Extactor:
             category.product_list = self.extract_all_products_from_product_url_list(
                 product_url_list, category.category_asin, category.category_name
             )
-            
+
         category.product_count = len(category.product_list)
 
         sub_categories_link_list = (
             self.get_sub_categories_link_list_of_current_category(category.url)
         )
-        
+
         for sub_categories_link in sub_categories_link_list:
             sub_category = Category(sub_categories_link)
             sub_category = (
@@ -781,7 +801,7 @@ class Extactor:
             category.sub_category_list.append(sub_category)
 
         category.sub_category_count = len(category.sub_category_list)
-        
+
         return category
 
     def output_to_json(self, category: Category, file_name: str):
@@ -811,20 +831,36 @@ def main():
 
     # extractor.output_to_json(_1_layer_category, "Home Security Solar Chargers")
 
-    _2_layer_category = Category(
-        url="https://www.amazon.com/Best-Sellers-Kindle-Store-Technology-eMagazines/zgbs/digital-text/2460165011/ref=zg_bs_nav_digital-text_3_241646011",
-        category_asin=2460165011,
-        category_name="Technology eMagazines",
+    # _2_layer_category = Category(
+    #     url="https://www.amazon.com/Best-Sellers-Kindle-Store-Technology-eMagazines/zgbs/digital-text/2460165011/ref=zg_bs_nav_digital-text_3_241646011",
+    #     category_asin=2460165011,
+    #     category_name="Technology eMagazines",
+    # )
+
+    # _2_layer_category = (
+    #     extractor.get_all_products_and_nested_sub_catgories_of_current_category(
+    #         _2_layer_category
+    #     )
+    # )
+
+    # _2_layer_category = extractor.output_to_json(
+    #     _2_layer_category, "Technology eMagazines"
+    # )
+
+    _3_layer_category = Category(
+        url="https://www.amazon.com/Best-Sellers-Amazon-Devices-Accessories-Amazon-Device-Accessories/zgbs/amazon-devices/370783011/ref=zg_bs_unv_amazon-devices_2_17942903011_2",
+        category_asin=370783011,
+        category_name="Amazon Device Accessories",
     )
 
-    _2_layer_category = (
+    _3_layer_category = (
         extractor.get_all_products_and_nested_sub_catgories_of_current_category(
-            _2_layer_category
+            _3_layer_category
         )
     )
 
-    _2_layer_category = extractor.output_to_json(
-        _2_layer_category, "Technology eMagazines"
+    _3_layer_category = extractor.output_to_json(
+        _3_layer_category, "Amazon Device Accessories"
     )
 
 
