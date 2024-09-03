@@ -11,6 +11,9 @@ from bs4 import BeautifulSoup
 
 from amazoncaptcha import AmazonCaptcha
 
+import os
+import csv
+import logging
 import re
 import time
 import datetime
@@ -20,8 +23,10 @@ from enum import Enum
 
 class LogType(Enum):
     INFO = "INFO"
-    WARN = "WARN"
+    WARNNING = "WARNNING"
     ERROR = "ERROR"
+    CRITICAL = "CRITICAL"
+    DEBUG = "DEBUG"
 
 
 class SelectionType(Enum):
@@ -140,6 +145,14 @@ class Category:
 
 class Extactor:
     def __init__(self, zipcode=92104):
+        self.base_path = (
+            f"extracter_{datetime.datetime.now().isoformat().replace(':', '-')}"
+        )
+
+        self.initialize_result_directory()
+        self.initialize_logging()
+        self.initalize_csv()
+
         self.driver_options = Options()
 
         self.driver = webdriver.Chrome(options=self.driver_options)
@@ -162,7 +175,36 @@ class Extactor:
         self.check_and_bypass_amazon_captcha()
         self.choose_location_to_delivery_to(zipcode)
 
+    def initialize_result_directory(self):
+        try:
+            os.makedirs(self.base_path)
+            print(f"Directory '{self.base_path}' created successfully.")
+        except FileExistsError:
+            print(f"Directory '{self.base_path}' already exists.")
+        except Exception as e:
+            print(f"An error occurred: {e}")
+
+    def initialize_logging(self):
+        logging.basicConfig(
+            # Log file path
+            filename=os.path.join(self.base_path, f"{self.base_path}.log"),
+            level=logging.DEBUG,  # Set the logging level (DEBUG, INFO, WARNING, ERROR, CRITICAL)
+            format="%(asctime)s - %(levelname)s - %(message)s",
+        )
+
     def log(self, log_type: LogType, message: str):
+        match log_type:
+            case LogType.INFO:
+                logging.info(message)
+            case LogType.WARNNING:
+                logging.warn(message)
+            case LogType.ERROR:
+                logging.error(message)
+            case LogType.CRITICAL:
+                logging.critical(message)
+            case LogType.DEBUG:
+                logging.debug(message)
+
         print(f"{datetime.datetime.now()} {log_type.value} {message}")
 
     def apply_header(self):
@@ -255,40 +297,49 @@ class Extactor:
                 )
 
             while not str(zipcode) in location:
-                self.wait.until(
-                    EC.element_to_be_clickable(
-                        (By.ID, "nav-global-location-popover-link")
-                    )
-                ).click()
-                self.wait.until(
-                    EC.element_to_be_clickable(
-                        (By.CSS_SELECTOR, "[data-action='GLUXPostalInputAction']")
-                    )
-                ).send_keys(zipcode)
-                self.wait.until(
-                    EC.element_to_be_clickable(
-                        (By.CSS_SELECTOR, "[aria-labelledby='GLUXZipUpdate-announce']")
-                    )
-                ).click()
-                self.wait.until(
-                    EC.element_to_be_clickable(
-                        (By.CSS_SELECTOR, ".a-popover-footer #GLUXConfirmClose")
-                    )
-                ).click()
-
-                time.sleep(3)
-
-                self.create_soup()
-
-                location = self.soup_try_to_find(
-                    possible_element_to_find_list=[
-                        ElementToFind(
-                            name="span",
-                            attributes={"class": "nav-line-2 nav-progressive-content"},
-                            selection_type=SelectionType.TEXT,
+                try:
+                    self.wait.until(
+                        EC.element_to_be_clickable(
+                            (By.ID, "nav-global-location-popover-link")
                         )
-                    ],
-                )
+                    ).click()
+                    self.wait.until(
+                        EC.element_to_be_clickable(
+                            (By.CSS_SELECTOR, "[data-action='GLUXPostalInputAction']")
+                        )
+                    ).send_keys(zipcode)
+                    self.wait.until(
+                        EC.element_to_be_clickable(
+                            (
+                                By.CSS_SELECTOR,
+                                "[aria-labelledby='GLUXZipUpdate-announce']",
+                            )
+                        )
+                    ).click()
+                    self.wait.until(
+                        EC.element_to_be_clickable(
+                            (By.CSS_SELECTOR, ".a-popover-footer #GLUXConfirmClose")
+                        )
+                    ).click()
+
+                    time.sleep(3)
+
+                    self.create_soup()
+
+                    location = self.soup_try_to_find(
+                        possible_element_to_find_list=[
+                            ElementToFind(
+                                name="span",
+                                attributes={
+                                    "class": "nav-line-2 nav-progressive-content"
+                                },
+                                selection_type=SelectionType.TEXT,
+                            )
+                        ],
+                    )
+
+                except:
+                    continue
 
         time.sleep(1)
 
@@ -631,9 +682,10 @@ class Extactor:
                 )
             ]
         )
+        a_tags = []
         if products_in_grid:
             a_tags = products_in_grid.find_all("a", class_="a-link-normal aok-block")
-        if a_tags and len(a_tags) > 0:
+        if len(a_tags) > 0:
             product_urls.extend([a["href"] for a in a_tags])
 
         is_next_button_clickable = EC.element_to_be_clickable((By.CLASS_NAME, "a-last"))
@@ -691,13 +743,13 @@ class Extactor:
                         LogType.INFO, f"Extracting product with ASIN: {product_code}"
                     )
                     complete_url = self.amazon_base_url + product_url
-                    product_list.append(
-                        self.extract_amazon_product_from_url(
-                            complete_url,
-                            category_asin=category_asin,
-                            category_name=category_name,
-                        )
+                    item = self.extract_amazon_product_from_url(
+                        complete_url,
+                        category_asin=category_asin,
+                        category_name=category_name,
                     )
+                    self.append_item_to_csv(item)
+                    product_list.append(item)
 
             except Exception as e:
                 self.log(LogType.ERROR, e)
@@ -709,7 +761,7 @@ class Extactor:
 
         if len(product_url_list) > 0 and len(product_list) < len(product_url_list):
             self.log(
-                LogType.WARN,
+                LogType.WARNNING,
                 f"Cannot extract all products of category {category_name}",
             )
 
@@ -804,6 +856,57 @@ class Extactor:
 
         return category
 
+    def initalize_csv(self):
+        self.csv_filename = os.path.join(self.base_path, f"{self.base_path}.csv")
+
+        try:
+            with open(
+                self.csv_filename, "x", newline=""
+            ) as file:  # 'x' mode creates a file, fails if the file exists
+                self.csv_writer = csv.writer(file)
+                self.csv_writer.writerow(
+                    [
+                        "category_asin",
+                        "category_name",
+                        "product_asin",
+                        "title",
+                        "review_num",
+                        "rating",
+                        "description",
+                        "model",
+                        "price",
+                        "status",
+                        "last_month_sold",
+                        "created_date",
+                    ]
+                )
+        except FileExistsError:
+            # File already exists, no need to write the header
+            print("File already exists")
+
+    def append_item_to_csv(self, item: Item):
+        if item:
+            with open(
+                self.csv_filename, "a", newline=""
+            ) as file:  # 'x' mode creates a file, fails if the file exists
+                self.csv_writer = csv.writer(file)
+                self.csv_writer.writerow(
+                    [
+                        item.category_asin,
+                        item.category_name,
+                        item.product_asin,
+                        item.title,
+                        item.review_num,
+                        item.rating,
+                        item.description,
+                        item.model,
+                        item.price,
+                        item.status,
+                        item.last_month_sold,
+                        item.created_date,
+                    ]
+                )
+
     def output_to_json(self, category: Category, file_name: str):
         if not file_name or len(file_name) == 0:
             self.log(LogType.ERROR, "No file name specified!")
@@ -848,9 +951,9 @@ def main():
     # )
 
     _3_layer_category = Category(
-        url="https://www.amazon.com/Best-Sellers-Amazon-Devices-Accessories-Amazon-Device-Accessories/zgbs/amazon-devices/370783011/ref=zg_bs_unv_amazon-devices_2_17942903011_2",
-        category_asin=370783011,
-        category_name="Amazon Device Accessories",
+        url="https://www.amazon.com/gp/new-releases/amazon-devices/ref=zg_bsnr_nav_amazon-devices_0",
+        category_asin=-1,
+        category_name="Amazon Devices & Accessories",
     )
 
     _3_layer_category = (
@@ -860,7 +963,7 @@ def main():
     )
 
     _3_layer_category = extractor.output_to_json(
-        _3_layer_category, "Amazon Device Accessories"
+        _3_layer_category, "New Releases in Amazon Devices & Accessories"
     )
 
 
