@@ -188,7 +188,7 @@ class Extactor:
         logging.basicConfig(
             # Log file path
             filename=os.path.join(self.base_path, f"{self.base_path}.log"),
-            level=logging.DEBUG,  # Set the logging level (DEBUG, INFO, WARNING, ERROR, CRITICAL)
+            level=logging.INFO,  # Set the logging level (DEBUG, INFO, WARNING, ERROR, CRITICAL)
             format="%(asctime)s - %(levelname)s - %(message)s",
         )
 
@@ -634,7 +634,7 @@ class Extactor:
         if not category_url or len(category_url) == 0:
             return -1
 
-        match = re.search(r"/zgbs/.+?/(\d+)", category_url)
+        match = re.search(r"/new-releases/.+?/(\d+)", category_url)
         if match:
             return int(match.group(1))
         return -1
@@ -912,7 +912,7 @@ class Extactor:
             self.log(LogType.ERROR, "No file name specified!")
             raise Exception("No file name specified!")
 
-        file_name = file_name.lower().replace(" ", "_")
+        file_name = os.path.join(self.base_path, file_name.lower().replace(" ", "_"))
         with open(f"{file_name}.json", "w") as file:
             json.dump(category.to_dict(), file, indent=4)
 
