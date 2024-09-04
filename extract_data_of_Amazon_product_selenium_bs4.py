@@ -148,6 +148,7 @@ class Extactor:
         self.base_path = (
             f"extracter_{datetime.datetime.now().isoformat().replace(':', '-')}"
         )
+        self.sleep_interval = 1
 
         self.initialize_result_directory()
         self.initialize_logging()
@@ -166,8 +167,6 @@ class Extactor:
         self.apply_header()
 
         self.create_soup()
-
-        self.sleep_interval = 1
 
         # INITIALIZE
         time.sleep(self.sleep_interval)
@@ -223,6 +222,8 @@ class Extactor:
 
         self.driver.get(url)
 
+        self.check_and_bypass_amazon_captcha()
+
         time.sleep(3)
 
         self.handle_request_was_throttled()
@@ -237,31 +238,35 @@ class Extactor:
             ],
         )
         while text:
-            captcha_image_link = self.soup_try_to_find(
-                possible_element_to_find_list=[
-                    ElementToFind(
-                        name="img",
-                        selection_type=SelectionType.ATTRIBUTE,
-                        get_value_from_attribute="src",
-                    )
-                ]
-            )
-            captcha = AmazonCaptcha.fromlink(captcha_image_link)
-            solution = captcha.solve()
-            self.driver.find_element(By.ID, "captchacharacters").send_keys(solution)
-            self.driver.find_element(By.CLASS_NAME, "a-button-text").click()
+            try:
+                captcha_image_link = self.soup_try_to_find(
+                    possible_element_to_find_list=[
+                        ElementToFind(
+                            name="img",
+                            selection_type=SelectionType.ATTRIBUTE,
+                            get_value_from_attribute="src",
+                        )
+                    ]
+                )
+                captcha = AmazonCaptcha.fromlink(captcha_image_link)
+                solution = captcha.solve()
+                self.driver.find_element(By.ID, "captchacharacters").send_keys(solution)
+                self.driver.find_element(By.CLASS_NAME, "a-button-text").click()
 
-            time.sleep(3)
+                time.sleep(3)
 
-            self.create_soup()
-            text = self.soup_try_to_find(
-                possible_element_to_find_list=[
-                    ElementToFind(
-                        name="h4",
-                        selection_type=SelectionType.TEXT,
-                    )
-                ],
-            )
+                self.create_soup()
+                text = self.soup_try_to_find(
+                    possible_element_to_find_list=[
+                        ElementToFind(
+                            name="h4",
+                            selection_type=SelectionType.TEXT,
+                        )
+                    ],
+                )
+
+            except:
+                break
 
         time.sleep(self.sleep_interval)
 
@@ -951,9 +956,9 @@ def main():
     # )
 
     _3_layer_category = Category(
-        url="https://www.amazon.com/gp/new-releases/amazon-renewed/ref=zg_bsnr_nav_amazon-renewed_0",
+        url="https://www.amazon.com/gp/new-releases/appliances/ref=zg_bsnr_nav_appliances_0",
         category_asin=-1,
-        category_name="Amazon Renewed",
+        category_name="Appliances",
     )
 
     _3_layer_category = (
@@ -963,7 +968,7 @@ def main():
     )
 
     _3_layer_category = extractor.output_to_json(
-        _3_layer_category, "New Releases in Amazon Renewed"
+        _3_layer_category, "New Releases in Appliances"
     )
 
 
