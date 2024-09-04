@@ -1,0 +1,621 @@
+2024-09-04 10:17:16,176 - INFO - Extracting product with ASIN: B0D6PHQVSV
+2024-09-04 10:17:38,665 - INFO - Extracting product with ASIN: B0DB581P4W
+2024-09-04 10:18:01,694 - INFO - Extracting product with ASIN: B0D94WL44L
+2024-09-04 10:18:28,662 - INFO - Extracting product with ASIN: B0D7QVCL6T
+2024-09-04 10:18:46,957 - INFO - Extracting product with ASIN: B0D9YWPMZR
+2024-09-04 10:19:02,248 - ERROR - 'charmap' codec can't encode character '\u3010' in position 223: character maps to <undefined>
+2024-09-04 10:19:02,249 - INFO - Extracting product with ASIN: B0D3PZLZ3N
+2024-09-04 10:19:18,801 - INFO - Extracting product with ASIN: B0DDM2YG5X
+2024-09-04 10:19:34,227 - INFO - Extracting product with ASIN: B0DCGQQ4Z7
+2024-09-04 10:19:49,312 - INFO - Extracting product with ASIN: B0CS83D51F
+2024-09-04 10:20:05,394 - INFO - Extracting product with ASIN: B0DD8WS476
+2024-09-04 10:20:22,172 - INFO - Extracting product with ASIN: B0D79JJQ1P
+2024-09-04 10:20:38,092 - INFO - Extracting product with ASIN: B0D92TBJX2
+2024-09-04 10:20:53,795 - INFO - Extracting product with ASIN: B0D9FS1396
+2024-09-04 10:21:09,447 - INFO - Extracting product with ASIN: B0D9FTKCDV
+2024-09-04 10:21:25,384 - INFO - Extracting product with ASIN: B0DBMZZTM6
+2024-09-04 10:21:41,162 - INFO - Extracting product with ASIN: B0DC2572G5
+2024-09-04 10:21:55,898 - INFO - Extracting product with ASIN: B0D9WQ6841
+2024-09-04 10:22:11,898 - INFO - Extracting product with ASIN: B0D78Z2645
+2024-09-04 10:22:28,403 - INFO - Extracting product with ASIN: B0D7QTXS42
+2024-09-04 10:22:43,346 - INFO - Extracting product with ASIN: B0DF2KZ977
+2024-09-04 10:22:58,989 - ERROR - 'charmap' codec can't encode character '\u3010' in position 229: character maps to <undefined>
+2024-09-04 10:22:58,990 - INFO - Extracting product with ASIN: B0DB6BGG1C
+2024-09-04 10:23:20,942 - ERROR - 'charmap' codec can't encode character '\uff1a' in position 297: character maps to <undefined>
+2024-09-04 10:23:20,942 - INFO - Extracting product with ASIN: B0D69K2JXW
+2024-09-04 10:23:45,622 - INFO - Extracting product with ASIN: B0D7N6YSPH
+2024-09-04 10:24:03,574 - INFO - Extracting product with ASIN: B0DCNGLFF5
+2024-09-04 10:24:17,750 - ERROR - 'charmap' codec can't encode character '\u3010' in position 238: character maps to <undefined>
+2024-09-04 10:24:17,751 - INFO - Extracting product with ASIN: B0D1DGKZM9
+2024-09-04 10:24:34,097 - INFO - Extracting product with ASIN: B0DDWD6DXS
+2024-09-04 10:24:50,093 - INFO - Extracting product with ASIN: B0D8CJYNNY
+2024-09-04 10:25:04,133 - INFO - Extracting product with ASIN: B0DB3GLGCN
+2024-09-04 10:25:21,888 - INFO - Extracting product with ASIN: B0DCGRBDLR
+2024-09-04 10:25:38,152 - INFO - Extracting product with ASIN: B0DCCXLX7H
+2024-09-04 10:25:54,745 - INFO - Extracting product with ASIN: B0D6VFWWS8
+2024-09-04 10:26:09,547 - ERROR - 'charmap' codec can't encode character '\u3010' in position 241: character maps to <undefined>
+2024-09-04 10:26:09,547 - INFO - Extracting product with ASIN: B0D3KKP8GL
+2024-09-04 10:26:25,295 - INFO - Extracting product with ASIN: B0DDKNQPCG
+2024-09-04 10:26:39,163 - INFO - Extracting product with ASIN: B0D9Z8FNNZ
+2024-09-04 10:26:53,931 - INFO - Extracting product with ASIN: B0D6FWVYVG
+2024-09-04 10:27:10,340 - ERROR - 'charmap' codec can't encode character '\u3010' in position 239: character maps to <undefined>
+2024-09-04 10:27:10,340 - INFO - Extracting product with ASIN: B0D9T24RD9
+2024-09-04 10:27:25,798 - INFO - Extracting product with ASIN: B0D9Z3SJ9N
+2024-09-04 10:27:40,508 - INFO - Extracting product with ASIN: B0DD3ZD1Y7
+2024-09-04 10:27:57,151 - INFO - Extracting product with ASIN: B0D7WZ3T8M
+2024-09-04 10:28:12,389 - INFO - Extracting product with ASIN: B0D935Y5QT
+2024-09-04 10:28:29,186 - INFO - Extracting product with ASIN: B0D741HD54
+2024-09-04 10:28:44,409 - INFO - Extracting product with ASIN: B0DCHMCFF6
+2024-09-04 10:29:01,438 - INFO - Extracting product with ASIN: B0D9CDHTCQ
+2024-09-04 10:29:19,039 - INFO - Extracting product with ASIN: B0DBGQN8QZ
+2024-09-04 10:29:33,539 - INFO - Extracting product with ASIN: B0D7LFBR9D
+2024-09-04 10:29:50,474 - INFO - Extracting product with ASIN: B0D674L6FJ
+2024-09-04 10:30:10,703 - INFO - Extracting product with ASIN: B0D6Z3VPV4
+2024-09-04 10:30:29,276 - INFO - Extracting product with ASIN: B0D69LJYTF
+2024-09-04 10:31:06,217 - INFO - Extracting product with ASIN: B0D6V3T8LV
+2024-09-04 10:31:22,024 - INFO - Extracting product with ASIN: B0DDLGXRYJ
+2024-09-04 10:31:36,555 - INFO - Extracting product with ASIN: B0D8MNT4X5
+2024-09-04 10:31:52,840 - INFO - Extracting product with ASIN: B0D8J7TBR8
+2024-09-04 10:32:08,620 - INFO - Extracting product with ASIN: B0D9CFFCFJ
+2024-09-04 10:32:26,774 - INFO - Extracting product with ASIN: B0D841LZ1R
+2024-09-04 10:32:43,265 - ERROR - 'charmap' codec can't encode character '\u2074' in position 1230: character maps to <undefined>
+2024-09-04 10:32:43,265 - INFO - Extracting product with ASIN: B0D77F6JY3
+2024-09-04 10:32:58,453 - INFO - Extracting product with ASIN: B0D6FPMKJR
+2024-09-04 10:33:13,235 - INFO - Extracting product with ASIN: B0CW38R88M
+2024-09-04 10:33:30,131 - INFO - Extracting product with ASIN: B0DB6GXPGB
+2024-09-04 10:33:45,318 - INFO - Extracting product with ASIN: B0DC2F9N1C
+2024-09-04 10:33:59,952 - INFO - Extracting product with ASIN: B0D5SC5PZY
+2024-09-04 10:34:14,276 - INFO - Extracting product with ASIN: B0DBXB1KQ7
+2024-09-04 10:34:30,070 - INFO - Extracting product with ASIN: B0D6CRCBCD
+2024-09-04 10:34:44,738 - INFO - Extracting product with ASIN: B0DC29N54K
+2024-09-04 10:34:59,692 - INFO - Extracting product with ASIN: B0DB6C7DCP
+2024-09-04 10:35:16,940 - ERROR - 'charmap' codec can't encode character '\uff0c' in position 112: character maps to <undefined>
+2024-09-04 10:35:16,941 - INFO - Extracting product with ASIN: B0D6ZSQP6N
+2024-09-04 10:35:34,606 - INFO - Extracting product with ASIN: B0DD3WM4FC
+2024-09-04 10:35:51,567 - INFO - Extracting product with ASIN: B0D3JCFD8H
+2024-09-04 10:36:07,628 - INFO - Extracting product with ASIN: B0D9RQNC3W
+2024-09-04 10:36:22,523 - INFO - Extracting product with ASIN: B0DBYVQMXB
+2024-09-04 10:36:38,601 - INFO - Extracting product with ASIN: B0DD976WNS
+2024-09-04 10:36:56,626 - INFO - Extracting product with ASIN: B0D6NM1N6B
+2024-09-04 10:37:12,686 - INFO - Extracting product with ASIN: B0DCPBWR7R
+2024-09-04 10:37:26,822 - INFO - Extracting product with ASIN: B0D96S5KYC
+2024-09-04 10:37:43,036 - ERROR - 'charmap' codec can't encode character '\uff1a' in position 279: character maps to <undefined>
+2024-09-04 10:37:43,037 - INFO - Extracting product with ASIN: B0D6DJJGVZ
+2024-09-04 10:38:06,488 - INFO - Extracting product with ASIN: B0D973VBRH
+2024-09-04 10:38:21,522 - ERROR - 'charmap' codec can't encode character '\U0001f308' in position 207: character maps to <undefined>
+2024-09-04 10:38:21,523 - INFO - Extracting product with ASIN: B0D94X58BJ
+2024-09-04 10:38:37,841 - ERROR - 'charmap' codec can't encode character '\u200e' in position 33: character maps to <undefined>
+2024-09-04 10:38:37,841 - INFO - Extracting product with ASIN: B0D87RRGZG
+2024-09-04 10:38:56,397 - INFO - Extracting product with ASIN: B0D9D1FSNB
+2024-09-04 10:39:11,640 - ERROR - 'charmap' codec can't encode character '\u3010' in position 202: character maps to <undefined>
+2024-09-04 10:39:11,641 - INFO - Extracting product with ASIN: B0D8M381PW
+2024-09-04 10:39:25,587 - INFO - Extracting product with ASIN: B0DBRGRY4M
+2024-09-04 10:39:40,070 - INFO - Extracting product with ASIN: B0DD3RG82Y
+2024-09-04 10:39:55,883 - INFO - Extracting product with ASIN: B0D9YXX1V4
+2024-09-04 10:40:13,293 - INFO - Extracting product with ASIN: B0D57HN2RN
+2024-09-04 10:40:32,836 - INFO - Extracting product with ASIN: B0DDHP71H6
+2024-09-04 10:40:49,904 - ERROR - 'charmap' codec can't encode character '\u3010' in position 213: character maps to <undefined>
+2024-09-04 10:40:49,904 - INFO - Extracting product with ASIN: B0DBWY4W7S
+2024-09-04 10:41:06,498 - INFO - Extracting product with ASIN: B0D9MSYCHS
+2024-09-04 10:41:27,287 - INFO - Extracting product with ASIN: B0DCC571VV
+2024-09-04 10:41:44,385 - INFO - Extracting product with ASIN: B0D9HMPTFP
+2024-09-04 10:42:01,760 - INFO - Extracting product with ASIN: B0D885WC4N
+2024-09-04 10:42:18,534 - INFO - Extracting product with ASIN: B0D77DF966
+2024-09-04 10:42:33,419 - INFO - Extracting product with ASIN: B0D7D4W6BP
+2024-09-04 10:42:48,293 - INFO - Extracting product with ASIN: B0D9WQFVWB
+2024-09-04 10:43:03,927 - INFO - Extracting product with ASIN: B0DCNXNXFG
+2024-09-04 10:43:18,597 - ERROR - 'charmap' codec can't encode character '\u3010' in position 234: character maps to <undefined>
+2024-09-04 10:43:18,603 - INFO - Extracting product with ASIN: B0DBRC7QMC
+2024-09-04 10:43:35,908 - INFO - Extracting product with ASIN: B0DDLY166Y
+2024-09-04 10:43:53,941 - INFO - Extracting product with ASIN: B0D7J5GH3Q
+2024-09-04 10:44:11,581 - INFO - Extracting product with ASIN: B0DFMT9QXM
+2024-09-04 10:44:25,964 - INFO - Extracting product with ASIN: B0DBJ2BH9W
+2024-09-04 10:44:41,898 - INFO - Extracting product with ASIN: B0D516L293
+2024-09-04 10:44:58,448 - INFO - Extracting product with ASIN: B0D81Z7TP6
+2024-09-04 10:45:14,665 - INFO - Extracted 86/100 products of category Amazon Renewed
+2024-09-04 10:45:14,681 - WARNING - Cannot extract all products of category Amazon Renewed
+2024-09-04 10:46:00,039 - INFO - No 'Next page' button to click
+2024-09-04 10:47:25,845 - INFO - Extracting product with ASIN: B0D9FS1396
+2024-09-04 10:47:40,734 - INFO - Extracting product with ASIN: B0D9FTKCDV
+2024-09-04 10:47:55,937 - INFO - Extracting product with ASIN: B0D9WQ6841
+2024-09-04 10:48:10,731 - INFO - Extracting product with ASIN: B0D7LFBR9D
+2024-09-04 10:48:25,894 - INFO - Extracting product with ASIN: B0DBXB1KQ7
+2024-09-04 10:48:41,264 - INFO - Extracting product with ASIN: B0DD976WNS
+2024-09-04 10:49:00,124 - INFO - Extracting product with ASIN: B0D6NM1N6B
+2024-09-04 10:49:14,628 - INFO - Extracting product with ASIN: B0D87RRGZG
+2024-09-04 10:49:30,096 - INFO - Extracting product with ASIN: B0D885WC4N
+2024-09-04 10:49:44,678 - INFO - Extracting product with ASIN: B0D9WQFVWB
+2024-09-04 10:49:59,107 - INFO - Extracting product with ASIN: B0DD9HJLFD
+2024-09-04 10:50:38,270 - INFO - Extracting product with ASIN: B0DB4S6QB8
+2024-09-04 10:50:49,059 - INFO - Extracting product with ASIN: B0D8M44RHW
+2024-09-04 10:50:59,485 - INFO - Extracting product with ASIN: B0D87T598Q
+2024-09-04 10:51:10,455 - INFO - Extracting product with ASIN: B0D7QYWCXG
+2024-09-04 10:51:20,911 - INFO - Extracting product with ASIN: B0DF35TXPJ
+2024-09-04 10:51:31,368 - INFO - Extracting product with ASIN: B0DB6BBN3L
+2024-09-04 10:51:56,074 - INFO - Extracting product with ASIN: B0D7WHHKTH
+2024-09-04 10:52:16,862 - INFO - Extracting product with ASIN: B0D9R7NY58
+2024-09-04 10:52:36,315 - INFO - Extracting product with ASIN: B0D9WNYCS3
+2024-09-04 10:52:51,639 - INFO - Extracting product with ASIN: B0D6RYKYQW
+2024-09-04 10:53:10,725 - INFO - Extracting product with ASIN: B0D9WWM8W3
+2024-09-04 10:53:27,823 - INFO - Extracting product with ASIN: B0DCKFXTMG
+2024-09-04 10:53:47,128 - INFO - Extracting product with ASIN: B0D8LM1NDB
+2024-09-04 10:54:07,183 - INFO - Extracting product with ASIN: B0DF368K9W
+2024-09-04 10:54:37,431 - INFO - Extracting product with ASIN: B0DF33RVPP
+2024-09-04 10:54:54,979 - INFO - Extracting product with ASIN: B0D7QSH63C
+2024-09-04 10:55:26,158 - INFO - Extracting product with ASIN: B0D98YZM9Y
+2024-09-04 10:55:45,402 - INFO - Extracting product with ASIN: B0DB12SCG6
+2024-09-04 10:56:03,600 - ERROR - list index out of range
+2024-09-04 10:56:03,601 - INFO - Extracting product with ASIN: B0D8QPJTN4
+2024-09-04 10:56:22,347 - INFO - Extracting product with ASIN: B0D6RZ7D9L
+2024-09-04 10:56:39,564 - INFO - Extracting product with ASIN: B0D6D32M7X
+2024-09-04 10:56:59,199 - INFO - Extracting product with ASIN: B0D82CB73T
+2024-09-04 10:57:15,456 - INFO - Extracting product with ASIN: B0D9WVN64Y
+2024-09-04 10:57:35,533 - INFO - Extracting product with ASIN: B0D8M593VK
+2024-09-04 10:57:53,771 - INFO - Extracting product with ASIN: B0D6B723GL
+2024-09-04 10:58:12,642 - INFO - Extracting product with ASIN: B0D8K1F74B
+2024-09-04 10:58:29,935 - INFO - Extracting product with ASIN: B0DBWYN1RK
+2024-09-04 10:58:49,648 - INFO - Extracting product with ASIN: B0D79KMK7Y
+2024-09-04 10:59:06,970 - INFO - Extracting product with ASIN: B0D82C7WTQ
+2024-09-04 10:59:22,283 - INFO - Extracting product with ASIN: B0DD1Y3GGX
+2024-09-04 10:59:37,116 - INFO - Extracting product with ASIN: B0DCQD8BRK
+2024-09-04 10:59:57,420 - ERROR - list index out of range
+2024-09-04 10:59:57,421 - INFO - Extracting product with ASIN: B0D784JQJM
+2024-09-04 11:00:13,894 - INFO - Extracting product with ASIN: B0D6S1BGWS
+2024-09-04 11:00:31,163 - INFO - Extracting product with ASIN: B0D88JGMGD
+2024-09-04 11:00:46,841 - INFO - Extracting product with ASIN: B0D8K2SQTB
+2024-09-04 11:01:03,674 - INFO - Extracting product with ASIN: B0DD5951CN
+2024-09-04 11:01:18,949 - INFO - Extracting product with ASIN: B0D7DVP8FD
+2024-09-04 11:01:40,017 - INFO - Extracting product with ASIN: B0D7NN75CV
+2024-09-04 11:02:12,006 - INFO - Extracting product with ASIN: B0D8K3QQC4
+2024-09-04 11:02:28,793 - INFO - Extracting product with ASIN: B0D79T4LKW
+2024-09-04 11:02:53,830 - INFO - Extracting product with ASIN: B0D7Y78YMD
+2024-09-04 11:03:14,357 - INFO - Extracting product with ASIN: B0DCKGFXD8
+2024-09-04 11:03:31,768 - INFO - Extracting product with ASIN: B01M4KQ2AS
+2024-09-04 11:03:50,827 - INFO - Extracting product with ASIN: B0D9QWDGQJ
+2024-09-04 11:04:14,522 - INFO - Extracting product with ASIN: B0D9WVJP7F
+2024-09-04 11:04:33,906 - INFO - Extracting product with ASIN: B0DD111LJH
+2024-09-04 11:04:59,093 - INFO - Extracting product with ASIN: B0D9MN2SL8
+2024-09-04 11:05:36,667 - INFO - Extracting product with ASIN: B0D98VQT1L
+2024-09-04 11:05:58,980 - INFO - Extracting product with ASIN: B0D9MPHY1X
+2024-09-04 11:06:28,178 - INFO - Extracted 58/60 products of category Renewed Camera & Photo
+2024-09-04 11:06:28,178 - WARNING - Cannot extract all products of category Renewed Camera & Photo
+2024-09-04 11:07:46,724 - INFO - Extracting product with ASIN: B0D6PHQVSV
+2024-09-04 11:08:04,986 - INFO - Extracting product with ASIN: B0D7QVCL6T
+2024-09-04 11:08:22,914 - INFO - Extracting product with ASIN: B0D9YWPMZR
+2024-09-04 11:08:41,631 - ERROR - 'charmap' codec can't encode character '\u3010' in position 249: character maps to <undefined>
+2024-09-04 11:08:41,632 - INFO - Extracting product with ASIN: B0DBMZZTM6
+2024-09-04 11:08:56,949 - INFO - Extracting product with ASIN: B0DC2572G5
+2024-09-04 11:09:12,354 - INFO - Extracting product with ASIN: B0D78Z2645
+2024-09-04 11:09:30,282 - INFO - Extracting product with ASIN: B0DF2KZ977
+2024-09-04 11:09:52,204 - ERROR - 'charmap' codec can't encode character '\u3010' in position 255: character maps to <undefined>
+2024-09-04 11:09:52,205 - INFO - Extracting product with ASIN: B0DB6BGG1C
+2024-09-04 11:10:09,042 - ERROR - 'charmap' codec can't encode character '\uff1a' in position 323: character maps to <undefined>
+2024-09-04 11:10:09,043 - INFO - Extracting product with ASIN: B0D69K2JXW
+2024-09-04 11:10:39,532 - INFO - Extracting product with ASIN: B0D7N6YSPH
+2024-09-04 11:10:55,185 - INFO - Extracting product with ASIN: B0DCNGLFF5
+2024-09-04 11:11:10,638 - ERROR - 'charmap' codec can't encode character '\u3010' in position 264: character maps to <undefined>
+2024-09-04 11:11:10,638 - INFO - Extracting product with ASIN: B0D8CJYNNY
+2024-09-04 11:11:30,410 - INFO - Extracting product with ASIN: B0D6VFWWS8
+2024-09-04 11:11:46,230 - ERROR - 'charmap' codec can't encode character '\u3010' in position 267: character maps to <undefined>
+2024-09-04 11:11:46,230 - INFO - Extracting product with ASIN: B0DDKNQPCG
+2024-09-04 11:12:00,978 - INFO - Extracting product with ASIN: B0D6FWVYVG
+2024-09-04 11:12:15,918 - ERROR - 'charmap' codec can't encode character '\u3010' in position 265: character maps to <undefined>
+2024-09-04 11:12:15,920 - INFO - Extracting product with ASIN: B0DD3ZD1Y7
+2024-09-04 11:12:29,813 - INFO - Extracting product with ASIN: B0DCHMCFF6
+2024-09-04 11:12:44,376 - INFO - Extracting product with ASIN: B0D9CDHTCQ
+2024-09-04 11:13:01,108 - INFO - Extracting product with ASIN: B0DBGQN8QZ
+2024-09-04 11:13:15,506 - INFO - Extracting product with ASIN: B0DDLGXRYJ
+2024-09-04 11:13:29,495 - INFO - Extracting product with ASIN: B0D8J7TBR8
+2024-09-04 11:13:44,556 - INFO - Extracting product with ASIN: B0D6FPMKJR
+2024-09-04 11:14:00,141 - INFO - Extracting product with ASIN: B0DC2F9N1C
+2024-09-04 11:14:24,168 - INFO - Extracting product with ASIN: B0D5SC5PZY
+2024-09-04 11:14:38,793 - INFO - Extracting product with ASIN: B0D6CRCBCD
+2024-09-04 11:14:55,810 - INFO - Extracting product with ASIN: B0DC29N54K
+2024-09-04 11:15:10,108 - INFO - Extracting product with ASIN: B0DB6C7DCP
+2024-09-04 11:15:25,022 - ERROR - 'charmap' codec can't encode character '\uff0c' in position 138: character maps to <undefined>
+2024-09-04 11:15:25,023 - INFO - Extracting product with ASIN: B0D6ZSQP6N
+2024-09-04 11:15:39,866 - INFO - Extracting product with ASIN: B0DD3WM4FC
+2024-09-04 11:15:54,476 - INFO - Extracting product with ASIN: B0D3JCFD8H
+2024-09-04 11:16:10,283 - INFO - Extracting product with ASIN: B0DCG6CZSS
+2024-09-04 11:16:29,758 - ERROR - 'charmap' codec can't encode character '\u3010' in position 266: character maps to <undefined>
+2024-09-04 11:16:29,758 - INFO - Extracting product with ASIN: B0DBLQMYFP
+2024-09-04 11:16:46,706 - INFO - Extracting product with ASIN: B0DDCVBM7L
+2024-09-04 11:17:04,384 - INFO - Extracting product with ASIN: B0D8B99WHZ
+2024-09-04 11:17:20,644 - INFO - Extracting product with ASIN: B0D8LJWPPR
+2024-09-04 11:17:35,560 - ERROR - 'charmap' codec can't encode character '\u200e' in position 158: character maps to <undefined>
+2024-09-04 11:17:35,561 - INFO - Extracting product with ASIN: B0D98MJG34
+2024-09-04 11:17:51,404 - INFO - Extracting product with ASIN: B0D7XNJ398
+2024-09-04 11:18:06,408 - INFO - Extracting product with ASIN: B0D8M49JQS
+2024-09-04 11:18:21,596 - ERROR - 'charmap' codec can't encode character '\u3010' in position 237: character maps to <undefined>
+2024-09-04 11:18:21,596 - INFO - Extracting product with ASIN: B0D9M4KVC5
+2024-09-04 11:18:37,780 - ERROR - 'charmap' codec can't encode character '\uff0c' in position 1362: character maps to <undefined>
+2024-09-04 11:18:37,781 - INFO - Extracting product with ASIN: B0DD3ZNH6Q
+2024-09-04 11:18:53,043 - INFO - Extracting product with ASIN: B0DD3X6VJ7
+2024-09-04 11:19:07,521 - INFO - Extracting product with ASIN: B0D796C1GW
+2024-09-04 11:19:23,524 - INFO - Extracting product with ASIN: B0DCNDYX9G
+2024-09-04 11:19:39,699 - ERROR - 'charmap' codec can't encode character '\u3010' in position 256: character maps to <undefined>
+2024-09-04 11:19:39,700 - INFO - Extracting product with ASIN: B0D9VLGKLS
+2024-09-04 11:19:57,466 - INFO - Extracting product with ASIN: B0DCNQWNS7
+2024-09-04 11:20:13,248 - ERROR - 'charmap' codec can't encode character '\u3010' in position 261: character maps to <undefined>
+2024-09-04 11:20:13,249 - INFO - Extracting product with ASIN: B0D81YSBZQ
+2024-09-04 11:20:27,711 - INFO - Extracting product with ASIN: B0D6VX8LBF
+2024-09-04 11:20:43,548 - INFO - Extracting product with ASIN: B0D8V6C1KW
+2024-09-04 11:20:58,571 - ERROR - 'charmap' codec can't encode character '\u3010' in position 190: character maps to <undefined>
+2024-09-04 11:20:58,571 - INFO - Extracting product with ASIN: B08587JBWB
+2024-09-04 11:21:13,796 - INFO - Extracting product with ASIN: B0D4LR3Q9Y
+2024-09-04 11:21:30,300 - INFO - Extracting product with ASIN: B0D79SHPQW
+2024-09-04 11:21:47,562 - INFO - Extracting product with ASIN: B0DD3S5FYG
+2024-09-04 11:22:03,165 - INFO - Extracting product with ASIN: B0D8TH44QH
+2024-09-04 11:22:47,241 - ERROR - 'charmap' codec can't encode character '\u3010' in position 196: character maps to <undefined>
+2024-09-04 11:22:47,242 - INFO - Extracting product with ASIN: B0DC95XL4C
+2024-09-04 11:23:04,878 - INFO - Extracting product with ASIN: B0D5SCX1X1
+2024-09-04 11:23:25,689 - INFO - Extracting product with ASIN: B0D83MRYD9
+2024-09-04 11:23:45,127 - ERROR - 'charmap' codec can't encode character '\u3010' in position 219: character maps to <undefined>
+2024-09-04 11:23:45,128 - INFO - Extracting product with ASIN: B0D84F3BTM
+2024-09-04 11:24:15,941 - INFO - Extracting product with ASIN: B0DCNR7DH9
+2024-09-04 11:24:35,275 - ERROR - 'charmap' codec can't encode character '\u3010' in position 255: character maps to <undefined>
+2024-09-04 11:24:35,275 - INFO - Extracting product with ASIN: B0DCN46BW4
+2024-09-04 11:24:51,763 - ERROR - 'charmap' codec can't encode character '\u3010' in position 263: character maps to <undefined>
+2024-09-04 11:24:51,764 - INFO - Extracting product with ASIN: B0DB1B2SKP
+2024-09-04 11:25:07,357 - INFO - Extracted 42/60 products of category Renewed Computers & Accessories
+2024-09-04 11:25:07,357 - WARNING - Cannot extract all products of category Renewed Computers & Accessories
+2024-09-04 11:26:00,251 - INFO - No 'Next page' button to click
+2024-09-04 11:26:00,251 - INFO - Extracting product with ASIN: B0D3PZLZ3N
+2024-09-04 11:26:26,280 - INFO - Extracting product with ASIN: B0D7QTXS42
+2024-09-04 11:26:43,077 - INFO - Extracting product with ASIN: B0D1DGKZM9
+2024-09-04 11:26:58,221 - INFO - Extracting product with ASIN: B0DCGRBDLR
+2024-09-04 11:27:13,053 - INFO - Extracting product with ASIN: B0DCCXLX7H
+2024-09-04 11:27:27,973 - INFO - Extracting product with ASIN: B0D3KKP8GL
+2024-09-04 11:27:43,412 - INFO - Extracting product with ASIN: B0D6FHWTY8
+2024-09-04 11:28:11,785 - INFO - Extracting product with ASIN: B0D2NYKRQ3
+2024-09-04 11:28:41,122 - INFO - Extracting product with ASIN: B0DBBFS81K
+2024-09-04 11:29:18,521 - INFO - Extracting product with ASIN: B0D387LYP6
+2024-09-04 11:29:42,757 - INFO - Extracting product with ASIN: B07J52GCWD
+2024-09-04 11:30:06,841 - INFO - Extracting product with ASIN: B0BZKZ57V9
+2024-09-04 11:30:22,720 - INFO - Extracting product with ASIN: B0DDRDRYXT
+2024-09-04 11:30:46,035 - INFO - Extracting product with ASIN: B0DD7VRVN4
+2024-09-04 11:31:02,890 - INFO - Extracting product with ASIN: B0D6HQFTKF
+2024-09-04 11:31:17,359 - INFO - Extracting product with ASIN: B0DBX4ZG53
+2024-09-04 11:31:31,736 - INFO - Extracting product with ASIN: B0D9KZ3HML
+2024-09-04 11:31:46,830 - INFO - Extracting product with ASIN: B0D6SBZDCV
+2024-09-04 11:32:01,456 - INFO - Extracting product with ASIN: B0D6H275NW
+2024-09-04 11:32:16,584 - INFO - Extracting product with ASIN: B0D92ZPYJ2
+2024-09-04 11:32:32,856 - INFO - Extracting product with ASIN: B0D6H2HRHH
+2024-09-04 11:32:46,854 - ERROR - 'charmap' codec can't encode character '\u3010' in position 235: character maps to <undefined>
+2024-09-04 11:32:46,854 - INFO - Extracting product with ASIN: B0D3HVBC89
+2024-09-04 11:33:00,820 - ERROR - list index out of range
+2024-09-04 11:33:00,821 - INFO - Extracting product with ASIN: B0D6GL4LSK
+2024-09-04 11:33:16,529 - INFO - Extracting product with ASIN: B0D9YS362W
+2024-09-04 11:33:30,642 - INFO - Extracting product with ASIN: B0DB3JT8W7
+2024-09-04 11:33:43,974 - INFO - Extracted 23/25 products of category 
+2024-09-04 11:33:43,974 - WARNING - Cannot extract all products of category 
+2024-09-04 11:34:21,927 - INFO - No 'Next page' button to click
+2024-09-04 11:35:36,050 - INFO - Extracting product with ASIN: B0CS83D51F
+2024-09-04 11:35:50,399 - INFO - Extracting product with ASIN: B0D92TBJX2
+2024-09-04 11:36:04,352 - INFO - Extracting product with ASIN: B0D9Z8FNNZ
+2024-09-04 11:36:17,998 - INFO - Extracting product with ASIN: B0D9T24RD9
+2024-09-04 11:36:32,923 - INFO - Extracting product with ASIN: B0D9Z3SJ9N
+2024-09-04 11:36:46,796 - INFO - Extracting product with ASIN: B0D935Y5QT
+2024-09-04 11:37:01,672 - ERROR - list index out of range
+2024-09-04 11:37:01,673 - INFO - Extracting product with ASIN: B0D6Z3VPV4
+2024-09-04 11:37:15,107 - INFO - Extracting product with ASIN: B0D841LZ1R
+2024-09-04 11:37:28,783 - ERROR - 'charmap' codec can't encode character '\u2074' in position 1251: character maps to <undefined>
+2024-09-04 11:37:28,784 - INFO - Extracting product with ASIN: B0D77F6JY3
+2024-09-04 11:37:42,302 - INFO - Extracting product with ASIN: B0DBRGRY4M
+2024-09-04 11:37:55,209 - INFO - Extracting product with ASIN: B0D77DF966
+2024-09-04 11:38:08,859 - INFO - Extracting product with ASIN: B0DDLY166Y
+2024-09-04 11:38:21,876 - INFO - Extracting product with ASIN: B0DBJ2BH9W
+2024-09-04 11:38:35,294 - INFO - Extracting product with ASIN: B0DCZWX6LX
+2024-09-04 11:38:50,032 - INFO - Extracting product with ASIN: B0DCHMRVKK
+2024-09-04 11:39:04,866 - ERROR - list index out of range
+2024-09-04 11:39:04,867 - INFO - Extracting product with ASIN: B0CKFLQD9X
+2024-09-04 11:39:18,828 - INFO - Extracting product with ASIN: B0C6YSBVQ8
+2024-09-04 11:39:33,245 - ERROR - 'charmap' codec can't encode character '\u2074' in position 789: character maps to <undefined>
+2024-09-04 11:39:33,246 - INFO - Extracting product with ASIN: B0D88Y5211
+2024-09-04 11:39:47,943 - INFO - Extracting product with ASIN: B0D9Z26BX7
+2024-09-04 11:40:01,476 - INFO - Extracting product with ASIN: B0D81P3D79
+2024-09-04 11:40:15,429 - INFO - Extracting product with ASIN: B0DBMR3NRX
+2024-09-04 11:40:29,302 - INFO - Extracting product with ASIN: B0DBVXJRKF
+2024-09-04 11:40:43,309 - INFO - Extracting product with ASIN: B0D9KS9GZM
+2024-09-04 11:40:57,327 - INFO - Extracting product with ASIN: B0DBJ659BV
+2024-09-04 11:41:10,699 - INFO - Extracting product with ASIN: B0D6JCJW63
+2024-09-04 11:41:24,952 - INFO - Extracting product with ASIN: B0D7Q4XVHP
+2024-09-04 11:41:38,800 - INFO - Extracting product with ASIN: B0DBN154DS
+2024-09-04 11:41:53,817 - INFO - Extracting product with ASIN: B0DFMNF3MH
+2024-09-04 11:42:07,915 - INFO - Extracting product with ASIN: B0DD7S6DXC
+2024-09-04 11:42:21,717 - INFO - Extracting product with ASIN: B0DFHM8YZ3
+2024-09-04 11:42:34,973 - INFO - Extracting product with ASIN: B0D92WT9G4
+2024-09-04 11:42:49,239 - ERROR - 'charmap' codec can't encode character '\u2033' in position 366: character maps to <undefined>
+2024-09-04 11:42:49,240 - INFO - Extracting product with ASIN: B0D4GLXKHC
+2024-09-04 11:43:03,032 - ERROR - list index out of range
+2024-09-04 11:43:03,032 - INFO - Extracting product with ASIN: B0DDM7PRP1
+2024-09-04 11:43:16,341 - INFO - Extracting product with ASIN: B0D9Z9PDRM
+2024-09-04 11:43:29,900 - INFO - Extracting product with ASIN: B0DDM6L378
+2024-09-04 11:43:43,120 - INFO - Extracting product with ASIN: B0D4GVTG9P
+2024-09-04 11:43:59,668 - INFO - Extracting product with ASIN: B0DBVW6PGY
+2024-09-04 11:44:13,117 - INFO - Extracting product with ASIN: B0DB55JQW4
+2024-09-04 11:44:26,892 - INFO - Extracting product with ASIN: B0D9WXPJBW
+2024-09-04 11:44:41,094 - INFO - Extracting product with ASIN: B0D96SRWLP
+2024-09-04 11:44:55,050 - INFO - Extracting product with ASIN: B0D96SW9PV
+2024-09-04 11:45:09,695 - INFO - Extracting product with ASIN: B0DD1Q8M5D
+2024-09-04 11:45:22,521 - INFO - Extracting product with ASIN: B0D73VN4MH
+2024-09-04 11:45:35,951 - INFO - Extracting product with ASIN: B0D7HYYBY1
+2024-09-04 11:45:49,596 - ERROR - list index out of range
+2024-09-04 11:45:49,597 - INFO - Extracting product with ASIN: B0D79HJ8J2
+2024-09-04 11:46:03,794 - INFO - Extracting product with ASIN: B0D7HX4D1W
+2024-09-04 11:46:18,455 - INFO - Extracting product with ASIN: B0DD1N1MR3
+2024-09-04 11:46:32,175 - INFO - Extracting product with ASIN: B0D73YJM4B
+2024-09-04 11:46:46,004 - INFO - Extracting product with ASIN: B0D96NWV1Z
+2024-09-04 11:46:59,780 - INFO - Extracting product with ASIN: B0D87YNT7K
+2024-09-04 11:47:13,228 - INFO - Extracting product with ASIN: B0D9Z1TBJQ
+2024-09-04 11:47:27,360 - INFO - Extracting product with ASIN: B0D98NZVMG
+2024-09-04 11:47:41,531 - INFO - Extracting product with ASIN: B0DBNCD9ZW
+2024-09-04 11:47:54,687 - INFO - Extracting product with ASIN: B0DDLZNT6C
+2024-09-04 11:48:08,836 - INFO - Extracting product with ASIN: B0D96NZ9B7
+2024-09-04 11:48:23,582 - INFO - Extracting product with ASIN: B0D7PJPZ36
+2024-09-04 11:48:37,987 - INFO - Extracting product with ASIN: B0D9P9WGWB
+2024-09-04 11:48:50,762 - INFO - Extracting product with ASIN: B0D98N1G8W
+2024-09-04 11:49:05,612 - ERROR - list index out of range
+2024-09-04 11:49:05,612 - INFO - Extracting product with ASIN: B0D7DYGNCK
+2024-09-04 11:49:20,736 - INFO - Extracting product with ASIN: B0D824R2WH
+2024-09-04 11:49:34,909 - INFO - Extracted 52/60 products of category Renewed Home Entertainment
+2024-09-04 11:49:34,910 - WARNING - Cannot extract all products of category Renewed Home Entertainment
+2024-09-04 11:50:50,070 - INFO - Extracting product with ASIN: B0D6PHQVSV
+2024-09-04 11:51:00,940 - INFO - Extracting product with ASIN: B0D7QVCL6T
+2024-09-04 11:51:14,946 - INFO - Extracting product with ASIN: B0D9YWPMZR
+2024-09-04 11:51:28,654 - ERROR - 'charmap' codec can't encode character '\u3010' in position 233: character maps to <undefined>
+2024-09-04 11:51:28,655 - INFO - Extracting product with ASIN: B0DC2572G5
+2024-09-04 11:51:42,236 - INFO - Extracting product with ASIN: B0DF2KZ977
+2024-09-04 11:51:55,490 - ERROR - 'charmap' codec can't encode character '\u3010' in position 239: character maps to <undefined>
+2024-09-04 11:51:55,490 - INFO - Extracting product with ASIN: B0D7N6YSPH
+2024-09-04 11:52:09,449 - INFO - Extracting product with ASIN: B0DCNGLFF5
+2024-09-04 11:52:22,785 - ERROR - 'charmap' codec can't encode character '\u3010' in position 248: character maps to <undefined>
+2024-09-04 11:52:22,786 - INFO - Extracting product with ASIN: B0D9CDHTCQ
+2024-09-04 11:52:36,365 - INFO - Extracting product with ASIN: B0DDLGXRYJ
+2024-09-04 11:52:49,944 - INFO - Extracting product with ASIN: B0D8J7TBR8
+2024-09-04 11:53:03,621 - INFO - Extracting product with ASIN: B0D6FPMKJR
+2024-09-04 11:53:17,321 - INFO - Extracting product with ASIN: B0DC2F9N1C
+2024-09-04 11:53:30,952 - INFO - Extracting product with ASIN: B0D9D1FSNB
+2024-09-04 11:53:44,382 - ERROR - 'charmap' codec can't encode character '\u3010' in position 212: character maps to <undefined>
+2024-09-04 11:53:44,382 - INFO - Extracting product with ASIN: B0DBRGRY4M
+2024-09-04 11:53:57,357 - INFO - Extracting product with ASIN: B0DDHP71H6
+2024-09-04 11:54:10,941 - ERROR - 'charmap' codec can't encode character '\u3010' in position 223: character maps to <undefined>
+2024-09-04 11:54:10,941 - INFO - Extracting product with ASIN: B0DCNXNXFG
+2024-09-04 11:54:24,364 - ERROR - 'charmap' codec can't encode character '\u3010' in position 244: character maps to <undefined>
+2024-09-04 11:54:24,365 - INFO - Extracting product with ASIN: B0DDLY166Y
+2024-09-04 11:54:37,442 - INFO - Extracting product with ASIN: B0DFMT9QXM
+2024-09-04 11:54:50,551 - INFO - Extracting product with ASIN: B0D7QPXH5P
+2024-09-04 11:55:04,798 - INFO - Extracting product with ASIN: B0DBMYHQ4S
+2024-09-04 11:55:19,420 - INFO - Extracting product with ASIN: B0D9C7HPNM
+2024-09-04 11:55:33,550 - INFO - Extracting product with ASIN: B0DBLQMYFP
+2024-09-04 11:55:49,157 - INFO - Extracting product with ASIN: B0DDCVBM7L
+2024-09-04 11:56:08,497 - INFO - Extracting product with ASIN: B0D8LJWPPR
+2024-09-04 11:56:22,053 - ERROR - 'charmap' codec can't encode character '\u200e' in position 142: character maps to <undefined>
+2024-09-04 11:56:22,053 - INFO - Extracting product with ASIN: B0D98MJG34
+2024-09-04 11:56:36,237 - INFO - Extracting product with ASIN: B0D7XNJ398
+2024-09-04 11:56:49,095 - INFO - Extracting product with ASIN: B0D8M49JQS
+2024-09-04 11:57:02,733 - ERROR - 'charmap' codec can't encode character '\u3010' in position 221: character maps to <undefined>
+2024-09-04 11:57:02,733 - INFO - Extracting product with ASIN: B0DD3ZNH6Q
+2024-09-04 11:57:16,026 - INFO - Extracting product with ASIN: B0DD3X6VJ7
+2024-09-04 11:57:29,376 - INFO - Extracting product with ASIN: B0D796C1GW
+2024-09-04 11:57:43,409 - INFO - Extracting product with ASIN: B0D6CWK5ZS
+2024-09-04 11:57:57,591 - INFO - Extracting product with ASIN: B0DBVXJRKF
+2024-09-04 11:58:10,830 - INFO - Extracting product with ASIN: B0D79Y3P6D
+2024-09-04 11:58:24,438 - INFO - Extracting product with ASIN: B0D5YGM6FT
+2024-09-04 11:58:40,111 - INFO - Extracting product with ASIN: B0DCX8BXZW
+2024-09-04 11:58:54,955 - INFO - Extracting product with ASIN: B0DCCFHR9F
+2024-09-04 11:59:09,306 - INFO - Extracting product with ASIN: B0DBLRD5NB
+2024-09-04 11:59:23,033 - INFO - Extracting product with ASIN: B0DBJ659BV
+2024-09-04 11:59:36,220 - INFO - Extracting product with ASIN: B0DBLQ5F3X
+2024-09-04 11:59:49,955 - ERROR - 'charmap' codec can't encode character '\u3010' in position 182: character maps to <undefined>
+2024-09-04 11:59:49,955 - INFO - Extracting product with ASIN: B0DBLNWH19
+2024-09-04 12:00:03,192 - ERROR - 'charmap' codec can't encode character '\u3010' in position 184: character maps to <undefined>
+2024-09-04 12:00:03,193 - INFO - Extracting product with ASIN: B0D98LV7KK
+2024-09-04 12:00:17,362 - INFO - Extracting product with ASIN: B0D6JCJW63
+2024-09-04 12:00:30,731 - INFO - Extracting product with ASIN: B0DBN8DT2H
+2024-09-04 12:00:44,661 - INFO - Extracting product with ASIN: B0D9WRL34R
+2024-09-04 12:00:58,984 - INFO - Extracting product with ASIN: B0DBN154DS
+2024-09-04 12:01:12,315 - INFO - Extracting product with ASIN: B0D88VCT2L
+2024-09-04 12:01:26,009 - ERROR - 'charmap' codec can't encode character '\u3010' in position 479: character maps to <undefined>
+2024-09-04 12:01:26,009 - INFO - Extracting product with ASIN: B0D8WSH3CN
+2024-09-04 12:01:39,827 - INFO - Extracting product with ASIN: B0DFMNF3MH
+2024-09-04 12:01:52,741 - INFO - Extracting product with ASIN: B0DF54TLWD
+2024-09-04 12:02:06,065 - INFO - Extracting product with ASIN: B09XBFSHBY
+2024-09-04 12:02:19,972 - ERROR - 'charmap' codec can't encode character '\u200e' in position 135: character maps to <undefined>
+2024-09-04 12:02:19,973 - INFO - Extracting product with ASIN: B0DC9X6HDY
+2024-09-04 12:02:34,992 - ERROR - 'charmap' codec can't encode character '\u3010' in position 245: character maps to <undefined>
+2024-09-04 12:02:34,993 - INFO - Extracting product with ASIN: B0D6J5PJL9
+2024-09-04 12:02:49,092 - INFO - Extracting product with ASIN: B0CM3CCK9L
+2024-09-04 12:03:03,788 - INFO - Extracting product with ASIN: B0DD7S6DXC
+2024-09-04 12:03:17,578 - INFO - Extracting product with ASIN: B0D83WW7RM
+2024-09-04 12:03:32,696 - INFO - Extracting product with ASIN: B0DBNHW8L7
+2024-09-04 12:03:46,102 - INFO - Extracting product with ASIN: B0D88ZVHGV
+2024-09-04 12:04:00,122 - ERROR - 'charmap' codec can't encode character '\u3010' in position 233: character maps to <undefined>
+2024-09-04 12:04:00,123 - INFO - Extracting product with ASIN: B0DBVVN4PB
+2024-09-04 12:04:14,082 - INFO - Extracting product with ASIN: B0DF4X42S9
+2024-09-04 12:04:28,111 - INFO - Extracting product with ASIN: B0D9LWKFGR
+2024-09-04 12:04:43,476 - INFO - Extracted 46/60 products of category Renewed Laptops
+2024-09-04 12:04:43,476 - WARNING - Cannot extract all products of category Renewed Laptops
+2024-09-04 12:05:33,455 - INFO - No 'Next page' button to click
+2024-09-04 12:05:33,455 - INFO - Extracting product with ASIN: B0D9CFFCFJ
+2024-09-04 12:05:48,927 - INFO - Extracting product with ASIN: B0D7J5GH3Q
+2024-09-04 12:06:03,206 - INFO - Extracting product with ASIN: B0D81Z7TP6
+2024-09-04 12:06:18,147 - INFO - Extracting product with ASIN: B0D7J5WQV2
+2024-09-04 12:06:35,200 - INFO - Extracting product with ASIN: B0D7J2B6HX
+2024-09-04 12:06:49,410 - INFO - Extracting product with ASIN: B0D7J4N212
+2024-09-04 12:07:03,975 - INFO - Extracting product with ASIN: B0D22FYLXJ
+2024-09-04 12:07:19,639 - INFO - Extracting product with ASIN: B0D7J4NYRX
+2024-09-04 12:07:34,068 - INFO - Extracting product with ASIN: B0D7J395JK
+2024-09-04 12:07:47,771 - INFO - Extracting product with ASIN: B0D7J53Z9G
+2024-09-04 12:08:02,525 - INFO - Extracting product with ASIN: B0D7QX9JG1
+2024-09-04 12:08:18,056 - ERROR - 'charmap' codec can't encode character '\U0001f48e' in position 249: character maps to <undefined>
+2024-09-04 12:08:18,056 - INFO - Extracting product with ASIN: B0D9C9MBDN
+2024-09-04 12:08:35,831 - INFO - Extracted 11/12 products of category Renewed Musical Instruments
+2024-09-04 12:08:35,832 - WARNING - Cannot extract all products of category Renewed Musical Instruments
+2024-09-04 12:09:51,017 - INFO - No 'Next page' button to click
+2024-09-04 12:09:51,017 - INFO - Extracting product with ASIN: B0D6DJJGVZ
+2024-09-04 12:10:05,855 - INFO - Extracting product with ASIN: B0DCPBWR7R
+2024-09-04 12:10:19,474 - INFO - Extracting product with ASIN: B0D9MSYCHS
+2024-09-04 12:10:33,905 - INFO - Extracting product with ASIN: B0D9M33FPQ
+2024-09-04 12:10:54,681 - INFO - Extracting product with ASIN: B0D71LYLPK
+2024-09-04 12:11:14,226 - INFO - Extracting product with ASIN: B0D9RJW6R4
+2024-09-04 12:11:30,097 - INFO - Extracting product with ASIN: B0DBGP2GN9
+2024-09-04 12:11:49,584 - INFO - Extracting product with ASIN: B0DC8B6GGZ
+2024-09-04 12:12:06,042 - INFO - Extracting product with ASIN: B0DBRH4YPK
+2024-09-04 12:12:25,330 - INFO - Extracting product with ASIN: B0DDZXZC5F
+2024-09-04 12:12:41,724 - INFO - Extracting product with ASIN: B0DBJBBXPV
+2024-09-04 12:12:58,271 - INFO - Extracting product with ASIN: B0DB6GVGNB
+2024-09-04 12:13:17,459 - INFO - Extracting product with ASIN: B0D9PBKCLN
+2024-09-04 12:13:33,785 - INFO - Extracting product with ASIN: B0D6C4PBH1
+2024-09-04 12:13:51,211 - ERROR - 'charmap' codec can't encode character '\u03bc' in position 165: character maps to <undefined>
+2024-09-04 12:13:51,212 - INFO - Extracting product with ASIN: B0D6PFLB94
+2024-09-04 12:14:05,110 - INFO - Extracting product with ASIN: B0D6CCK63N
+2024-09-04 12:14:20,827 - INFO - Extracting product with ASIN: B0D9PKDT4P
+2024-09-04 12:14:44,202 - INFO - Extracted 16/17 products of category Renewed Patio, Lawn & Garden
+2024-09-04 12:14:44,203 - WARNING - Cannot extract all products of category Renewed Patio, Lawn & Garden
+2024-09-04 12:15:47,153 - INFO - No 'Next page' button to click
+2024-09-04 12:15:47,153 - INFO - Extracting product with ASIN: B0D8MNT4X5
+2024-09-04 12:16:05,924 - INFO - Extracting product with ASIN: B0D93H2XQL
+2024-09-04 12:16:24,506 - INFO - Extracting product with ASIN: B0D841LZ1R
+2024-09-04 12:16:44,793 - ERROR - 'charmap' codec can't encode character '\u2074' in position 1260: character maps to <undefined>
+2024-09-04 12:16:44,793 - INFO - Extracting product with ASIN: B0D9YXX1V4
+2024-09-04 12:17:01,233 - INFO - Extracting product with ASIN: B0DF9KL9G1
+2024-09-04 12:17:17,238 - INFO - Extracting product with ASIN: B0DF9F6SV8
+2024-09-04 12:17:32,831 - INFO - Extracting product with ASIN: B0D94Q6NM1
+2024-09-04 12:17:49,117 - INFO - Extracting product with ASIN: B0DF9NJHS3
+2024-09-04 12:18:05,173 - INFO - Extracting product with ASIN: B091NY53BP
+2024-09-04 12:18:23,564 - INFO - Extracting product with ASIN: B0DD26PJ2L
+2024-09-04 12:18:39,824 - INFO - Extracting product with ASIN: B0DCLRPK4R
+2024-09-04 12:18:57,893 - INFO - Extracting product with ASIN: B0D9YT5LYY
+2024-09-04 12:19:13,629 - INFO - Extracting product with ASIN: B0DD212MVL
+2024-09-04 12:19:29,215 - INFO - Extracting product with ASIN: B0D6HX7B9V
+2024-09-04 12:19:49,301 - INFO - Extracting product with ASIN: B0DD28FD8R
+2024-09-04 12:20:03,455 - INFO - Extracting product with ASIN: B0DCDDMDYL
+2024-09-04 12:20:18,385 - INFO - Extracting product with ASIN: B0D21LHTSY
+2024-09-04 12:20:37,699 - INFO - Extracting product with ASIN: B0D15YL8RD
+2024-09-04 12:20:55,964 - INFO - Extracting product with ASIN: B0D212ZYD5
+2024-09-04 12:21:13,147 - INFO - Extracting product with ASIN: B0D9PMDNZ6
+2024-09-04 12:21:30,451 - INFO - Extracting product with ASIN: B0D9YRW67H
+2024-09-04 12:21:44,569 - INFO - Extracting product with ASIN: B0D21T8PJY
+2024-09-04 12:22:01,391 - INFO - Extracting product with ASIN: B0D21MXTZK
+2024-09-04 12:22:17,220 - INFO - Extracting product with ASIN: B0D7WFJ74B
+2024-09-04 12:22:32,913 - INFO - Extracting product with ASIN: B0D223N5ST
+2024-09-04 12:22:51,810 - INFO - Extracting product with ASIN: B0D755ZYB3
+2024-09-04 12:23:07,066 - INFO - Extracting product with ASIN: B0D7X2CFGV
+2024-09-04 12:23:22,229 - ERROR - 'charmap' codec can't encode character '\u215b' in position 987: character maps to <undefined>
+2024-09-04 12:23:22,229 - INFO - Extracting product with ASIN: B0D2368PZK
+2024-09-04 12:23:37,782 - INFO - Extracted 26/28 products of category Renewed Portable Bluetooth Speakers
+2024-09-04 12:23:37,782 - WARNING - Cannot extract all products of category Renewed Portable Bluetooth Speakers
+2024-09-04 12:24:33,750 - INFO - No 'Next page' button to click
+2024-09-04 12:24:33,750 - INFO - Extracting product with ASIN: B0DD8WS476
+2024-09-04 12:24:45,493 - INFO - Extracting product with ASIN: B0DCGQQ4Z7
+2024-09-04 12:25:04,198 - INFO - Extracting product with ASIN: B0D741HD54
+2024-09-04 12:25:24,936 - INFO - Extracting product with ASIN: B0DB3GLGCN
+2024-09-04 12:25:42,168 - INFO - Extracting product with ASIN: B0D7WZ3T8M
+2024-09-04 12:25:59,148 - INFO - Extracting product with ASIN: B0DCC571VV
+2024-09-04 12:26:15,467 - INFO - Extracting product with ASIN: B0D7D4W6BP
+2024-09-04 12:26:30,455 - INFO - Extracting product with ASIN: B0D6NJYS8J
+2024-09-04 12:26:45,544 - INFO - Extracting product with ASIN: B0D7J52ZR6
+2024-09-04 12:27:01,158 - INFO - Extracting product with ASIN: B0DDZ6DK4V
+2024-09-04 12:27:19,157 - INFO - Extracting product with ASIN: B0D9WX4PYT
+2024-09-04 12:27:36,338 - INFO - Extracting product with ASIN: B0D94W1KF6
+2024-09-04 12:27:50,727 - ERROR - list index out of range
+2024-09-04 12:27:50,728 - INFO - Extracting product with ASIN: B0D69NPK8W
+2024-09-04 12:28:07,359 - INFO - Extracting product with ASIN: B0D952B967
+2024-09-04 12:28:23,349 - INFO - Extracting product with ASIN: B0D94SDB9M
+2024-09-04 12:28:40,755 - INFO - Extracting product with ASIN: B0DCCDWZS8
+2024-09-04 12:28:54,734 - INFO - Extracting product with ASIN: B0D9PLLCGW
+2024-09-04 12:29:10,694 - INFO - Extracting product with ASIN: B0D9529FFF
+2024-09-04 12:29:25,058 - INFO - Extracting product with ASIN: B0D98JRJ8J
+2024-09-04 12:29:39,105 - INFO - Extracting product with ASIN: B0DD85P5YV
+2024-09-04 12:29:52,126 - INFO - Extracting product with ASIN: B0D9535Z7C
+2024-09-04 12:30:09,701 - INFO - Extracting product with ASIN: B0D88S3V1G
+2024-09-04 12:30:23,363 - INFO - Extracting product with ASIN: B0D9CBWCVH
+2024-09-04 12:30:38,261 - INFO - Extracting product with ASIN: B0DBSNQWZK
+2024-09-04 12:30:56,192 - INFO - Extracting product with ASIN: B0DB69VP36
+2024-09-04 12:31:11,018 - INFO - Extracting product with ASIN: B0DDCW2CPF
+2024-09-04 12:31:24,627 - INFO - Extracting product with ASIN: B0D6SC1QGP
+2024-09-04 12:31:39,566 - INFO - Extracting product with ASIN: B0D6SJ9X9J
+2024-09-04 12:31:55,266 - INFO - Extracting product with ASIN: B0D8JZLZLQ
+2024-09-04 12:32:10,766 - INFO - Extracting product with ASIN: B0D69T46N8
+2024-09-04 12:32:26,789 - INFO - Extracted 29/30 products of category Renewed Smartphones
+2024-09-04 12:32:26,789 - WARNING - Cannot extract all products of category Renewed Smartphones
+2024-09-04 12:33:17,105 - INFO - No 'Next page' button to click
+2024-09-04 12:33:17,105 - INFO - Extracting product with ASIN: B0D9SQKJ8D
+2024-09-04 12:33:32,691 - INFO - Extracting product with ASIN: B0DD6ZDY3S
+2024-09-04 12:33:49,008 - INFO - Extracting product with ASIN: B0D9L13HXL
+2024-09-04 12:34:05,280 - INFO - Extracting product with ASIN: B0DBRT95D5
+2024-09-04 12:34:21,585 - INFO - Extracting product with ASIN: B0D7DS65JT
+2024-09-04 12:34:35,558 - INFO - Extracting product with ASIN: B0D8L4F1FS
+2024-09-04 12:34:52,497 - INFO - Extracting product with ASIN: B0D8NJ8L9K
+2024-09-04 12:35:06,241 - INFO - Extracting product with ASIN: B0D8JZ8S12
+2024-09-04 12:35:21,728 - INFO - Extracting product with ASIN: B0D8N1CYPZ
+2024-09-04 12:35:35,489 - INFO - Extracting product with ASIN: B0D8K2R436
+2024-09-04 12:35:48,468 - INFO - Extracting product with ASIN: B0D8BWLLRM
+2024-09-04 12:36:04,597 - INFO - Extracting product with ASIN: B0D79FQWJJ
+2024-09-04 12:36:17,917 - INFO - Extracting product with ASIN: B0D7NY47FV
+2024-09-04 12:36:33,358 - INFO - Extracted 13/13 products of category Renewed Smartwatches
+2024-09-04 12:37:20,711 - INFO - No 'Next page' button to click
+2024-09-04 12:37:20,711 - INFO - Extracting product with ASIN: B0DF2S4Z8G
+2024-09-04 12:37:32,909 - INFO - Extracting product with ASIN: B0D79HLLD1
+2024-09-04 12:37:47,739 - INFO - Extracted 2/2 products of category Renewed Sports & Outdoors
+2024-09-04 12:38:36,773 - INFO - No 'Next page' button to click
+2024-09-04 12:38:36,773 - INFO - Extracting product with ASIN: B0DBRC7QMC
+2024-09-04 12:38:52,239 - INFO - Extracting product with ASIN: B0D7QTD5CT
+2024-09-04 12:39:07,312 - INFO - Extracting product with ASIN: B0DDKSZ87V
+2024-09-04 12:39:23,560 - INFO - Extracting product with ASIN: B0DD3YK944
+2024-09-04 12:39:38,005 - INFO - Extracting product with ASIN: B0D8XY2XYM
+2024-09-04 12:39:53,426 - ERROR - 'charmap' codec can't encode character '\u3010' in position 228: character maps to <undefined>
+2024-09-04 12:39:53,426 - INFO - Extracting product with ASIN: B0DC6DB6RP
+2024-09-04 12:40:07,851 - INFO - Extracting product with ASIN: B0DD5PZ8NL
+2024-09-04 12:40:22,120 - INFO - Extracting product with ASIN: B0D9WVHT6Z
+2024-09-04 12:40:35,426 - INFO - Extracting product with ASIN: B0DD3X7Z8R
+2024-09-04 12:40:48,901 - ERROR - 'charmap' codec can't encode character '\uff1a' in position 1020: character maps to <undefined>
+2024-09-04 12:40:48,902 - INFO - Extracting product with ASIN: B0D71LJW9V
+2024-09-04 12:41:04,280 - INFO - Extracting product with ASIN: B0DD3WFW45
+2024-09-04 12:41:17,967 - INFO - Extracting product with ASIN: B0DDXY3Y3Y
+2024-09-04 12:41:32,507 - ERROR - 'charmap' codec can't encode character '\u2075' in position 863: character maps to <undefined>
+2024-09-04 12:41:32,507 - INFO - Extracting product with ASIN: B0CNXYZQWQ
+2024-09-04 12:41:47,931 - INFO - Extracting product with ASIN: B0DC6HWX5K
+2024-09-04 12:42:02,810 - INFO - Extracting product with ASIN: B0DDLY1QYQ
+2024-09-04 12:42:18,071 - ERROR - 'charmap' codec can't encode character '\u2011' in position 1075: character maps to <undefined>
+2024-09-04 12:42:18,071 - INFO - Extracting product with ASIN: B0CNY2W16Y
+2024-09-04 12:42:33,259 - INFO - Extracting product with ASIN: B0D9J3T56R
+2024-09-04 12:42:47,003 - INFO - Extracting product with ASIN: B0CNY2BQ1W
+2024-09-04 12:43:01,586 - INFO - Extracting product with ASIN: B0CNY1KSFV
+2024-09-04 12:43:15,772 - INFO - Extracted 15/19 products of category Renewed Tablets
+2024-09-04 12:43:15,772 - WARNING - Cannot extract all products of category Renewed Tablets
+2024-09-04 12:44:06,104 - INFO - No 'Next page' button to click
+2024-09-04 12:44:06,104 - INFO - Extracting product with ASIN: B0D94WL44L
+2024-09-04 12:44:17,057 - INFO - Extracting product with ASIN: B0D69MXP6B
+2024-09-04 12:44:32,152 - INFO - Extracting product with ASIN: B0D9LFNLDM
+2024-09-04 12:44:47,310 - INFO - Extracting product with ASIN: B0DBV9B2KS
+2024-09-04 12:45:02,106 - INFO - Extracting product with ASIN: B0D9JHJCPQ
+2024-09-04 12:45:17,464 - INFO - Extracting product with ASIN: B0D6KZ791Q
+2024-09-04 12:45:31,721 - INFO - Extracting product with ASIN: B0D3VM64YD
+2024-09-04 12:45:46,518 - INFO - Extracting product with ASIN: B0D6L25P2T
+2024-09-04 12:46:00,584 - INFO - Extracting product with ASIN: B0DBDXJZ1N
+2024-09-04 12:46:15,152 - INFO - Extracting product with ASIN: B0D9HJTL9T
+2024-09-04 12:46:29,926 - INFO - Extracting product with ASIN: B0DBVKRFT3
+2024-09-04 12:46:44,688 - INFO - Extracted 11/11 products of category Renewed Tools & Home Improvement
+2024-09-04 12:47:39,706 - INFO - No 'Next page' button to click
+2024-09-04 12:47:39,706 - INFO - Extracting product with ASIN: B0D4MJH9K4
+2024-09-04 12:47:54,394 - INFO - Extracting product with ASIN: B0D54PT8HJ
+2024-09-04 12:48:07,970 - INFO - Extracting product with ASIN: B0DBKB33JK
+2024-09-04 12:48:21,746 - INFO - Extracting product with ASIN: B0D35VYF5W
+2024-09-04 12:48:35,637 - INFO - Extracting product with ASIN: B0D8RLJL79
+2024-09-04 12:48:49,871 - INFO - Extracting product with ASIN: B0DCKDF4HX
+2024-09-04 12:49:03,439 - INFO - Extracting product with ASIN: B0DCLYBTDM
+2024-09-04 12:49:16,261 - INFO - Extracting product with ASIN: B0D4B6N1QZ
+2024-09-04 12:49:29,479 - INFO - Extracting product with ASIN: B0DCL7B19N
+2024-09-04 12:49:42,302 - INFO - Extracting product with ASIN: B0D28KSDKM
+2024-09-04 12:49:56,514 - INFO - Extracting product with ASIN: B0D6GYFWTV
+2024-09-04 12:50:10,897 - INFO - Extracting product with ASIN: B0DB4TC73M
+2024-09-04 12:50:23,837 - INFO - Extracting product with ASIN: B0D6PMCFVV
+2024-09-04 12:50:37,085 - INFO - Extracting product with ASIN: B0D92VTHQY
+2024-09-04 12:50:50,412 - INFO - Extracting product with ASIN: B0D1S944DG
+2024-09-04 12:51:03,873 - INFO - Extracting product with ASIN: B0D6PLL5T9
+2024-09-04 12:51:17,853 - INFO - Extracting product with ASIN: B0D7PJLPMN
+2024-09-04 12:51:30,251 - INFO - Extracting product with ASIN: B0DD11QFMP
+2024-09-04 12:51:43,204 - INFO - Extracting product with ASIN: B0D6SK2XCC
+2024-09-04 12:51:57,000 - INFO - Extracted 19/19 products of category Renewed Video Game Consoles & Accessories
