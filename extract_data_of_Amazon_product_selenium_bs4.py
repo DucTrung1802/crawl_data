@@ -951,9 +951,9 @@ def main():
     # )
 
     _3_layer_category = Category(
-        url="https://www.amazon.com/gp/new-releases/amazon-devices/ref=zg_bsnr_nav_amazon-devices_0",
+        url="https://www.amazon.com/gp/new-releases/amazon-renewed/ref=zg_bsnr_nav_amazon-renewed_0",
         category_asin=-1,
-        category_name="Amazon Devices & Accessories",
+        category_name="Amazon Renewed",
     )
 
     _3_layer_category = (
@@ -963,7 +963,7 @@ def main():
     )
 
     _3_layer_category = extractor.output_to_json(
-        _3_layer_category, "New Releases in Amazon Devices & Accessories"
+        _3_layer_category, "New Releases in Amazon Renewed"
     )
 
 
