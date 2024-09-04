@@ -197,7 +197,7 @@ class Extactor:
             case LogType.INFO:
                 logging.info(message)
             case LogType.WARNNING:
-                logging.warn(message)
+                logging.warning(message)
             case LogType.ERROR:
                 logging.error(message)
             case LogType.CRITICAL:
