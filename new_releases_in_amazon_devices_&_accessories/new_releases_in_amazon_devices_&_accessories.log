@@ -1,0 +1,154 @@
+2024-09-03 12:36:16,385 - INFO - Extracting product with ASIN: B0BFC7WQ6R
+2024-09-03 12:36:33,698 - INFO - Extracting product with ASIN: B0CG2VS5FD
+2024-09-03 12:36:50,501 - INFO - Extracting product with ASIN: B0BWWZXWPL
+2024-09-03 12:37:05,462 - INFO - Extracting product with ASIN: B0BFCBKXWL
+2024-09-03 12:37:20,070 - INFO - Extracting product with ASIN: B0BFC8DR7C
+2024-09-03 12:37:34,642 - INFO - Extracting product with ASIN: B0BZWRSRWV
+2024-09-03 12:37:49,075 - INFO - Extracting product with ASIN: B0CG2WNRHF
+2024-09-03 12:38:03,321 - INFO - Extracting product with ASIN: B0BXFWJ63S
+2024-09-03 12:38:18,164 - INFO - Extracting product with ASIN: B0CTPTRW8G
+2024-09-03 12:38:32,140 - INFO - Extracting product with ASIN: B0CTPHK2R7
+2024-09-03 12:38:46,347 - INFO - Extracting product with ASIN: B0BFCB5PNY
+2024-09-03 12:38:59,312 - INFO - Extracting product with ASIN: B0CBL57VRT
+2024-09-03 12:39:13,107 - INFO - Extracting product with ASIN: B0BXLZHDNC
+2024-09-03 12:39:27,310 - INFO - Extracting product with ASIN: B0C6WGMLFY
+2024-09-03 12:39:40,942 - INFO - Extracting product with ASIN: B0C6WGP77V
+2024-09-03 12:39:53,960 - INFO - Extracting product with ASIN: B0CBL72HYD
+2024-09-03 12:40:07,840 - INFO - Extracting product with ASIN: B09TQ2YRFM
+2024-09-03 12:40:24,269 - INFO - Extracting product with ASIN: B0C6WJ9HQN
+2024-09-03 12:40:37,529 - INFO - Extracting product with ASIN: B09TQ1QSSK
+2024-09-03 12:40:52,051 - INFO - Extracting product with ASIN: B0BH7B6Q91
+2024-09-03 12:41:06,656 - INFO - Extracting product with ASIN: B0CRLZY62Y
+2024-09-03 12:41:21,445 - INFO - Extracting product with ASIN: B0CRMD8WWL
+2024-09-03 12:41:36,375 - INFO - Extracting product with ASIN: B0BZ3XY6QB
+2024-09-03 12:41:51,020 - INFO - Extracting product with ASIN: B0BZ3X7Z7M
+2024-09-03 12:42:04,502 - INFO - Extracting product with ASIN: B0CRMD7JGD
+2024-09-03 12:42:18,674 - INFO - Extracting product with ASIN: B0CRM2S8QC
+2024-09-03 12:42:32,581 - INFO - Extracting product with ASIN: B0CKTV3Q27
+2024-09-03 12:42:45,930 - INFO - Extracting product with ASIN: B0CMW3W749
+2024-09-03 12:42:59,907 - INFO - Extracting product with ASIN: B096L8B1SC
+2024-09-03 12:43:14,733 - INFO - Extracting product with ASIN: B0BH73BDVV
+2024-09-03 12:43:28,595 - INFO - Extracting product with ASIN: B0CRMBMH6F
+2024-09-03 12:43:42,847 - INFO - Extracting product with ASIN: B0CRLZMDX4
+2024-09-03 12:43:56,902 - INFO - Extracting product with ASIN: B0BFC9WFKG
+2024-09-03 12:44:09,646 - INFO - Extracting product with ASIN: B099XC3GPC
+2024-09-03 12:44:27,042 - INFO - Extracting product with ASIN: B0CGW4FYQG
+2024-09-03 12:44:40,913 - INFO - Extracting product with ASIN: B0D1S8WQKY
+2024-09-03 12:44:57,477 - INFO - Extracting product with ASIN: B0CZGZ426C
+2024-09-03 12:45:13,618 - ERROR - 'charmap' codec can't encode character '\u3002' in position 210: character maps to <undefined>
+2024-09-03 12:45:13,620 - INFO - Extracting product with ASIN: B0CGW4W9WJ
+2024-09-03 12:45:27,470 - INFO - Extracting product with ASIN: B0CGW4HFYN
+2024-09-03 12:45:41,391 - INFO - Extracting product with ASIN: B0CGW2KWZF
+2024-09-03 12:45:57,136 - INFO - Extracting product with ASIN: B0BL5NZJZM
+2024-09-03 12:46:11,938 - INFO - Extracting product with ASIN: B0B5VLTC6D
+2024-09-03 12:46:26,666 - INFO - Extracting product with ASIN: B0D1XGX6GT
+2024-09-03 12:46:42,399 - ERROR - 'charmap' codec can't encode character '\uff0c' in position 71: character maps to <undefined>
+2024-09-03 12:46:42,400 - INFO - Extracting product with ASIN: B0D6851Y2H
+2024-09-03 12:46:58,016 - INFO - Extracting product with ASIN: B0CGWSQJ29
+2024-09-03 12:47:11,915 - INFO - Extracting product with ASIN: B0BL6BRG1H
+2024-09-03 12:47:26,435 - INFO - Extracting product with ASIN: B0CGY3HDNZ
+2024-09-03 12:47:40,241 - INFO - Extracting product with ASIN: B0BL68BNPC
+2024-09-03 12:47:54,082 - INFO - Extracting product with ASIN: B0D6S26SCC
+2024-09-03 12:48:07,170 - INFO - Extracting product with ASIN: B0BFCBYTKG
+2024-09-03 12:48:19,873 - INFO - Extracting product with ASIN: B0BL5PGB8K
+2024-09-03 12:48:33,722 - INFO - Extracting product with ASIN: B0CSTGJTWS
+2024-09-03 12:48:47,098 - INFO - Extracted 50/52 products of category Amazon Devices & Accessories
+2024-09-03 12:48:47,101 - WARNING - Cannot extract all products of category Amazon Devices & Accessories
+2024-09-03 12:49:39,837 - INFO - No 'Next page' button to click
+2024-09-03 12:49:39,838 - INFO - Extracting product with ASIN: B0CTPTRW8G
+2024-09-03 12:49:53,774 - INFO - Extracting product with ASIN: B0BFCB5PNY
+2024-09-03 12:50:06,520 - INFO - Extracting product with ASIN: B0CTPHK2R7
+2024-09-03 12:50:20,759 - INFO - Extracting product with ASIN: B0CBL57VRT
+2024-09-03 12:50:34,678 - INFO - Extracting product with ASIN: B0C6WGMLFY
+2024-09-03 12:50:48,295 - INFO - Extracting product with ASIN: B0CBL72HYD
+2024-09-03 12:51:01,969 - INFO - Extracting product with ASIN: B0C6WGP77V
+2024-09-03 12:51:14,948 - INFO - Extracting product with ASIN: B0C6WJ9HQN
+2024-09-03 12:51:28,162 - INFO - Extracting product with ASIN: B0BZ3X7Z7M
+2024-09-03 12:51:42,105 - INFO - Extracting product with ASIN: B0BZ3XY6QB
+2024-09-03 12:51:55,844 - INFO - Extracting product with ASIN: B0CMW3W749
+2024-09-03 12:52:09,210 - INFO - Extracting product with ASIN: B0BFC9WFKG
+2024-09-03 12:52:20,018 - INFO - Extracting product with ASIN: B0CGW4FYQG
+2024-09-03 12:52:34,727 - INFO - Extracting product with ASIN: B0CZGZ426C
+2024-09-03 12:52:49,491 - ERROR - 'charmap' codec can't encode character '\u3002' in position 214: character maps to <undefined>
+2024-09-03 12:52:49,491 - INFO - Extracting product with ASIN: B0CGW4W9WJ
+2024-09-03 12:53:03,385 - INFO - Extracting product with ASIN: B0CGW2KWZF
+2024-09-03 12:53:17,222 - INFO - Extracting product with ASIN: B0CGW4HFYN
+2024-09-03 12:53:31,046 - INFO - Extracting product with ASIN: B0CGWSQJ29
+2024-09-03 12:53:44,849 - INFO - Extracting product with ASIN: B0CGY3HDNZ
+2024-09-03 12:53:58,426 - INFO - Extracting product with ASIN: B0D6S26SCC
+2024-09-03 12:54:11,528 - INFO - Extracting product with ASIN: B0BFCBYTKG
+2024-09-03 12:54:24,268 - INFO - Extracting product with ASIN: B0CSTGJTWS
+2024-09-03 12:54:37,250 - INFO - Extracted 21/22 products of category Amazon Device Accessories
+2024-09-03 12:54:37,251 - WARNING - Cannot extract all products of category Amazon Device Accessories
+2024-09-03 12:55:23,854 - INFO - No 'Next page' button to click
+2024-09-03 12:55:23,854 - INFO - Extracting product with ASIN: B0CBL72HYD
+2024-09-03 12:55:37,653 - INFO - Extracting product with ASIN: B0CGW4FYQG
+2024-09-03 12:55:51,904 - INFO - Extracting product with ASIN: B0CGW4W9WJ
+2024-09-03 12:56:06,034 - INFO - Extracting product with ASIN: B0CGW2KWZF
+2024-09-03 12:56:19,812 - INFO - Extracting product with ASIN: B0CGW4HFYN
+2024-09-03 12:56:33,476 - INFO - Extracting product with ASIN: B0CGWSQJ29
+2024-09-03 12:56:47,270 - INFO - Extracting product with ASIN: B0CGY3HDNZ
+2024-09-03 12:57:00,989 - INFO - Extracted 7/7 products of category Amazon Device Adapters & Connectors
+2024-09-03 12:57:38,340 - INFO - No 'Next page' button to click
+2024-09-03 12:58:40,232 - INFO - No 'Next page' button to click
+2024-09-03 12:59:47,214 - INFO - No 'Next page' button to click
+2024-09-03 12:59:47,215 - INFO - Extracting product with ASIN: B0C6WGMLFY
+2024-09-03 13:00:00,244 - INFO - Extracting product with ASIN: B0C6WGP77V
+2024-09-03 13:00:13,278 - INFO - Extracting product with ASIN: B0C6WJ9HQN
+2024-09-03 13:00:26,531 - INFO - Extracted 3/3 products of category 
+2024-09-03 13:03:33,220 - INFO - No 'Next page' button to click
+2024-09-03 13:03:33,220 - INFO - Extracting product with ASIN: B0BFCB5PNY
+2024-09-03 13:03:44,070 - INFO - Extracting product with ASIN: B0BFC9WFKG
+2024-09-03 13:03:56,723 - INFO - Extracting product with ASIN: B0BFCBYTKG
+2024-09-03 13:04:09,453 - INFO - Extracted 3/3 products of category All Kindle Protection Plans
+2024-09-03 13:04:54,533 - INFO - No 'Next page' button to click
+2024-09-03 13:05:39,645 - INFO - No 'Next page' button to click
+2024-09-03 13:05:39,645 - INFO - Extracting product with ASIN: B0CZGZ426C
+2024-09-03 13:05:54,172 - ERROR - 'charmap' codec can't encode character '\u3002' in position 206: character maps to <undefined>
+2024-09-03 13:05:54,172 - INFO - Extracting product with ASIN: B0D6S26SCC
+2024-09-03 13:06:06,804 - INFO - Extracted 1/2 products of category Remote Controls
+2024-09-03 13:06:06,805 - WARNING - Cannot extract all products of category Remote Controls
+2024-09-03 13:07:14,888 - INFO - No 'Next page' button to click
+2024-09-03 13:07:14,888 - INFO - Extracting product with ASIN: B0C6WGMLFY
+2024-09-03 13:07:28,018 - INFO - Extracting product with ASIN: B0C6WGP77V
+2024-09-03 13:07:41,610 - INFO - Extracting product with ASIN: B0C6WJ9HQN
+2024-09-03 13:07:54,685 - INFO - Extracted 3/3 products of category All Kindle Skins
+2024-09-03 13:08:38,416 - INFO - No 'Next page' button to click
+2024-09-03 13:08:38,416 - INFO - Extracting product with ASIN: B0C6WGMLFY
+2024-09-03 13:08:51,434 - INFO - Extracting product with ASIN: B0C6WGP77V
+2024-09-03 13:09:04,514 - INFO - Extracting product with ASIN: B0C6WJ9HQN
+2024-09-03 13:09:17,905 - INFO - Extracted 3/3 products of category All Kindle Sleeves
+2024-09-03 13:10:00,289 - INFO - No 'Next page' button to click
+2024-09-03 13:11:04,453 - INFO - No 'Next page' button to click
+2024-09-03 13:11:53,465 - INFO - No 'Next page' button to click
+2024-09-03 13:11:53,466 - INFO - Extracting product with ASIN: B0BFC7WQ6R
+2024-09-03 13:12:08,707 - INFO - Extracting product with ASIN: B0CG2VS5FD
+2024-09-03 13:12:23,328 - INFO - Extracting product with ASIN: B0BWWZXWPL
+2024-09-03 13:12:39,420 - INFO - Extracting product with ASIN: B0BFCBKXWL
+2024-09-03 13:12:54,046 - INFO - Extracting product with ASIN: B0BFC8DR7C
+2024-09-03 13:13:08,510 - INFO - Extracting product with ASIN: B0BZWRLRLK
+2024-09-03 13:13:23,000 - INFO - Extracting product with ASIN: B0CG2WNRHF
+2024-09-03 13:13:37,222 - INFO - Extracting product with ASIN: B0BXFWJ63S
+2024-09-03 13:13:51,167 - INFO - Extracting product with ASIN: B0CTPTRW8G
+2024-09-03 13:14:06,973 - INFO - Extracting product with ASIN: B0CTPHK2R7
+2024-09-03 13:14:20,872 - INFO - Extracting product with ASIN: B0CBL57VRT
+2024-09-03 13:14:34,896 - INFO - Extracting product with ASIN: B0BXLZHDNC
+2024-09-03 13:14:48,777 - INFO - Extracting product with ASIN: B09TQ2YRFM
+2024-09-03 13:15:03,443 - INFO - Extracting product with ASIN: B09TQ1QSSK
+2024-09-03 13:15:17,566 - INFO - Extracting product with ASIN: B0BH7B6Q91
+2024-09-03 13:15:28,656 - INFO - Extracting product with ASIN: B0CRLZY62Y
+2024-09-03 13:15:42,815 - INFO - Extracting product with ASIN: B0CRMD8WWL
+2024-09-03 13:15:56,739 - INFO - Extracting product with ASIN: B0BZ3X7Z7M
+2024-09-03 13:16:10,869 - INFO - Extracting product with ASIN: B0CRMD7JGD
+2024-09-03 13:16:25,319 - INFO - Extracting product with ASIN: B0BZ3XY6QB
+2024-09-03 13:16:38,830 - INFO - Extracting product with ASIN: B0CKTV3Q27
+2024-09-03 13:16:51,965 - INFO - Extracting product with ASIN: B0CRM2S8QC
+2024-09-03 13:17:05,467 - INFO - Extracting product with ASIN: B0CMW3W749
+2024-09-03 13:17:19,257 - INFO - Extracting product with ASIN: B096L8B1SC
+2024-09-03 13:17:33,209 - INFO - Extracting product with ASIN: B0BH73BDVV
+2024-09-03 13:17:47,168 - INFO - Extracting product with ASIN: B0CRLZMDX4
+2024-09-03 13:18:01,012 - INFO - Extracting product with ASIN: B0CRMBMH6F
+2024-09-03 13:18:15,060 - INFO - Extracting product with ASIN: B099XC3GPC
+2024-09-03 13:18:29,155 - INFO - Extracting product with ASIN: B0D1S8WQKY
+2024-09-03 13:18:42,724 - INFO - Extracting product with ASIN: B0CGW4FYQG
+2024-09-03 13:18:56,585 - INFO - Extracted 30/30 products of category Amazon Devices
