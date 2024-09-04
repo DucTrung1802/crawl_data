@@ -1,0 +1,163 @@
+2024-09-04 14:50:11,389 - INFO - Extracting product with ASIN: B0D93V1F1C
+2024-09-04 14:50:52,384 - INFO - Extracting product with ASIN: B0D226TYH6
+2024-09-04 14:51:23,008 - INFO - Extracting product with ASIN: B0DCNWQ7RW
+2024-09-04 14:51:44,743 - ERROR - 'charmap' codec can't encode character '\u2033' in position 1477: character maps to <undefined>
+2024-09-04 14:51:44,743 - INFO - Extracting product with ASIN: B0D4LGW7BY
+2024-09-04 14:52:01,048 - ERROR - 'charmap' codec can't encode character '\u3010' in position 209: character maps to <undefined>
+2024-09-04 14:52:01,049 - INFO - Extracting product with ASIN: B0D967VMY9
+2024-09-04 14:52:17,608 - ERROR - 'charmap' codec can't encode character '\u3010' in position 193: character maps to <undefined>
+2024-09-04 14:52:17,609 - INFO - Extracting product with ASIN: B0D95LVQNG
+2024-09-04 14:52:33,567 - ERROR - 'charmap' codec can't encode character '\u2109' in position 822: character maps to <undefined>
+2024-09-04 14:52:33,569 - INFO - Extracting product with ASIN: B0D7HF1NS6
+2024-09-04 14:52:59,488 - ERROR - 'charmap' codec can't encode character '\u3010' in position 225: character maps to <undefined>
+2024-09-04 14:52:59,488 - INFO - Extracting product with ASIN: B0DDKCG17P
+2024-09-04 14:53:15,569 - ERROR - 'charmap' codec can't encode character '\u3010' in position 158: character maps to <undefined>
+2024-09-04 14:53:15,570 - INFO - Extracting product with ASIN: B0D4TPPLSY
+2024-09-04 14:53:33,578 - ERROR - 'charmap' codec can't encode character '\uff1a' in position 243: character maps to <undefined>
+2024-09-04 14:53:33,579 - INFO - Extracting product with ASIN: B0D3LHW9JL
+2024-09-04 14:53:50,391 - ERROR - 'charmap' codec can't encode character '\u2109' in position 818: character maps to <undefined>
+2024-09-04 14:53:50,392 - INFO - Extracting product with ASIN: B0D4DYQQXH
+2024-09-04 14:54:06,183 - INFO - Extracting product with ASIN: B0D6G6QNH8
+2024-09-04 14:54:23,405 - ERROR - 'charmap' codec can't encode character '\uff1a' in position 243: character maps to <undefined>
+2024-09-04 14:54:23,405 - INFO - Extracting product with ASIN: B0DBHN7WSN
+2024-09-04 14:54:40,764 - ERROR - 'charmap' codec can't encode character '\u3010' in position 222: character maps to <undefined>
+2024-09-04 14:54:40,764 - INFO - Extracting product with ASIN: B0D7H9WSLT
+2024-09-04 14:55:13,352 - ERROR - 'charmap' codec can't encode character '\u3010' in position 236: character maps to <undefined>
+2024-09-04 14:55:13,352 - INFO - Extracting product with ASIN: B0D3Q28D5C
+2024-09-04 14:55:31,352 - ERROR - 'charmap' codec can't encode character '\u3010' in position 232: character maps to <undefined>
+2024-09-04 14:55:31,352 - INFO - Extracting product with ASIN: B0D4YLWQMM
+2024-09-04 14:55:47,948 - INFO - Extracting product with ASIN: B0DFHBG867
+2024-09-04 14:56:04,341 - ERROR - 'charmap' codec can't encode character '\u3010' in position 213: character maps to <undefined>
+2024-09-04 14:56:04,342 - INFO - Extracting product with ASIN: B0D25WPM8Y
+2024-09-04 14:56:23,017 - INFO - Extracting product with ASIN: B0CFTR9LFT
+2024-09-04 14:56:40,614 - INFO - Extracting product with ASIN: B0D9M9P23T
+2024-09-04 14:56:57,287 - ERROR - 'charmap' codec can't encode character '\u3010' in position 192: character maps to <undefined>
+2024-09-04 14:56:57,287 - INFO - Extracting product with ASIN: B0D17V3PM7
+2024-09-04 14:57:14,071 - INFO - Extracting product with ASIN: B0D7GK7GSC
+2024-09-04 14:57:30,359 - ERROR - 'charmap' codec can't encode character '\u3010' in position 230: character maps to <undefined>
+2024-09-04 14:57:30,360 - INFO - Extracting product with ASIN: B0CY26RTDJ
+2024-09-04 14:57:51,522 - INFO - Extracting product with ASIN: B0CJBLTNRL
+2024-09-04 14:58:23,487 - ERROR - 'charmap' codec can't encode character '\U0001f9ca' in position 229: character maps to <undefined>
+2024-09-04 14:58:23,487 - INFO - Extracting product with ASIN: B0DF2S6NFS
+2024-09-04 14:58:41,634 - INFO - Extracting product with ASIN: B0D65G53GV
+2024-09-04 14:58:57,564 - ERROR - 'charmap' codec can't encode character '\u3010' in position 227: character maps to <undefined>
+2024-09-04 14:58:57,564 - INFO - Extracting product with ASIN: B0D95L2LXZ
+2024-09-04 14:59:14,009 - INFO - Extracting product with ASIN: B0D7ZG65QK
+2024-09-04 14:59:30,569 - INFO - Extracting product with ASIN: B0DCF98G4Q
+2024-09-04 14:59:46,864 - INFO - Extracting product with ASIN: B0D14H4YDR
+2024-09-04 15:00:05,031 - ERROR - 'charmap' codec can't encode character '\u3010' in position 225: character maps to <undefined>
+2024-09-04 15:00:05,031 - INFO - Extracting product with ASIN: B0D5H8QSWH
+2024-09-04 15:00:26,701 - INFO - Extracting product with ASIN: B0DDPV2WTQ
+2024-09-04 15:00:44,670 - ERROR - 'charmap' codec can't encode character '\u2033' in position 1254: character maps to <undefined>
+2024-09-04 15:00:44,670 - INFO - Extracting product with ASIN: B0D7ZKPX54
+2024-09-04 15:01:02,286 - INFO - Extracting product with ASIN: B0D1G97NDD
+2024-09-04 15:01:19,793 - INFO - Extracting product with ASIN: B0D4TTPY87
+2024-09-04 15:01:37,267 - INFO - Extracting product with ASIN: B0D9LYC79X
+2024-09-04 15:01:53,894 - ERROR - 'charmap' codec can't encode character '\u2109' in position 621: character maps to <undefined>
+2024-09-04 15:01:53,895 - INFO - Extracting product with ASIN: B0D5XVRV21
+2024-09-04 15:02:10,389 - ERROR - 'charmap' codec can't encode character '\uff0c' in position 307: character maps to <undefined>
+2024-09-04 15:02:10,390 - INFO - Extracting product with ASIN: B0D981CHLB
+2024-09-04 15:02:27,587 - ERROR - 'charmap' codec can't encode character '\u3010' in position 234: character maps to <undefined>
+2024-09-04 15:02:27,588 - INFO - Extracting product with ASIN: B0DBPVJQQF
+2024-09-04 15:02:43,900 - ERROR - 'charmap' codec can't encode character '\uff1a' in position 213: character maps to <undefined>
+2024-09-04 15:02:43,900 - INFO - Extracting product with ASIN: B0D815C1F8
+2024-09-04 15:03:01,292 - INFO - Extracting product with ASIN: B0D1G3D8HB
+2024-09-04 15:03:18,579 - ERROR - 'charmap' codec can't encode character '\u3010' in position 213: character maps to <undefined>
+2024-09-04 15:03:18,581 - INFO - Extracting product with ASIN: B0D7ZHT6KW
+2024-09-04 15:03:35,024 - INFO - Extracting product with ASIN: B0D3TR935P
+2024-09-04 15:03:52,333 - INFO - Extracting product with ASIN: B0D3VK2PDZ
+2024-09-04 15:04:09,192 - ERROR - 'charmap' codec can't encode character '\u2265' in position 329: character maps to <undefined>
+2024-09-04 15:04:09,193 - INFO - Extracting product with ASIN: B0D92B54Y5
+2024-09-04 15:04:26,906 - ERROR - 'charmap' codec can't encode characters in position 235-238: character maps to <undefined>
+2024-09-04 15:04:26,906 - INFO - Extracting product with ASIN: B0DB5J6FSP
+2024-09-04 15:04:42,710 - INFO - Extracting product with ASIN: B0D3QFZC1S
+2024-09-04 15:04:58,748 - INFO - Extracting product with ASIN: B0D67748S6
+2024-09-04 15:05:15,706 - ERROR - 'charmap' codec can't encode character '\u3010' in position 229: character maps to <undefined>
+2024-09-04 15:05:15,707 - INFO - Extracting product with ASIN: B0D5XQHPPV
+2024-09-04 15:05:32,846 - ERROR - 'charmap' codec can't encode character '\uff1a' in position 706: character maps to <undefined>
+2024-09-04 15:05:32,846 - INFO - Extracting product with ASIN: B0D9MDLXBG
+2024-09-04 15:05:48,981 - INFO - Extracting product with ASIN: B0D83CJFLR
+2024-09-04 15:06:07,433 - ERROR - 'charmap' codec can't encode character '\u3010' in position 195: character maps to <undefined>
+2024-09-04 15:06:07,434 - INFO - Extracting product with ASIN: B0D7CGCLV3
+2024-09-04 15:06:37,966 - ERROR - 'charmap' codec can't encode character '\u3010' in position 242: character maps to <undefined>
+2024-09-04 15:06:37,968 - INFO - Extracting product with ASIN: B0D5D2K3VW
+2024-09-04 15:06:54,646 - ERROR - 'charmap' codec can't encode character '\u3010' in position 224: character maps to <undefined>
+2024-09-04 15:06:54,647 - INFO - Extracting product with ASIN: B0D1G86ZPN
+2024-09-04 15:07:11,154 - INFO - Extracting product with ASIN: B0D21TXKRS
+2024-09-04 15:07:27,394 - ERROR - 'charmap' codec can't encode character '\u3010' in position 316: character maps to <undefined>
+2024-09-04 15:07:27,394 - INFO - Extracting product with ASIN: B0D83KYD4M
+2024-09-04 15:07:46,196 - ERROR - 'charmap' codec can't encode characters in position 236-237: character maps to <undefined>
+2024-09-04 15:07:46,197 - INFO - Extracting product with ASIN: B0D17MSMJ4
+2024-09-04 15:08:03,551 - INFO - Extracting product with ASIN: B0D5Y1FZFT
+2024-09-04 15:08:19,793 - ERROR - 'charmap' codec can't encode character '\uff0c' in position 1236: character maps to <undefined>
+2024-09-04 15:08:19,794 - INFO - Extracting product with ASIN: B0D6S11CMC
+2024-09-04 15:08:36,106 - ERROR - 'charmap' codec can't encode character '\u3010' in position 192: character maps to <undefined>
+2024-09-04 15:08:36,106 - INFO - Extracting product with ASIN: B0D76GV6HW
+2024-09-04 15:08:52,283 - ERROR - 'charmap' codec can't encode character '\U0001f9ca' in position 236: character maps to <undefined>
+2024-09-04 15:08:52,283 - INFO - Extracting product with ASIN: B0D4Y78SSC
+2024-09-04 15:09:09,481 - ERROR - 'charmap' codec can't encode character '\uff1a' in position 1008: character maps to <undefined>
+2024-09-04 15:09:09,481 - INFO - Extracting product with ASIN: B0D6WJ76FD
+2024-09-04 15:09:25,728 - INFO - Extracting product with ASIN: B0D4QPVFJ5
+2024-09-04 15:09:42,635 - ERROR - 'charmap' codec can't encode character '\u3010' in position 212: character maps to <undefined>
+2024-09-04 15:09:42,636 - INFO - Extracting product with ASIN: B0D8GQS33Z
+2024-09-04 15:09:58,518 - ERROR - 'charmap' codec can't encode character '\uff1a' in position 197: character maps to <undefined>
+2024-09-04 15:09:58,519 - INFO - Extracting product with ASIN: B0D79HK199
+2024-09-04 15:10:14,154 - ERROR - 'charmap' codec can't encode character '\u3010' in position 220: character maps to <undefined>
+2024-09-04 15:10:14,154 - INFO - Extracting product with ASIN: B0D5CRSZCT
+2024-09-04 15:10:30,228 - INFO - Extracting product with ASIN: B0D1BXT2CB
+2024-09-04 15:10:46,965 - ERROR - 'charmap' codec can't encode characters in position 235-238: character maps to <undefined>
+2024-09-04 15:10:46,967 - INFO - Extracting product with ASIN: B0C9JCCZHD
+2024-09-04 15:11:03,751 - ERROR - 'charmap' codec can't encode characters in position 221-228: character maps to <undefined>
+2024-09-04 15:11:03,751 - INFO - Extracting product with ASIN: B0D4QCKTJH
+2024-09-04 15:11:20,442 - ERROR - 'charmap' codec can't encode character '\u3010' in position 224: character maps to <undefined>
+2024-09-04 15:11:20,442 - INFO - Extracting product with ASIN: B0D453RP37
+2024-09-04 15:11:37,124 - ERROR - 'charmap' codec can't encode character '\u3010' in position 214: character maps to <undefined>
+2024-09-04 15:11:37,125 - INFO - Extracting product with ASIN: B0CVVK2KPF
+2024-09-04 15:11:53,658 - ERROR - 'charmap' codec can't encode character '\uff1a' in position 1222: character maps to <undefined>
+2024-09-04 15:11:53,659 - INFO - Extracting product with ASIN: B0D7Q5Z7KD
+2024-09-04 15:12:09,650 - INFO - Extracting product with ASIN: B0D8B5Y7R8
+2024-09-04 15:12:25,994 - INFO - Extracting product with ASIN: B0D4Z9Q5QY
+2024-09-04 15:12:43,056 - INFO - Extracting product with ASIN: B0D2TPMJBG
+2024-09-04 15:13:00,308 - ERROR - 'charmap' codec can't encode character '\u2109' in position 160: character maps to <undefined>
+2024-09-04 15:13:00,308 - INFO - Extracting product with ASIN: B0D4DMSYK6
+2024-09-04 15:13:18,535 - ERROR - 'charmap' codec can't encode characters in position 220-223: character maps to <undefined>
+2024-09-04 15:13:18,536 - INFO - Extracting product with ASIN: B0D3BZGG3X
+2024-09-04 15:13:36,343 - INFO - Extracting product with ASIN: B0D45J36DV
+2024-09-04 15:13:53,227 - INFO - Extracting product with ASIN: B0DBVDJWXB
+2024-09-04 15:14:09,586 - INFO - Extracting product with ASIN: B0D2DGSXHR
+2024-09-04 15:14:26,573 - ERROR - 'charmap' codec can't encode character '\u3010' in position 237: character maps to <undefined>
+2024-09-04 15:14:26,574 - INFO - Extracting product with ASIN: B0D6G2GV8Q
+2024-09-04 15:14:42,785 - ERROR - 'charmap' codec can't encode character '\u3010' in position 207: character maps to <undefined>
+2024-09-04 15:14:42,785 - INFO - Extracting product with ASIN: B0D3RRPYWN
+2024-09-04 15:15:08,335 - ERROR - 'charmap' codec can't encode character '\uff0c' in position 60: character maps to <undefined>
+2024-09-04 15:15:08,336 - INFO - Extracting product with ASIN: B0D1KGXVM2
+2024-09-04 15:15:25,610 - ERROR - 'charmap' codec can't encode character '\u3010' in position 187: character maps to <undefined>
+2024-09-04 15:15:25,611 - INFO - Extracting product with ASIN: B0DFCVMHHS
+2024-09-04 15:15:43,791 - ERROR - 'charmap' codec can't encode character '\u2714' in position 218: character maps to <undefined>
+2024-09-04 15:15:43,791 - INFO - Extracting product with ASIN: B0D4ZBN6S1
+2024-09-04 15:16:02,051 - ERROR - 'charmap' codec can't encode characters in position 227-228: character maps to <undefined>
+2024-09-04 15:16:02,053 - INFO - Extracting product with ASIN: B0D878LWJW
+2024-09-04 15:16:21,353 - ERROR - 'charmap' codec can't encode character '\uff1a' in position 226: character maps to <undefined>
+2024-09-04 15:16:21,353 - INFO - Extracting product with ASIN: B0DCBB3JW6
+2024-09-04 15:16:40,644 - INFO - Extracting product with ASIN: B0D9D4TJZF
+2024-09-04 15:16:56,606 - ERROR - 'charmap' codec can't encode character '\u2109' in position 908: character maps to <undefined>
+2024-09-04 15:16:56,607 - INFO - Extracting product with ASIN: B0D1DKVY68
+2024-09-04 15:17:14,125 - INFO - Extracting product with ASIN: B0D5M55KMK
+2024-09-04 15:17:32,933 - ERROR - 'charmap' codec can't encode character '\uff08' in position 198: character maps to <undefined>
+2024-09-04 15:17:32,933 - INFO - Extracting product with ASIN: B0DBQ87GV8
+2024-09-04 15:17:49,171 - INFO - Extracting product with ASIN: B0D5CN6C7K
+2024-09-04 15:18:06,367 - ERROR - 'charmap' codec can't encode character '\u3010' in position 235: character maps to <undefined>
+2024-09-04 15:18:06,368 - INFO - Extracting product with ASIN: B0D5M317CR
+2024-09-04 15:18:23,465 - ERROR - 'charmap' codec can't encode characters in position 217-218: character maps to <undefined>
+2024-09-04 15:18:23,466 - INFO - Extracting product with ASIN: B0DFMTVY6N
+2024-09-04 15:18:39,469 - ERROR - 'charmap' codec can't encode character '\uff1a' in position 188: character maps to <undefined>
+2024-09-04 15:18:39,469 - INFO - Extracting product with ASIN: B0D5XT582T
+2024-09-04 15:18:55,891 - INFO - Extracting product with ASIN: B0D8XBWXCM
+2024-09-04 15:19:13,134 - ERROR - 'charmap' codec can't encode characters in position 235-236: character maps to <undefined>
+2024-09-04 15:19:13,135 - INFO - Extracting product with ASIN: B0CWJKDL1T
+2024-09-04 15:19:31,160 - INFO - Extracting product with ASIN: B0D95LCQYW
+2024-09-04 15:19:47,829 - INFO - Extracting product with ASIN: B0DBL42KGZ
+2024-09-04 15:20:06,717 - ERROR - 'charmap' codec can't encode character '\u2109' in position 662: character maps to <undefined>
+2024-09-04 15:20:06,717 - INFO - Extracting product with ASIN: B0D949T25G
+2024-09-04 15:20:25,471 - INFO - Extracted 39/100 products of category Appliances
+2024-09-04 15:20:25,471 - WARNING - Cannot extract all products of category Appliances
